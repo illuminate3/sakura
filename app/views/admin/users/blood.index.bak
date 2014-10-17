@@ -1,0 +1,28 @@
+@extends('layouts.base')
+
+@section('title')
+@parent
+:: Admin :: Users
+@stop
+
+@section('content')
+<div class="page-header">
+	<h1>User Administration Center</h1>
+</div>
+
+<table>
+	<thead>
+		<tr>
+			<th>Blarg</th>
+			<th>Snarf</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Blah Blah Blah</td>
+			<td>Blah Blah Blah</td>
+		<tr>
+	</tbody>
+</table>
+
+@stop

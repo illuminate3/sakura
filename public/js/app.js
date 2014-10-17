@@ -1,0 +1,1 @@
+var staffApp = angular.module('staffApp', ['mainController', 'staffService']);
