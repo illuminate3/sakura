@@ -19,7 +19,12 @@ class Director extends Eloquent{
         return $this->hasOne(staff);
     }
     
-    public function 
+    public function hierarchy(){
+        
+        return $this->belongsTo('Hierarchy', 'director_id', 'director_id');
+        
+    }
+ 
     
 }
 

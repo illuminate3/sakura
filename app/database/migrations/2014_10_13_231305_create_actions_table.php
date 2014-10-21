@@ -19,7 +19,7 @@ class CreateActionsTable extends Migration {
                 $table->increments('action_id');
                 $table->string('title');
                 $table->string('description');
-                
+                $table->integer('numeric_code');
             });
 	}
 

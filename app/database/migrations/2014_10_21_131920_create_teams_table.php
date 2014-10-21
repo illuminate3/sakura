@@ -18,7 +18,7 @@ class CreateTeamsTable extends Migration {
                 
                 $table->increments('team_id');
                 $table->integer('program_id')->unsigned();
-                $table->integer('director_id')->unsigned();
+              
                 
             });
 	}

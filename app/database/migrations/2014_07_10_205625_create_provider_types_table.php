@@ -12,12 +12,12 @@ class CreateProviderTypesTable extends Migration {
      */
     public function up() {
         Schema::connection('fcs_clients')->create('provider_types', function($table) {
-            $table->integer('id');
+            $table->integer('provider_id');
             $table->string('title', 45);
             $table->timestamps();
 
             $table->engine = 'InnoDB';
-            $table->primary('id');
+            $table->primary('provider_id');
         });
     }
 

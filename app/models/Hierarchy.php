@@ -15,15 +15,15 @@ class Hierarchy extends \Eloquent {
 
     public function team() {
 
-        return $this->hasOne('team', 'team_id', 'team_id');
+        return $this->hasOne('Team', 'team_id', 'team_id');
     }
 
     public function program() {
-        return $this->belongsTo('program', 'program_id', 'program_id');
+        return $this->belongsTo('Program', 'program_id', 'program_id');
     }
 
     public function director() {
-        return $this->hasOne('director', 'director_id', 'director_id');
+        return $this->hasOne('Director', 'director_id', 'director_id');
     }
 
    

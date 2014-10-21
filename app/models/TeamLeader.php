@@ -23,7 +23,7 @@ class TeamLeader extends Eloquent {
     }
     
     public function team(){
-        return $this->belongsTo('team', 'team_id', 'team_id');
+        return $this->belongsTo('Team', 'team_id', 'team_id');
     }
     
     
