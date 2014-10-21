@@ -18,3 +18,4 @@ class HomeAddress extends \Eloquent {
     }
 
 }
+ 

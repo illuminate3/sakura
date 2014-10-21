@@ -43,7 +43,7 @@ class Staff extends SentryModel {
 
     public function name() {
 
-        return $this->hasMany('staffName', 'staff_id', 'staff_id');
+        return $this->hasOne('StaffName', 'staff_id', 'staff_id');
     }
 
     public function notes() {

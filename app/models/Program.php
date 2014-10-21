@@ -18,14 +18,18 @@ class Program Extends \Eloquent
         
     }
     
-    public function staff(){
-        return $this->belongsToMany('Staff');
+    public function team(){
+        return $this->hasOne('Team');
         
     }
     
     
  
     public function needs(){
-        return $this->belongsToMany('Need');
+        return $this->belongsToMany('Need', 'program_need', 'program_id', 'program_id');
+    }
+    
+    public function interventions(){
+        return $this->belongsToMany('Intervention', 'intervention_program', 'program_id', 'program_id');
     }
 }

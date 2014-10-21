@@ -44,12 +44,17 @@
                 $need = \Need::find($i);
                 $staff = \Staff::find(1);
                 $program = \Program::find(2);
-                $staff->programs()->attach($program);
+                //$staff->programs()->attach($program);
                 //$client->needs()->attach($need);
                 $name = $need->clients()->first()->name;
                 echo('MTK: '.$client->mtk.',  '. 'Name: '.$name->first .' '.$name->middle . ' '. $name->last .'<br />');
                 echo $client->needs()->first()->title.'<br />';
+                $snam = new \StaffName();
+                echo($snam);
                 echo $staff->programs()->first()->title.'<br />';
+                $staffname = $staff->name; 
+                echo($staff->staff_id);
+                echo($staffname);
                 }
                 ?>
                 

@@ -13,6 +13,14 @@ class CreateActionsTable extends Migration {
 	public function up()
 	{
 		//
+            Schema::connection('fcs_clients')->dropIfExists('actions');
+            Schema::connection('fcs_clients')->create('actions', function($table){
+                
+                $table->increments('action_id');
+                $table->string('title');
+                $table->string('description');
+                
+            });
 	}
 
 	/**
@@ -23,6 +31,7 @@ class CreateActionsTable extends Migration {
 	public function down()
 	{
 		//
+            Schema::connection('fcs_clients')->create('actions');
 	}
 
 }
