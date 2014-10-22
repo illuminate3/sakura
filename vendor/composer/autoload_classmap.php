@@ -141,6 +141,7 @@ return array(
     'CreateFormsCompleteTable' => $baseDir . '/app/database/migrations/2014_07_10_171402_create_forms_complete_table.php',
     'CreateFormsNeededTable' => $baseDir . '/app/database/migrations/2014_07_10_171437_create_forms_needed_table.php',
     'CreateGenderTable' => $baseDir . '/app/database/migrations/2014_07_10_182529_create_gender_table.php',
+    'CreateGoalsTable' => $baseDir . '/app/database/migrations/2014_10_22_170943_create_goals_table.php',
     'CreateGuardianTable' => $baseDir . '/app/database/migrations/2014_07_10_182543_create_guardian_table.php',
     'CreateHealthcareProvidersTable' => $baseDir . '/app/database/migrations/2014_07_10_182603_create_healthcare_providers_table.php',
     'CreateHierarchysTable' => $baseDir . '/app/database/migrations/2014_10_21_133005_create_hierarchys_table.php',

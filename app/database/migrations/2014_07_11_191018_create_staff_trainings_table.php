@@ -11,7 +11,7 @@ class CreateStaffTrainingsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::connection('fcs_staff')->create('staff_trainings', function($table) {
+        Schema::connection('fcs_staff')->create('staff_training', function($table) {
             $table->integer('staff_id');
             $table->integer('training_id');
             $table->integer('scheduled');
@@ -30,7 +30,7 @@ class CreateStaffTrainingsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::connection('fcs_staff')->dropIfExists('staff_trainings');
+        Schema::connection('fcs_staff')->dropIfExists('staff_training');
     }
 
 }

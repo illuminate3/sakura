@@ -6,7 +6,7 @@ class Trainings extends \Eloquent {
 
     public function staffTrainings() {
 
-        return $this->belongsTo('StaffTraining', 'trainingId', 'trainingId');
+        return $this->belongsToMany('StaffTraining','staff_training', 'trainingId', 'trainingId');
     }
 
 }
