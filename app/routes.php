@@ -67,6 +67,7 @@ Route::post('admin/login', [
 Route::get('hello', function(){
     return View::make('hello');
 });
+Route::get('programs/details/{id}', 'ProgramController@showDetails');
 
 App::missing(function($exception) {
 	return View::make('home');

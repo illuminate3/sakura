@@ -23,7 +23,7 @@ class Program Extends \Eloquent {
     }
 
     public function needs() {
-        return $this->belongsToMany('Need', 'program_need', 'program_id', 'program_id');
+        return $this->belongsToMany('Need', 'need_program', 'program_id', 'program_id');
     }
 
     public function interventions() {
