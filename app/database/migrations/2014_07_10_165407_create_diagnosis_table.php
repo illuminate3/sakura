@@ -7,7 +7,7 @@ class CreateDiagnosisTable extends Migration {
 
     /**
      * Run the migrations.
-     *
+     * /// NEEDS TO BE COMPLETELY REDONE
      * @return void
      */
     public function up() {

@@ -8,6 +8,9 @@
 <strong> Program Description </strong><br />
 <div>{{$program->description}}</div>
 <strong>Needs:</strong>
+<ul>
 @foreach($program->needs as $need)
-<li><strong>{{$need->title}}</strong><br /> {{$need->description}}</li>
+<li><strong>{{$need->title}}</strong><br /> {{$need->description}}<br /></li>
 @endforeach
+
+</ul>

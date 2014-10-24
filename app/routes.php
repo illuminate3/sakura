@@ -68,6 +68,8 @@ Route::get('hello', function(){
     return View::make('hello');
 });
 Route::get('programs/details/{id}', 'ProgramController@showDetails');
+Route::get('needs/details/{id}', 'NeedController@showDetails');
+Route::get('needs/all', 'NeedController@getNeeds');
 
 App::missing(function($exception) {
 	return View::make('home');
