@@ -1,16 +1,16 @@
-<html>
-    <head>
-        
-        <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
-    </head>
-    <body>
-        <script>
-            
-            
-            </script>
-        <div id='results'>
-            
-        </div>
-    </body>    
-    
-</html>
+@extends('layouts.base')
+
+@section('title')
+
+@parent
+
+@stop
+
+
+@section('content')
+{{ Form::open(array('action' => 'NeedController@saveNeed'))}}
+{{ Form::label('title', 'Need Title', array('class' => 'form'))}}
+
+{{ Form::close() }}
+@stop
+

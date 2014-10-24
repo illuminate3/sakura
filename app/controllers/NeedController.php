@@ -24,4 +24,22 @@ class NeedController extends BaseController
         return \Need::all();
         
     }
+    
+    public function createNeed(){
+        
+        return View::make('needs.create');
+        
+    }
+    
+    public function postNeed(){
+        $postData = Input::all();
+        
+        $title = $postData['title'];
+        $description = $postData['description'];
+        
+        
+        
+        
+    }
+    
 }

@@ -1,6 +1,11 @@
+@extends('layouts.base')
 
+@section('title')
+@parent
 
+@stop
 
+@section('content')
 <div><strong>Title:</strong>
     <h3>  {{$program->title}}</h3>
 </div>
@@ -14,3 +19,4 @@
 @endforeach
 
 </ul>
+@stop
