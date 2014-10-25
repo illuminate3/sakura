@@ -37,9 +37,7 @@ class NeedController extends BaseController
         $title = $postData['title'];
         $description = $postData['description'];
         
-        
-        
-        
+        return "Save Successful!";
     }
     
 }

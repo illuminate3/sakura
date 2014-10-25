@@ -59,11 +59,19 @@
       </li>
       </ul>
   </div><!-- /.navbar-collapse -->
+</nav>
   <div class="container">
     @yield('content')
   </div>
-</nav>
+
+
+
+
+@section('scripts')
 {{ HTML::script('js/jquery2.1.min.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
+@show
+
+
 </body>
 </html>

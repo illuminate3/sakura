@@ -48,7 +48,7 @@ Route::group(['before'	=>	'auth'], function() {
 Route::get('needs/details/{id}', 'NeedController@showDetails');
 Route::get('needs/all', 'NeedController@getNeeds');
 Route::get('needs/create', 'NeedController@createNeed');
-   
+    Route::any('needs/save', 'NeedController@postNeed');   
 });
 Route::get('login',  function()
 {
