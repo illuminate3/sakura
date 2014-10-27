@@ -21,7 +21,9 @@ class NeedController extends BaseController
     public function getNeeds()
     {
         
-        return \Need::all();
+        //return \Need::all();
+        $needs = Need::all();
+        return View::make('needs.all', array('needs' => $needs));
         
     }
     
@@ -36,7 +38,9 @@ class NeedController extends BaseController
         
         $title = $postData['title'];
         $description = $postData['description'];
-        
+        $need = new Need;
+        $need->title = $title;
+        $need->description = $description;
         return "Save Successful!";
     }
     

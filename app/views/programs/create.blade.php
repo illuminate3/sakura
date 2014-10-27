@@ -13,7 +13,7 @@
 <div class='container'>
     <span id='busy-icon'></span>
     <div class='panel'>
-{{ Form::open(array('action' => 'NeedController@postNeed', 'method' => 'post', 'id' => 'frm-add-need', 'class'=>'navbar-form navbar-left'))}}
+{{ Form::open(array('action' => 'ProgramController@postProgram', 'method' => 'post', 'id' => 'frm-add-program', 'class'=>'navbar-form navbar-left'))}}
 <div class='input-group input-group-sm'>
     
     <span class='input-group-addon'>Title</span>
@@ -40,14 +40,14 @@
 <script>
     $("document").ready(function ($) {
 
-        $('#frm-add-need').on('submit', function (e) {
+        $('#frm-add-program').on('submit', function (e) {
 
             e.preventDefault();
 
             var token = $('input[name=_token]').val();
             var title = $('#title').val();
             var description = $('#description').val();
-            var action = "{{ URL::action('NeedController@postNeed')}}";
+            var action = "{{ URL::action('ProgramController@postProgram')}}";
             var formData = 'title=' + title + '&description=' + description;
             // we should do saving animation herre id='busy-icon'
             document.getElementById('busy-icon').innerHTML="<img src='../images/load-wings-small.gif'/>";
@@ -68,8 +68,8 @@
                 data: formData,
                 success: function (data) {
                     console.log(data);
-                    $('#frm-add-need').trigger("reset");
-                    document.getElementById('busy-icon').innerHTML="Save Complete. Enter new Need.";
+                    $('#frm-add-program').trigger("reset");
+                    document.getElementById('busy-icon').innerHTML="Save Complete. Enter new Program.";
                 }
             }, 'json');
             return false;

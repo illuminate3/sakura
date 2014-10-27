@@ -24,6 +24,17 @@ class ProgramController extends BaseController {
         return View::make('programs.create');
     }
     
-   
+   public function postProgram(){
+       
+       $postData = Input::all();
+       $title = $postData['title'];
+       $description = $postData['description'];
+       
+       $program = new Program;
+       
+       $program->title = $title;
+       $program->description = $description;
+       
+   }
     
 } 
