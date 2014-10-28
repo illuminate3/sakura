@@ -20,6 +20,8 @@ class CreateClientProgramTable extends Migration {
                 $table->integer('mtk')->unsigned();
                 $table->integer('program_id')->unsigned();    
                 
+                $table->primary('mtk','program_id');
+                
             });
 	}
 

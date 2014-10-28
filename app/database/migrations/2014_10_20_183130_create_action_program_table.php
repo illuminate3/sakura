@@ -18,7 +18,7 @@ class CreateActionProgramTable extends Migration {
                 
                 $table->integer('action_id')->unsigned();
                 $table->integer('program_id')->unsigned();
-                
+                $table->primary(array('action_id', 'program_id'));
             });
 	}
 

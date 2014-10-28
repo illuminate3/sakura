@@ -19,6 +19,8 @@ class CreateInterventionProgramTable extends Migration {
                 $table->integer('intervention_id')->unsigned();
                 $table->integer('program_id')->unsigned();
                 
+                $table->primary('intervention_id', 'program_id');
+                
             });
 	}
 

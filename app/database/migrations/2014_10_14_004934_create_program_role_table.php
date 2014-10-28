@@ -19,7 +19,7 @@ class CreateProgramRoleTable extends Migration {
                 $table->integer('program_id')->unsigned();
                 $table->integer('role_id')->unsigned();    
                 
-                
+                $table->primary('program_id', 'role_id');
             });
 	}
 

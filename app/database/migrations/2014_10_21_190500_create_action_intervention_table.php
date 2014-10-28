@@ -20,6 +20,8 @@ class CreateActionInterventionTable extends Migration {
                 $table->integer('action_id')->unsigned();
                 $table->integer('intervention_id')->unsigned();
                 
+                $table->primary(array('action_id', 'intervention_id'));
+                
             });
 	}
 

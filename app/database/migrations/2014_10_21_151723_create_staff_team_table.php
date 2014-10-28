@@ -19,6 +19,8 @@ class CreateStaffTeamTable extends Migration {
                 $table->integer('staff_id')->unsigned();
                 $table->integer('team_id')->unsigned();
                 
+                $table->primary(array('staff_id', 'team_id'));
+                        
             });
 	}
 

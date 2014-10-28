@@ -17,6 +17,8 @@ class CreateClientNeedTable extends Migration {
 
             $table->integer('mtk')->unsigned();
             $table->integer('need_id')->unsigned();
+            
+            $table->primary(array('mtk','need_id'));
         });
     }
 

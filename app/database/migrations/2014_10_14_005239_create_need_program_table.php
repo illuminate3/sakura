@@ -16,6 +16,9 @@ class CreateNeedProgramTable extends Migration {
         Schema::connection('fcs_clients')->create('need_program', function($table) {
             $table->integer('program_id')->unsigned();
             $table->integer('need_id')->unsigned();
+            
+            
+            $table->primary(array('program_id', 'need_id'));
         });
     }
 
