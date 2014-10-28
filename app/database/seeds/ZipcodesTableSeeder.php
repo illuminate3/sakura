@@ -12,7 +12,7 @@ class ZipCodesTableSeeder extends Seeder {
 		$faker = Faker::create();
 
 		foreach(range(1, 200) as $index) {
-                    ZipCode::create([
+                    Zipcode::create([
 				'zip_code_id'		=>	$index,
                                 'city'                  =>      $faker->city,
                                 'state'                 =>      $faker->state,

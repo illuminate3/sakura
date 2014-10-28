@@ -20,9 +20,34 @@ class ZipcodeController extends BaseController{
     
     public function postIndex()
     {
+        $input = Input::all();
+        
+        $code = $input['code'];
+        $state = $input['state'];
+        $city = $input['city'];
+        
+        $zipcode = new \Zipcode();
+        
+        $zipcode->city = $city;
+        $zipcode->state= $state;
+        $zipcode->zipcode = $code;
+        $result = $zipcode->save();
+        if ($result === true){
+            return "";
+            
+        }else{
+            return "fail";
+            
+        }
         
         
     }
     
+    public function getCreate()
+    {
+        return View::make('geographic.zipcodes.create');
+        
+        
+    }
     
 }

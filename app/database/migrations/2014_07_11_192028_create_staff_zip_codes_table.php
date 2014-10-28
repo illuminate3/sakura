@@ -13,7 +13,7 @@ class CreateStaffZipCodesTable extends Migration {
     public function up() {
         Schema::connection('fcs_staff')->create('zip_codes', function($table) {
             $table->integer('zip_code_id');
-            $table->integer('zip_code')->unsigned();
+            $table->string('zip_code');
             $table->string('city', 45);
             $table->string('state', 45);
             $table->timestamps();
