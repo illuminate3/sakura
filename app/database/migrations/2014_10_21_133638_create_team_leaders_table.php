@@ -19,7 +19,7 @@ class CreateTeamLeadersTable extends Migration {
                $table->integer('staff_id');
                $table->integer('team_id');
                
-               $table->primary(array('staff_id', 'team_leader_id', 'team_id'));
+               //$table->primary(array('staff_id', 'team_leader_id', 'team_id'));
                
             });
 	}

@@ -74,6 +74,12 @@ Route::get('actions/all', 'ActionController@getActions');
 Route::get('actions/create', 'ActionController@createAction');
 Route::any('actions/save', 'ActionController@postAction');   
 });
+/*
+ * Geographics Routes
+ * 
+ */
+Route::get('geographic/zipcodes/all', 'ZipcodeController@getindex');
+///
 
 
 Route::get('login',  function()

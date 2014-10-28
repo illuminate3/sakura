@@ -31,7 +31,7 @@ class CreateActionsTable extends Migration {
 	public function down()
 	{
 		//
-            Schema::connection('fcs_clients')->create('actions');
+            Schema::connection('fcs_clients')->dropIfExists('actions');
 	}
 
 }
