@@ -20,6 +20,15 @@ class ProgramController extends BaseController {
      return View::make('programs.details', array('program' => $program));
     }
     
+    public function getPrograms()
+    {
+        
+        //return \Need::all();
+        $programs = Program::all();
+        return View::make('programs.all', array('programs' => $programs));
+        
+    }
+    
     public function createProgram(){
         return View::make('programs.create');
     }
@@ -34,7 +43,12 @@ class ProgramController extends BaseController {
        
        $program->title = $title;
        $program->description = $description;
-       
+       if($program->save())
+       {
+           return 'Save Successful';
+       }else{
+           return 'Save Failure';
+       }
    }
     
 } 

@@ -41,7 +41,14 @@ class NeedController extends BaseController
         $need = new Need;
         $need->title = $title;
         $need->description = $description;
-        return "Save Successful!";
+        if($need->save()){
+            return "Save Successful!";
+        }else
+        {
+            
+            return "save failure";
+            
+        }
     }
     
 }
