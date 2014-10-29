@@ -9,6 +9,7 @@
 		"fzaninotto/faker": ">=1.4.0",
 		"way/generators": "2.*",
 		"edvinaskrucas/notification": "3.*"
+               
 	},
 	"autoload": {
 		"classmap": [

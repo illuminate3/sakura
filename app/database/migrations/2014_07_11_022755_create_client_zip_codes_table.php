@@ -13,9 +13,12 @@ class CreateClientZipCodesTable extends Migration {
     public function up() {
         Schema::connection('fcs_clients')->create('zip_codes', function($table) {
             $table->increments('zip_code_id');
-            $table->string('city');
             $table->string('state');
+            $table->string('city');
+            $table->string('county');
             $table->string('zipcode');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->timestamps();
             
             $table->engine = 'InnoDB';

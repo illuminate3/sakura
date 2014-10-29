@@ -12,15 +12,18 @@ class CreateStaffZipCodesTable extends Migration {
      */
     public function up() {
         Schema::connection('fcs_staff')->create('zip_codes', function($table) {
-            $table->integer('zip_code_id');
-            $table->string('zip_code');
-            $table->string('city', 45);
-            $table->string('state', 45);
+            $table->increments('zip_code_id');
+            $table->string('state');
+            $table->string('city');
+            $table->string('county');
+            $table->string('zipcode');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->timestamps();
             $table->softDeletes();
 
             $table->engine = 'InnoDB';
-            $table->primary('zip_code_id');
+            
         });
     }
 

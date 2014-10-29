@@ -50,4 +50,11 @@ class ZipcodeController extends BaseController{
         
     }
     
+    public function uploadZipcodes()
+    {
+        
+        
+        
+    }
+    
 }
