@@ -84,6 +84,16 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+		'codes' => array(
+                        'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'fcs_clients',
+			'username'  => 'root',
+			'password'  => 'Temple_46',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

@@ -9,9 +9,16 @@ class DataimportController extends \BaseController
         $this->table = "";
         $this->query = "";     
     }
-    public static function index()
+    public function getIndex()
     {
-        return \View::make('dataimport::index')->with('route_name', 'This is called from dataimport controller');
+        return \View::make('admin.upload.index');
+    }
+    
+    public static function postFile()
+    {
+        
+        return \View::make('admin.upload.dataimport');
+        
     }
     
     public $input;
@@ -131,7 +138,7 @@ class DataimportController extends \BaseController
             if ($c < $count-1)
             {
             $primaries.=$primekey.',';
-            $c+=1;
+            $c++;
             }
             else
             {
@@ -152,16 +159,22 @@ class DataimportController extends \BaseController
      * 
      * Recieves 'data' and 'table' from HTML Form, returns create table statement.
      */
-    public static function upload()
+    public function upload()
     {
+        $dataResult = '';
         $upload = new \Upload();
-        $file = \Input::file('data');
+        
+        $file = \Input::file('filename');
+
+        $dataResult = \Input::file('filename');
         if($file!==null)
             {
+            $dataResult.='file loaded';
                 $tableName = \Input::get('table');
                 $filename = $file->getClientOriginalName();
                 $upload->filename = $filename;
                 $directory = self::folder();
+                $dataResult.=
                 $uploadSuccess = $file->move($directory, $filename);
                 if($uploadSuccess)
                 {
@@ -175,11 +188,11 @@ class DataimportController extends \BaseController
                     \DB::connection('codes')->getpdo()->exec($loaddata);}
                     $primaries = preg_split('/\s+/', \Input::get('primaryKey')); 
                     self::addPrimaries(\Input::get('table'),$primaries,'codes');
-                    echo \Response::json("Transaction Completed :</br> Created Table and Populated With Data ".$columns);
+                   return \Response::json("Transaction Completed :</br> Created Table and Populated With Data ".$columns);
             }
         else
         {
-            return \Response::json("Failed to open file, try again");
+            return \Response::json("Failed to open file, try again".$dataResult);
         }    
     }
 }   

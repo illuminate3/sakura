@@ -2,7 +2,7 @@
 
 class UploadController extends \BaseController{
     
-    public static function index()
+    public function getIndex()
     {
         $response = array();
         $response[] = self::latest();

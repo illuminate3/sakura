@@ -1,7 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.base')
 
 @section('content')
-{{ 'HEY YOU GUYS' }}
+{{ Upload Section}}
 @stop
 
 

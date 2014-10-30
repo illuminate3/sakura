@@ -83,7 +83,14 @@ Route::any('geographic/zipcodes/create', 'ZipcodeController@getCreate');
 Route::any('geographic/zipcodes/save', 'ZipcodeController@postIndex');
 ///
 
-
+/*
+ *  Upload Routes --> need to be remanaged
+ * 
+ */
+Route::any('upload/index', 'DataimportController@getIndex');
+Route::any('upload/upload', 'DataimportController@postFile');
+Route::any('DataimportController@upload','DataimportController@upload');
+///
 Route::get('login',  function()
 {
 	return View::make('auth/login');

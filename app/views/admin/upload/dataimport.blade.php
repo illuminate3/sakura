@@ -1,52 +1,75 @@
-@extends('packages\jleach\dataimport\layouts\master')
+@extends('layouts.base')
 
 @section('content')
-<script type="text/javascript">
- jQuery( document ).ready( function( $ ) {
- 
-    $( 'form' ).submit( function(e) {
-    e.preventDefault();
-       
-        $.post('categories', {name:'name anything'}, function(data) {
-            $( "#results" ).append(data);
-            console.log(data);
-        });});
-        //.....
-        //do anything else you might want to do
-        //.....
- 
-        //prevent the form from actually submitting in browser
-    return false;
-//$('#dashcontent').load('uploaded');
-});
-</script>
-{{ $route_name }}
-            {{ Form::open(
+<span id='busy-icon'></span>
+
+{{ Form::open(
                         array(
-                        'url'=>'/dataimportload',
+                        'url'=>'/upload/upload',
                         'files'=>true,
-                        'action' => 'UploadController@upload',
+                        'id' => 'upload_form',
+                        'action' => 'DataimportController@upload',
                         'enctype' => 'multipart/form-data',
-                        'method' => 'PUT',
+                        'method' => 'POST',
                              )
                         ) }}
-            {{ Form::label('primaryKey','Primary Key (required)')}}
-            {{ Form::text('primaryKey')}}
-            </br>
+{{ Form::label('primaryKey','Primary Key (required)')}}
+{{ Form::text('primaryKey')}}
+</br>
+
+</br>
+{{ Form::label('fieldDelimiter', 'Field Delimiter (Optional)')}}
+{{ Form::text('fieldDelimiter')}}
+</br>
+{{ Form::label('fieldEscape', 'Field Escape (Optional)')}}
+{{ Form::text('fieldEscape')}}
+
+{{ Form::label('table','Table Name (Required)') }}
+{{ Form::text('table',null, null,array('required'=>'required')) }}
+</br>
+{{ Form::label('filename','Load File')}}
+{{ Form::file('filename',null, null,array('required'=>'required')) }}
+</br>
+{{ Form::submit('Upload File') }}
+{{Form::close()}}
+@stop
+@section('scripts')
+
+
+@parent
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        console.log('im ready');
+        $('#upload_form').on('submit', function (e) {
+            e.preventDefault();
+            console.log('\r\n Im in the submit area');
+            var token = $('input[name_token]').val();
+            var primaryKey = $('#primaryKey').val();
+            var fieldDelimiter = $('#fieldDelimiter').val();
+            var fieldEscape = $('#fieldEscape').val();
+            var table = $('#table').val();
+            var filename = $('#filename').val();
+            var action = "{{ URL::action('DataimportController@upload')}}";
+            var formData = 'primarykey=' + primaryKey + '&fielddelimiter=' + fieldDelimiter + '&fieldescape=' + fieldEscape + '&table=' + table + '&filename=' + filename;
+            document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
+           $.ajax({
+                type: "post",
+                url: action,
+                data: formData,
+                success: function (data) {
+                    console.log(data);
+                     alert('done ' + data);
+                    $('#upload_form').trigger('reset');
+                    document.getElementById('busy-icon').innerHTML = "Upload Complete";
+                }
+
+
+            }, 'json');
             
-                        </br>
-            {{ Form::label('fieldDelimiter', 'Field Delimiter (Optional)')}}
-            {{ Form::text('fieldDelimiter')}}
-            </br>
-            {{ Form::label('fieldEscape', 'Field Escape (Optional)')}}
-            {{ Form::text('fieldEscape')}}
-           
-            {{ Form::label('table','Table Name (Required)') }}
-            {{ Form::text('table',null, null,array('required'=>'required')) }}
-            </br>
-            {{ Form::label('data','Load File')}}
-            {{ Form::file('data',null, null,array('required'=>'required')) }}
-            </br>
-            {{ Form::submit('Upload File') }}
-            {{Form::close()}}
+            //prevent the form from actually submitting in browser
+            return false;
+//$('#dashcontent').load('uploaded');
+        });
+    });
+</script>
 @stop
