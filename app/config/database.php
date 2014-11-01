@@ -87,7 +87,7 @@ return array(
 		'codes' => array(
                         'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'fcs_clients',
+			'database'  => 'codes',
 			'username'  => 'root',
 			'password'  => 'Temple_46',
 			'charset'   => 'utf8',

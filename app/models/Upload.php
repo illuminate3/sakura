@@ -7,18 +7,19 @@
  */
 class Upload extends \Eloquent 
 {
+    
     protected $table = 'uploads';
     protected $connection = 'codes';
-    protected $guarded = array(
-        'id',
+    protected $fillable = array(
+        
         'filename',
+        'tablename',
         'columns',
         'fieldDelimiter',
         'fieldEnclosed',
         'fieldEscaped',
         'lineDelimiter',
-        'ignoreLines',
-        'created_at',
-        'updated_at',
+        'ignoreLines'
+        
         );
 }

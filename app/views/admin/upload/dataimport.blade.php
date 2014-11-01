@@ -4,14 +4,14 @@
 <span id='busy-icon'></span>
 
 {{ Form::open(
-                        array(
+    array(
                         'url'=>'/upload/upload',
                         'files'=>true,
-                        'id' => 'upload_form',
+                        'id' => 'form',
                         'action' => 'DataimportController@upload',
                         'enctype' => 'multipart/form-data',
                         'method' => 'POST',
-                             )
+    )
                         ) }}
 {{ Form::label('primaryKey','Primary Key (required)')}}
 {{ Form::text('primaryKey')}}
@@ -32,6 +32,10 @@
 </br>
 {{ Form::submit('Upload File') }}
 {{Form::close()}}
+<div id="debug">
+    
+    
+</div>
 @stop
 @section('scripts')
 
@@ -40,8 +44,18 @@
 <script type="text/javascript">
     $(document).ready(function ($) {
         console.log('im ready');
-        $('#upload_form').on('submit', function (e) {
+        $('#form').on('submit', function (e) {
             e.preventDefault();
+            
+            var form = $(this);
+            
+            var formdata = false;
+            console.log(new FormData(form[0]));
+            if(window.FormData){
+                formdata = new FormData(form[0]);
+                console.log(formdata);
+            }
+            var formAction = form.attr('action');
             console.log('\r\n Im in the submit area');
             var token = $('input[name_token]').val();
             var primaryKey = $('#primaryKey').val();
@@ -50,22 +64,31 @@
             var table = $('#table').val();
             var filename = $('#filename').val();
             var action = "{{ URL::action('DataimportController@upload')}}";
-            var formData = 'primarykey=' + primaryKey + '&fielddelimiter=' + fieldDelimiter + '&fieldescape=' + fieldEscape + '&table=' + table + '&filename=' + filename;
+            //var formData = 'primarykey=' + primaryKey + '&fielddelimiter=' + fieldDelimiter + '&fieldescape=' + fieldEscape + '&table=' + table + '&filename=' + filename;
+
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
-           $.ajax({
-                type: "post",
+            $.ajax({
+                type: "POST",
                 url: action,
-                data: formData,
+                data: formdata ? formdata : form.serialize(),
+                cache: false,
+                contentType : false,
+                processData : false,
                 success: function (data) {
                     console.log(data);
-                     alert('done ' + data);
+                    alert('done ' + data);
                     $('#upload_form').trigger('reset');
                     document.getElementById('busy-icon').innerHTML = "Upload Complete";
+                    
+                }
+                statusCode: {
+                    500: function(){
+                        alert("error 500");
+                    }
                 }
 
-
             }, 'json');
-            
+
             //prevent the form from actually submitting in browser
             return false;
 //$('#dashcontent').load('uploaded');

@@ -8,7 +8,9 @@
 		"cartalyst/sentry": "2.*",
 		"fzaninotto/faker": ">=1.4.0",
 		"way/generators": "2.*",
-		"edvinaskrucas/notification": "3.*"
+		"edvinaskrucas/notification": "3.*",
+                "barryvdh/laravel-debugbar": "1.7.*@dev",
+                "barryvdh/laravel-ide-helper": "1.11.*@dev"
                
 	},
 	"autoload": {

@@ -12,12 +12,13 @@ class CreateUploadsTable extends Migration {
 	 */
 	public function up()
 	{
-                DB::connection('fcsdb');
-                Schema::dropIfExists('uploads');
-		Schema::create('uploads', function($table)
+                
+                Schema::connection('codes')->dropIfExists('uploads');
+		Schema::connection('codes')->create('uploads', function($table)
                 {
                     $table->increments('id');
                     $table->string('filename',256);
+                    $table->string('tablename', 256);
                     $table->string('columns');
                     $table->string('fieldDelimiter');
                     $table->string('fieldEnclosed');
@@ -35,7 +36,7 @@ class CreateUploadsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('uploads');
+		Schema::connection('codes')->dropIfExists('uploads');
 	}
 
 }

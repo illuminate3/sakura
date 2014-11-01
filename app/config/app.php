@@ -125,7 +125,8 @@ return array(
     'Way\Generators\GeneratorsServiceProvider',
     'Cartalyst\Sentry\SentryServiceProvider',
     'Krucas\Notification\NotificationServiceProvider',
-
+    'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',  
+    //'Barryvdh\LaravelDebugBar\LaravelDebugBarServiceProvider',  
   ),
 
   /*
