@@ -57,16 +57,19 @@ class DataimportController extends \BaseController {
     /**
      * 
      * @param string $data
+     * @param string $delimiter
      * @return string
      * Takes a single tab delimited line from the top of a textfile,
      * and returns a string listing 
      */
-    public static function prepareColumns($data) {
-        $columns = preg_split('/\s+/', $data);
+    public static function prepareColumns($data, $delimiter) {
+        $columns = preg_split($delimiter, $data);
+        
         array_pop($columns);
         $columns = array_flatten($columns);
-        $mynewstring = '`' . implode('` , `', $columns) . '`';
-        return $mynewstring;
+        $columns = '`' . implode('` , `', $columns) . '`';
+        //die(var_dump($columns));
+        return $columns;
     }
 
     /**
@@ -80,14 +83,15 @@ class DataimportController extends \BaseController {
      * $table must be a valid table name.
      * 
      */
-    public static function prepareTable($delimiter = '/\s+/', $data = '', $table = '') {
-        
-        $schema = "drop table IF EXISTS " . $table . "; create table  " . $table . " (";
+    public static function prepareTable($delimiter,$data, $table) {
+        $primary = $table."_id";
+        $schema = " create table IF NOT EXISTS " . $table . " (".$primary." int NOT NULL AUTO_INCREMENT,";
         $columns = preg_split($delimiter, $data);
         array_pop($columns);
         $columns = array_flatten($columns);
         $schema .= implode(' text, ', $columns);
-        $schema .= ' text) ENGINE=MYISAM;';
+        $schema .= ' text, PRIMARY KEY('.$primary.')) ENGINE=MYISAM;';
+        //die(var_dump($schema));
         return $schema;
     }
 
@@ -106,6 +110,7 @@ class DataimportController extends \BaseController {
             $directory = DataimportController::folder();
             $topLine = DataimportController::topLine($directory . $filename);
             $create = DataimportController::prepareTable($delimiter, $topLine, $table);
+            //die(var_dump($topLine));
             return \DB::connection('codes')->getpdo()->exec($create);
        // }
     }
@@ -170,7 +175,7 @@ class DataimportController extends \BaseController {
         $upload = new \Upload();
 
         $file = \Input::file('filename');
-        return "var_dump(\Input::all())";
+        //return var_dump(\Input::all());
         //$dataResult.= var_dump(\Input::file('filename'));
         //$dataResult = \Input::file('filename')->getRealPath();
         if ($file !== null) {
@@ -179,20 +184,20 @@ class DataimportController extends \BaseController {
             
             $tableName = \Input::get('table');
             $upload->tablename = $tableName;
-            $delimiter = Input::get('fieldDelimiter');
-            $upload->filedDelimiter = $delimiter;
+            $delimiter = "/\\".Input::get('fieldDelimiter').'+/';
+            $upload->fieldDelimiter = $delimiter;
             $filename = $file->getClientOriginalName();
             $upload->filename = $filename;
             
             $dataResult.=$filename;
             $uploadSuccess = $file->move($directory, $filename);
             
-            DataimportController::createTable($file, $tableName);
+            DataimportController::createTable($file,$delimiter, $tableName);
 
             //$tableName = 'uploads';
             if ($uploadSuccess) {
                 $topLine = self::topLine($directory . $filename);
-                $columns = self::prepareColumns($topLine);
+                $columns = self::prepareColumns($topLine, $delimiter);
                 $upload->columns = $columns;
                 $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, ',', '\"', '\"', '\r\n', 1);
                /* CRAP CRAP CRAP DONT USE -DELETE 
@@ -202,12 +207,13 @@ class DataimportController extends \BaseController {
                 * THIS CRAP IS CRAP
                 */
                 $upload->filename = $filename;
-                $upload->fieldDelimiter = 'awesome sauce';
+                $upload->fieldDelimiter = $delimiter;
                 $upload->push();
+                //return var_dump($upload);
                 \DB::connection('codes')->getpdo()->exec($loaddata);
             }
-            $primaries = preg_split('/\s+/', \Input::get('primaryKey'));
-            self::addPrimaries(\Input::get('table'), $primaries, 'codes');
+            $primaries = preg_split('/\,+/', \Input::get('primaryKey'));
+            //self::addPrimaries(\Input::get('table'), $primaries, 'codes');
             return \Response::json("Transaction Completed :</br> Created Table and Populated With Data " . $columns);
         } else {
             return \Response::json(var_dump($_FILES));

@@ -46,7 +46,7 @@
         console.log('im ready');
         $('#form').on('submit', function (e) {
             e.preventDefault();
-            
+            document.getElementById('debug').innerHTML = 'uploading data...';
             var form = $(this);
             
             var formdata = false;
@@ -75,17 +75,20 @@
                 contentType : false,
                 processData : false,
                 success: function (data) {
-                    console.log(data);
-                    alert('done ' + data);
+                    //console.log(data);
+                    document.getElementById('debug').innerHTML =  data;
+                    //alert('done ' + data);
                     $('#upload_form').trigger('reset');
                     document.getElementById('busy-icon').innerHTML = "Upload Complete";
                     
-                }
-                statusCode: {
-                    500: function(){
-                        alert("error 500");
-                    }
-                }
+                },
+                statusCode:
+                        {
+                            500: function(data){
+                               document.getElementById('debug').innerHTML =  data;
+                            }
+                        }
+                
 
             }, 'json');
 
