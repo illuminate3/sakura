@@ -1,5 +1,7 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
+
 //use jleach\dataimport\models\Upload as Upload;
 class DataimportController extends \BaseController {
 
@@ -81,19 +83,17 @@ class DataimportController extends \BaseController {
      * $table must be a valid table name.
      * 
      */
-    public static function prepareTable($delimiter,$data, $table, $primaries = null) {
-        $primary = $table."_id";
-        if($primaries !== null )
-        {
-            $primary.=",".$primaries;
-            
+    public static function prepareTable($delimiter, $data, $table, $primaries = null) {
+        $primary = $table . "_id";
+        if ($primaries !== null) {
+            $primary.="," . $primaries;
         }
-        $schema = " create table IF NOT EXISTS " . $table . " (".$primary." int NOT NULL AUTO_INCREMENT,";
+        $schema = " create table IF NOT EXISTS " . $table . " (" . $primary . " int NOT NULL AUTO_INCREMENT,";
         $columns = preg_split($delimiter, $data);
         array_pop($columns);
         $columns = array_flatten($columns);
         $schema .= implode(' text, ', $columns);
-        $schema .= ' text, PRIMARY KEY('.$primary.')) ENGINE=MYISAM;';
+        $schema .= ' text, PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
         return $schema;
     }
 
@@ -131,6 +131,7 @@ class DataimportController extends \BaseController {
         \DB::Connection($database)->getpdo()->
                 exec('alter table ' . $table . ' add primary key (' . $primary . ');');
     }
+
     /**
      * 
      * @param string $table
@@ -140,7 +141,6 @@ class DataimportController extends \BaseController {
      *  Using the name of the database, table, and array of primary keys,
      * this function executes an alter table, alter column statement.
      */
-    
     public static function addPrimaries($table, $primary, $database) {
         $primaries = "";
         $count = count($primary);
@@ -180,13 +180,13 @@ class DataimportController extends \BaseController {
             $directory = self::folder();
             $tableName = \Input::get('table');
             $upload->tablename = $tableName;
-            $delimiter = "/\\".Input::get('fieldDelimiter').'+/';
+            $delimiter = "/\\" . Input::get('fieldDelimiter') . '+/';
             $upload->fieldDelimiter = $delimiter;
             $filename = $file->getClientOriginalName();
             $upload->filename = $filename;
             $dataResult.=$filename;
             $uploadSuccess = $file->move($directory, $filename);
-            DataimportController::createTable($file,$delimiter, $tableName);
+            DataimportController::createTable($file, $delimiter, $tableName);
             if ($uploadSuccess) {
                 $topLine = self::topLine($directory . $filename);
                 $columns = self::prepareColumns($topLine, $delimiter);
@@ -206,9 +206,8 @@ class DataimportController extends \BaseController {
     }
 
     public function importData() {
-         $index = Input::get('upload');
-         $upload = \Upload::find($index);
-         
+        $index = Input::get('upload');
+        $upload = \Upload::find($index);
     }
 
 }
