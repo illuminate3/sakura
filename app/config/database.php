@@ -94,6 +94,16 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+		'survey' => array(
+                        'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'survey',
+			'username'  => 'root',
+			'password'  => 'Temple_46',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

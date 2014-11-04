@@ -5,7 +5,8 @@
 <h1>Create User</h1>
 
 {{ Form::open(['route' => 'clients.create'])}}
-{{ Form::label('First Name');}}
+{{ Form::label('First Name','firstname');}}
+{{ Form::text('firstname');}}
 {{ Form::close() }}
 
 @stop
