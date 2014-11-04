@@ -15,6 +15,7 @@ class CreateOptionsTable extends Migration {
 		Schema::connection('survey')->create('options', function(Blueprint $table)
 		{
 			$table->increments('id');
+                        $table->integer('question_id')->unsigned();
 			$table->text('body');
 			$table->string('fieldtype');
 			$table->timestamps();

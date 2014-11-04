@@ -8,6 +8,14 @@ class Survey extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = ['title', 'description'];
+        
+        
+        public function question(){
+            
+            return $this->hasMany('Question','survey_id');
+            
+        }
+        
 
 }

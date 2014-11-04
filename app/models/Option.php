@@ -8,6 +8,13 @@ class Option extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = ['body', 'fieldtype'];
+        
+        
+        public function question(){
+            
+            return $this->belongsToMany('Question', 'options_results','option_id','result_id');
+            
+        }
 
 }
