@@ -65,8 +65,9 @@ class DataimportController extends \BaseController {
      * and returns a string listing 
      */
     public static function prepareColumns($data, $delimiter) {
+        $data = trim(preg_replace('/\s\s+/', ' ', $data));
         $columns = preg_split($delimiter, $data);
-        array_pop($columns);
+        //array_pop($columns);
         $columns = array_flatten($columns);
         $columns = '`' . implode('` , `', $columns) . '`';
         return $columns;
@@ -81,19 +82,31 @@ class DataimportController extends \BaseController {
      * $delimiter must be a regular expression compatible with preg_split(regex $pattern, string $subject).
      * $data must be a delimited string.
      * $table must be a valid table name.
-     * 
+     * $primaries must be a comma delimited list.
      */
     public static function prepareTable($delimiter, $data, $table, $primaries = null) {
         $primary = $table . "_id";
-        if ($primaries !== null) {
+        //$data = str_replace('&#13;&#10;','',$data);
+        //$data = str_replace('\\r\\n','',$data);
+        $data = trim(preg_replace('/\s\s+/', ' ', $data));
+        $multiPrimary = 0;
+        if ($primaries != null) {
             $primary.="," . $primaries;
+            $multiPrimary = 1;
         }
         $schema = " create table IF NOT EXISTS " . $table . " (" . $primary . " int NOT NULL AUTO_INCREMENT,";
         $columns = preg_split($delimiter, $data);
-        array_pop($columns);
+        //array_pop($columns);
         $columns = array_flatten($columns);
         $schema .= implode(' text, ', $columns);
+       /* if($multiPrimary > 0){ 
         $schema .= ' text, PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
+        }else
+        {*/
+            
+            $schema .= ' text,PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
+            
+        //}
         return $schema;
     }
 
@@ -112,6 +125,7 @@ class DataimportController extends \BaseController {
             $directory = DataimportController::folder();
             $topLine = DataimportController::topLine($directory . $filename);
             $create = DataimportController::prepareTable($delimiter, $topLine, $table);
+            var_dump($create);
             return \DB::connection('codes')->getpdo()->exec($create);
         }
     }
@@ -186,8 +200,9 @@ class DataimportController extends \BaseController {
             $upload->filename = $filename;
             $dataResult.=$filename;
             $uploadSuccess = $file->move($directory, $filename);
-            DataimportController::createTable($file, $delimiter, $tableName);
+            
             if ($uploadSuccess) {
+                self::createTable($file, $delimiter, $tableName);
                 $topLine = self::topLine($directory . $filename);
                 $columns = self::prepareColumns($topLine, $delimiter);
                 $upload->columns = $columns;
@@ -198,7 +213,7 @@ class DataimportController extends \BaseController {
                 \DB::connection('codes')->getpdo()->exec($loaddata);
             }
             $primaries = preg_split('/\,+/', \Input::get('primaryKey'));
-            self::addPrimaries(\Input::get('table'), $primaries, 'codes');
+            //self::addPrimaries(\Input::get('table'), $primaries, 'codes');
             return \Response::json("Transaction Completed :</br> Created Table and Populated With Data " . $columns);
         } else {
             return \Response::json(var_dump($_FILES));

@@ -27,6 +27,8 @@ class ClientsController extends \BaseController {
 	public function create()
 	{
 		//
+            return View::make('clients.create');
+                    
 	}
 
 	/**

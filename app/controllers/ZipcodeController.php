@@ -43,6 +43,13 @@ class ZipcodeController extends BaseController{
         
     }
     
+    public function getSelect(){
+        $zipcodes = \Zipcode::all();
+        $cities = $zipcodes->city; 
+        return View::make('geographic.zipcodes.select', array('zipcodes'=>$zipcodes));
+        
+    }
+    
     public function getCreate()
     {
         return View::make('geographic.zipcodes.create');
