@@ -44,9 +44,9 @@ class ZipcodeController extends BaseController{
     }
     
     public function getSelect(){
-        $zipcodes = \Zipcode::all();
-        $cities = $zipcodes->city; 
-        return View::make('geographic.zipcodes.select', array('zipcodes'=>$zipcodes));
+        $zipcodes = \Zipcode::lists('zipcode','zip_codes_id');
+        $cities = \Zipcode::lists('city', 'zip_codes_id');
+        return View::make('geographic.zipcodes.select', array('zipcodes'=>$zipcodes,'cities'=>$cities));
         
     }
     

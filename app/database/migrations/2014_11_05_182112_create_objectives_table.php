@@ -15,6 +15,7 @@ class CreateObjectivesTable extends Migration {
 		//
             Schema::connection('fcs_clients')->create('objectives', function($table){
                 $table->increments('id');
+                $table->integer('goal_id');
                 $table->text('body');
                 
                 

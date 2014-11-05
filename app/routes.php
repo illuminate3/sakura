@@ -80,6 +80,7 @@ Route::any('actions/save', 'ActionController@postAction');
  */
 Route::get('geographic/zipcodes/all', 'ZipcodeController@getindex');
 Route::any('geographic/zipcodes/create', 'ZipcodeController@getCreate');
+Route::any('geographic/zipcodes/select', 'ZipcodeController@getSelect');
 Route::any('geographic/zipcodes/save', 'ZipcodeController@postIndex');
 ///
 

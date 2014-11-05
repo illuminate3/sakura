@@ -1,12 +1,10 @@
 @extends('layouts.base')
 
-@section('zipcode')
+@section('content')
 
-<select class='form-control'>
-{{ @foreach($zipcodes as $zipcode) }}
-<option value = {{  }}
-{{@endforeach}}
-</select>
+{{Form::select('cities',$cities)}}
+{{Form::select('zipcodes',$zipcodes)}}
+
 
 @stop
 
