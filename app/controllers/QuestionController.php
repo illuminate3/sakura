@@ -1,6 +1,6 @@
 <?php
 
-class QuestionsController extends \BaseController {
+class QuestionController extends \BaseController {
 
 	/**
 	 * Display a listing of questions
@@ -21,7 +21,7 @@ class QuestionsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('questions.create');
+		return View::make('surveys.questions.create');
 	}
 
 	/**
@@ -40,7 +40,7 @@ class QuestionsController extends \BaseController {
 
 		Question::create($data);
 
-		return Redirect::route('questions.index');
+		return View::make('surveys.questions.index');
 	}
 
 	/**

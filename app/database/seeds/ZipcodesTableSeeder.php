@@ -7,7 +7,7 @@ class ZipCodesTableSeeder extends Seeder {
 
 	public function run()
 	{
-		DB::table('fcs_clients.zip_codes')->truncate();
+		/*DB::table('fcs_clients.zip_codes')->truncate();
 
 		$faker = Faker::create();
 
@@ -19,7 +19,7 @@ class ZipCodesTableSeeder extends Seeder {
                                 'zipcode'               =>      $faker->postCode
 				
 			]);
-		}
+		}*/
 	}
 
 }

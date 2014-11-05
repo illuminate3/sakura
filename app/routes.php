@@ -112,6 +112,9 @@ Route::get('hello', function(){
     return View::make('hello');
 });
 
+Route::get('surveys/questions/create', 'QuestionController@create');
+Route::post('surveys/questions/store', 'QuestionController@store');
+Route::post('surveys/questions/index', 'QuestionController@index');
 
 App::missing(function($exception) {
 	return View::make('home');

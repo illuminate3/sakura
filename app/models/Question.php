@@ -9,7 +9,8 @@ class Question extends \Eloquent {
 
 	// Don't forget to fill this array
 	protected $fillable = ['body'];
-        
+        protected $connection = 'survey';
+        protected $table = 'questions';
         
         
         public function option(){
