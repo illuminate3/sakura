@@ -17,10 +17,6 @@
 
 @stop
 
-
-
-
-
 @section('scripts')
 
 @parent
@@ -33,7 +29,7 @@ $(function(){
            success:function(data){
                alert(data);
                document.getElementById('pane').innerHTML = data;
-               
+               $('.dtable').dataTable();
            }
            
        }); 
@@ -42,6 +38,7 @@ $(function(){
     
 });
 </script>
+
 @stop
 
 

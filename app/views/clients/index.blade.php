@@ -1,22 +1,10 @@
-@extends('layouts.base')
+@extends('layouts.module')
 
 @section('title')
 @parent
  User Details
 @stop
 
-
-@section('scripts')
-
-@parent
-<script>
-$(document).ready(function(){
-    $('#allClient').dataTable();
-});
-
-
-</script>
-@stop
 @section('content')
 
 
@@ -25,7 +13,7 @@ $(document).ready(function(){
 <div class="page-header">
 	<h4>All Clients</h4>
 </div>
-	<table id='allClient' class='display'>
+	<table id='allClient' class='display dtable'>
             <thead>
                 <tr>
                     <th>MTK</th>
@@ -50,13 +38,27 @@ $(document).ready(function(){
                 
 		<td>{{ $client->address->address_1 }}</td>
 		<td>{{ $client->address->address_2 }}</td>
-		<td>{{ $client->address->zipcode->city }}</td>
-		<td>{{ $client->address->zipcode->state }}</td>
-                <td>{{ $client->address->zipcode->zipcode }}</td>
+		<td>{{ $client->address->zipcode->City }}</td>
+		<td>{{ $client->address->zipcode->State }}</td>
+                <td>{{ $client->address->zipcode->ZIPCode }}</td>
              
 		</tr>
                 @endforeach
             </tbody>
            
     </table>
+@stop
+
+
+
+@section('scripts')
+
+@parent
+
+<script>
+$('.dtable').ready(function(){
+    $('.dtable').dataTable();
+    alert('running');
+});
+</script>
 @stop
