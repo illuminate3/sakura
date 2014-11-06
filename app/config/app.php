@@ -126,7 +126,8 @@ return array(
     'Cartalyst\Sentry\SentryServiceProvider',
     'Krucas\Notification\NotificationServiceProvider',
     'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',  
-    //'Barryvdh\LaravelDebugBar\LaravelDebugBarServiceProvider',  
+    'Barryvdh\Debugbar\ServiceProvider',
+    'Former\FormerServiceProvider',
   ),
 
   /*
@@ -194,8 +195,10 @@ return array(
     'Validator'         => 'Illuminate\Support\Facades\Validator',
     'View'              => 'Illuminate\Support\Facades\View',
 
-    'Sentry'		 				=> 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-    'Notification' 			=> 'Krucas\Notification\Facades\Notification',
+    'Sentry'		=> 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+    'Notification'	=> 'Krucas\Notification\Facades\Notification',
+    'Former'            => 'Former\Facades\Former',
+    'Debugbar'          => 'Barryvdh\Debugbar\Facade',
   ),
 
 );

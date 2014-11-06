@@ -11,7 +11,7 @@ class Address extends \Eloquent {
     }
 
     protected function zipcode() {
-        return $this->hasOne('ZipCode', 'zip_code_id', 'zip_code_id');
+        return $this->hasOne('ZipCode', 'zip_codes_id', 'zip_code_id');
     }
     
 }

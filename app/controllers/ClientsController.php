@@ -6,7 +6,7 @@ class ClientsController extends \BaseController {
 	 * Display a listing of the resource.
 	 * GET /clients
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function index()
 	{
@@ -17,7 +17,24 @@ class ClientsController extends \BaseController {
                    ->with('clients', $clients = \Client::all());
        
 	}
-
+        
+        /**
+         * Display dashboard
+         * GET /clients/dashboard
+         * 
+         * @return View
+         */
+        
+        
+        
+        public function dashboard()
+        {
+            return View::make('clients.dashboard')
+                    ->with('clients', $clients = \Client::all());
+            
+        }
+        
+        
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /clients/create

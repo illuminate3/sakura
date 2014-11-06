@@ -36,7 +36,7 @@ class AddressController extends \BaseController {
             $form = Input::all();
             $address1 = $form['address1'];
             $address2 = $form['address2'];
-            
+            $zipcode_id = $form['zipcode_id'];
             
             
 	}

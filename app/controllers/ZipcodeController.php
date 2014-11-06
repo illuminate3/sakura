@@ -40,12 +40,11 @@ class ZipcodeController extends BaseController{
             
         }
         
-        
     }
     
     public function getSelect(){
-        $zipcodes = \Zipcode::lists('zipcode','zip_codes_id');
-        $cities = \Zipcode::lists('city', 'zip_codes_id');
+        $zipcodes = \Zipcode::orderBy('zipcode','asc')->lists('zipcode','zip_codes_id');
+        $cities = \Zipcode::orderBy('city', 'asc')->lists('city', 'zip_codes_id');
         return View::make('geographic.zipcodes.select', array('zipcodes'=>$zipcodes,'cities'=>$cities));
         
     }
