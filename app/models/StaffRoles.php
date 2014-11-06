@@ -8,7 +8,7 @@ class StaffRoles extends \Eloquent {
     // protected $connection = Config::get(tables.staff.name);
     protected $timestamps = false;
     protected $table = 'staff_roles';
-
+    protected $primaryKey = 'staff_id';
     public function staff() {
 
         //TO-DO

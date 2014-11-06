@@ -11,7 +11,7 @@ class Question extends \Eloquent {
 	protected $fillable = ['body'];
         protected $connection = 'survey';
         protected $table = 'questions';
-        
+        protected $primaryKey = 'question_id';
         
         public function option(){
             return $this->belongsToMany('Option','option_question', 'question_id', 'option_id');

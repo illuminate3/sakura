@@ -8,6 +8,8 @@ class Releases extends \Eloquent {
     
     protected $connection = 'fcs_clients';
     
+    protected $primaryKey = 'mtk';
+    
     protected function client(){
         
         return $this->belongsTo('Client', 'mtk','mtk');

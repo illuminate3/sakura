@@ -16,6 +16,8 @@ class ClientAvailability
     
     protected $fillable = ['mtk','editor_id','daystart', 'dayend', 'timestart', 'timeend', 'allday'];
    
+    protected $primaryKey = 'mtk';
+    
     protected function client(){
         return $this->belongsTo('Client', 'mtk','mtk');
         

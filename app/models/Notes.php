@@ -9,6 +9,7 @@ class Notes extends \Eloquent {
     protected $timestamps = false;
     protected $table = 'notes';
     
+        protected $primaryKey = 'note_id';
     
     
     

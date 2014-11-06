@@ -13,6 +13,7 @@ class Hierarchy extends \Eloquent {
     protected $table = 'hierarchys';
     protected $fillable = ['team_id', 'program_id', 'director_id'];
     public $timestamps = false;
+        protected $primaryKey = 'hierarchy_id';
     public function team() {
 
         return $this->hasOne('Team', 'team_id', 'team_id');

@@ -9,7 +9,7 @@ class Hire extends \Eloquent {
 
     protected $timestamps = false;
     protected $table = 'hires';
-
+    protected $primaryKey = 'staff_id';
     public function staff() {
 
         //TO-DO

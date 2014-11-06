@@ -15,6 +15,8 @@ class Shift extends \Cartalyst\Sentry\Users\Eloquent
     
     protected $connection = 'fcs_staff';
     
+        protected $primaryKey = 'staff_id';
+    
     protected function staff(){
         return $this->belongsTo('Staff', 'staff_id', 'staff_id');
         

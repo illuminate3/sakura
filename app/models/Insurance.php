@@ -5,7 +5,7 @@ class Insurance extends \Eloquent {
     protected $connection = 'fcs_clients';
     protected $table = 'insurances';
     protected $fillable = ['mtk', 'insurer_id', 'policy_number'];
-
+    protected $primaryKey = 'mtk';
     protected function client() {
 
         return $this->belongsTo('Client', 'mtk' , 'mtk');

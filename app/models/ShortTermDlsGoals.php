@@ -14,6 +14,7 @@ Class ShortTermDlsGoals extends \Eloquent
     
     protected $table = 'roles';
     
+        protected $primaryKey = 'mtk';
     
     public function client(){
         return $this->belongsTo('Client', 'mtk','mtk');

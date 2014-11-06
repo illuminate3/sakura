@@ -4,7 +4,7 @@ class ClientSchedule extends \Eloquent {
     protected $fillable = ['mtk','staff_id','editor_id', 'day_start', 'day_end', 'time_start', 'time_end'];
     protected $connection = 'fcs_clients';
     protected $table = 'client_schedules';
-    
+    protected $primaryKey = 'mtk';
     
     protected function client()
     {

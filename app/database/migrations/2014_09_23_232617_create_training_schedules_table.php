@@ -13,6 +13,7 @@ class CreateTrainingSchedulesTable extends Migration {
 	public function up()
 	{
             Schema::connection('fcs_staff')->create('training_schedules', function($table){
+                $table->increments('id');
                 $table->integer('training_id')->unsigned();
                 $table->integer('staff_id')->unsigned();
                 $table->date('day');

@@ -8,7 +8,7 @@ class MailAddress extends \Eloquent {
     // protected $connection = Config::get(tables.staff.name);
 
     protected $table = 'mailAddress';
-
+    protected $primaryKey = 'staff_id';
     public function user() {
 
         //TO-DO

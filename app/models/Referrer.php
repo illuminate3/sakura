@@ -8,5 +8,5 @@ class Referrer extends \Eloquent {
     
     protected $connection = 'fcs_clients';
     
-    
+        protected $primaryKey = 'mtk';
 }

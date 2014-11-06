@@ -6,7 +6,9 @@ class PossibleAssisstanceSources extends \Eloquent {
     
     protected $table = 'possible_assistance_sources';
     
-    protected $coinnection = 'fcs_clients';
+    protected $connection = 'fcs_clients';
+    
+    protected $primaryKey = 'mtk';
     
     protected function client(){
         return $this->belongsTo('Client','mtk','mtk');

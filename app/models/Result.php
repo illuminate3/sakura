@@ -10,7 +10,7 @@ class Result extends \Eloquent {
 	// Don't forget to fill this array
 	protected $fillable = ['survey_id','question_id','option_id', 'result'];
         
-        
+            protected $primaryKey = 'id';
         public function survey(){
             return $this->belongsTo('Survey', 'survey_id', 'id');
         }

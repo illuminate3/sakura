@@ -8,7 +8,7 @@ class Roles extends \Eloquent {
     // protected $connection = Config::get(tables.staff.name);
     protected $timestamps = false;
     protected $table = 'roles';
-
+    protected $primaryKey = 'role_id';
     
     
     

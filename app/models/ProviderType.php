@@ -7,4 +7,6 @@ class ProviderType extends \Eloquent {
     protected $table = 'provider_types';
 
     protected $connection = 'fcs_clients';
+    
+    protected $primaryKey = 'id';
 }

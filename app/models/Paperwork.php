@@ -8,7 +8,7 @@ class Paperwork extends \Eloquent {
     // protected $connection = Config::get(tables.staff.name);
     protected $timestamps = false;
     protected $table = 'paperwork';
-
+    protected $primaryKey = 'paperwork_id';
     public function user() {
 
         //TO-DO

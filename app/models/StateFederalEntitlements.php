@@ -6,7 +6,7 @@ class StateFederalEntitlements extends \Eloquent {
 
     protected $connection = 'fcs_clients';
     protected $table = 'state_federal_entitlements';
-    
+    protected $primaryKey = 'mtk';    
     public function client()
     {
         return $this->belongsTo('Client');

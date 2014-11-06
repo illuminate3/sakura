@@ -8,6 +8,7 @@ class OrganizationPhones extends \Eloquent {
     
     protected $connection = 'fcs_clients'; 
     
+    protected $primaryKey = 'org_id';
     
     protected function organization(){
         

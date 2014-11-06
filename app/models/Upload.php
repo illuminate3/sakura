@@ -22,4 +22,5 @@ class Upload extends \Eloquent
         'ignoreLines'
         
         );
+    protected $primaryKey = 'id';
 }

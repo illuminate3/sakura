@@ -14,7 +14,7 @@ class Director extends Eloquent{
     protected $table = 'directors';
     
     protected $fillable= ['staff_id'];
-    
+    protected $primaryKey = 'mtk';
     public function staff(){
         return $this->hasOne(staff);
     }

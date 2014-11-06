@@ -11,6 +11,7 @@ class Origin extends \Eloquent {
 
     protected $table = 'origins';
 
+    protected $primaryKey = 'origin_id';
     
     protected function drivetime(){
         return $this->belongsTo('Drivetime','origin_id','origin_id');

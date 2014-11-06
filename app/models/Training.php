@@ -2,7 +2,11 @@
 
 class Trainings extends \Eloquent {
 
-    protected $fillable = ['trainingId', 'title', 'description', 'implemented'];
+    protected $connection = 'fcs_staff';
+    protected $table = 'trainings';
+    protected $primaryKey = 'training_id';
+    
+    protected $fillable = ['training_id', 'title', 'description', 'implemented'];
 
     public function staffTrainings() {
 

@@ -16,7 +16,7 @@ class Intervention extends Eloquent
     protected $fillable = ['title','description'];
     
     public $timestamps = false;
-    
+        protected $primaryKey = 'intervention_id';
     public function actions(){
         
         return $this->belongsToMany('Action', 'action_intervention', 'intervention_id', 'intervention_id');

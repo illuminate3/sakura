@@ -1,7 +1,9 @@
 <?php
 
 class Survey extends \Eloquent {
-
+        protected $connection = 'survey';
+        protected $table = 'surveys';
+        protected $primaryKey = 'id';
 	// Add your validation rules here
 	public static $rules = [
 		// 'title' => 'required'

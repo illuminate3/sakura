@@ -8,7 +8,7 @@ class Interviews extends \Eloquent {
     // protected $connection = Config::get(tables.staff.name);
 
     protected $table = 'interviews';
-
+    protected $primaryKey = 'interview_id';
     public function user() {
 
         //TO-DO

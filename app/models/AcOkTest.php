@@ -6,6 +6,8 @@ class AcOkTest extends \Eloquent {
     protected $table = 'ac_ok_test';
     protected $connection = 'fcs_clients';
     protected $timestamps = false;
+    protected $primaryKey = 'mtk';
+    
     protected function client() {
 
         return $this->belongsTo('Client', 'mtk', 'mtk');

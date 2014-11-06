@@ -6,7 +6,7 @@ class HomeAddress extends \Eloquent {
     protected $connection = 'fcs_staff';
     // TO-DO Set tables names in arrays
     // protected $connection = Config::get(tables.staff.name);
-
+    protected $primaryKey = 'staff_id6';
     protected $table = 'home_addresses';
 
     public function staff() {

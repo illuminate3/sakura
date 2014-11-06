@@ -13,6 +13,7 @@ class CreateTimeOutTable extends Migration {
     public function up() {
         Schema::connection('fcs_staff')->dropIfExists('time_outs');
         Schema::connection('fcs_staff')->create('time_outs', function($table) {
+            $table->increments('id');
             $table->integer('staff_id');
             $table->datetime('time_out');
             $table->timestamps();

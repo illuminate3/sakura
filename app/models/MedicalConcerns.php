@@ -8,6 +8,7 @@ class MedicalConcerns extends \Eloquent {
     
     protected $table = 'medical_concerns';
     
+    protected $primaryKey = 'mtk';
     
     protected function client(){
         return $this->belongsTo('Client', 'mtk', 'mtk');

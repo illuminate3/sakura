@@ -7,7 +7,9 @@ class OrganizationAddress extends \Eloquent {
     protected $connection = 'fcs_clients';
     
     protected $table='organization_addresses';
-
+    
+    protected $primaryKey = 'org_id';
+    
     protected function organization() {
         return $this->belongsTo('Organization', 'org_id', 'org_id');
     }

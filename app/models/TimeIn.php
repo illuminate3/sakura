@@ -8,7 +8,7 @@ class TimeIn extends \Eloquent {
     // protected $connection = Config::get(tables.staff.name);
     protected $timestamps = false;
     protected $table = 'timeIn';
-
+        protected $primaryKey = 'id';
     public function user() {
 
         //TO-DO

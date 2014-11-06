@@ -4,7 +4,7 @@ class HealthcareProviders extends \Eloquent {
     protected $connection='fcs_clients';
     protected $table = 'healthcareProviders';
     protected $fillable = ['mtk', 'providerType', 'org_id', 'contactId'];
-
+    protected $primaryKey = 'mtk';
     protected function client() {
         return $this->belongsTo('Client', 'mtk', 'mtk');
     }

@@ -8,7 +8,7 @@ class StaffContactInfo extends \Eloquent {
     // protected $connection = Config::get(tables.staff.name);
 
     protected $table = 'staffContactInfo';
-
+    protected $primaryKey = 'staff_id';
     public function user() {
 
         //TO-DO

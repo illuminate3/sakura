@@ -7,7 +7,7 @@ class FormsBlank extends \Eloquent {
     protected $table = 'form_blanks';
     
     protected $connection = 'fcs_clients';
-    
+    protected $primaryKey = 'mtk';
     
     protected function formsNeeded(){
         return $this->belongsTo('FormsNeeded','form_id','form_id');

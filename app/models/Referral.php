@@ -8,7 +8,8 @@ class Referral extends \Eloquent {
     
     protected $connection = 'fcs_clients';
     
-    
+    protected $primaryKey = 'mtk';
+        
     protected function client()
     {
         

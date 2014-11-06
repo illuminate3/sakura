@@ -13,6 +13,7 @@ Class TrainingSchedule
     protected $connection = 'fcs_clients';
     
     protected $table = 'training_schedules';
+    protected $primaryKey = 'id';
     
     protected function training()
     {
