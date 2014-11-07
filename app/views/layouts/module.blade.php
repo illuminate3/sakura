@@ -4,6 +4,6 @@
 
 @yield('content')
 
-
+@yield('panel')
 
 @yield('scripts')

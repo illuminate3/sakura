@@ -2,7 +2,7 @@
 
 @section('title')
 @parent
- User Details
+
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
 
 
 <div class="page-header">
-	<h4>All Clients</h4>
+	<h4>Client Roster</h4>
 </div>
 	<table id='allClient' class='display dtable'>
             <thead>
@@ -20,8 +20,8 @@
                     <th>First Name</th>
                     <th>Middle Name</th>
                     <th>Last Name</th>
-                    <th>address 1</th>
-                    <th>address 2</th>
+                    <th>Street Address</th>
+                    <th>Apt./Unit</th>
                     <th>City</th>
                     <th>State</th>
                     <th>Zip Code</th>
