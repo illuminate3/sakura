@@ -1,38 +1,53 @@
-@extends('layouts.module')
+@extends('layouts.panel')
 
 
 @section('panel')
 
-
-<h1>Client Information</h1>
-
-{{ Form::open(['action' => 'ClientsController@store'])}}
-{{ Form::label('firstname','First Name')}}
-{{ Form::text('firstname')}}
-
-{{ Form::label('middlename','Middle Name')}}
-{{ Form::text('middlename')}}
-
-{{ Form::label('lastname','Last Name')}}
-{{ Form::text('lastname')}}
+{{ Former::horizontal_open()
+            ->id('basic-info')
+            ->method('POST')
+}}
+<div class='panel panel-default'>
+{{ Former::group('Name:')}}
 <br />
+{{ Former::label('First','firstname')}}
+{{ Former::text('firstname')}}
+{{Former::label('Middle')}}
+{{ Former::text('middlename')}}
+{{ Former::label('Last')}}
+{{ Former::text('lastname')}}
 
-{{ Form::label('address1', 'Street Address')}}
-{{ Form::text('address1')}}
-{{ Form::label('address2', 'Apt/Unit')}}
-{{ Form::text('address2')}}
 <br />
-{{ Form::label('city', 'City')}}
-{{ Form::text('city')}}
+{{Former::group('Address:')}}
+<br/>
+{{Former::label('Street')}}
+{{ Former::text('address1')}}
+{{Former::label('Apt/Unit')}}
+{{ Former::text('address2')}}
+<br /><br/>
 
-{{ Form::label('state', 'State')}}
-{{ Form::text('state')}}
+{{Former::label('City')}}
+{{ Former::text('city')}}
+{{Former::label('State')}}
+{{ Former::text('state')}}
+{{Former::label('Zipcode')}}
+{{ Former::text('zipcode')}}
+<br/>
+{{Former::group('Phone Number')}}
+<br/>
+{{Former::label('Personal')}}
+{{ Former::text('phone1')}}
+{{Former::label('Secondary')}}
+{{ Former::text('phone2')}}
+<h3>
+    
+    Emergency Contact
+    
+</h3>
 
-{{ Form::label('zipcode', 'Zipcode')}}
-{{ Form::text('zipcode')}}
+</div>
 
 
-
-{{ Form::close() }}
+{{ Former::close() }}
 
 @stop

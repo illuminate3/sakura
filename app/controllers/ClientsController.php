@@ -93,7 +93,7 @@ class ClientsController extends \BaseController {
 	{
 		//
             $client = Client::find($id);
-            return View::make('clients.edit', array('client' => $client));
+            return View::make('clients.create', array('client' => $client));
 	}
 
 	/**
