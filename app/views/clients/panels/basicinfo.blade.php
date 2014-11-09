@@ -8,42 +8,118 @@
             ->method('POST')
 }}
 <div class='panel panel-default'>
-{{ Former::group('Name:')}}
-<br />
-{{ Former::label('First','firstname')}}
-{{ Former::text('firstname')}}
-{{Former::label('Middle')}}
-{{ Former::text('middlename')}}
-{{ Former::label('Last')}}
-{{ Former::text('lastname')}}
 
-<br />
-{{Former::group('Address:')}}
-<br/>
-{{Former::label('Street')}}
-{{ Former::text('address1')}}
-{{Former::label('Apt/Unit')}}
-{{ Former::text('address2')}}
-<br /><br/>
+    <div class='panel-body'>
+        <div class='input-group-sm'>
+            {{ Former::group('Name:')}}
+            <br />
 
-{{Former::label('City')}}
-{{ Former::text('city')}}
-{{Former::label('State')}}
-{{ Former::text('state')}}
-{{Former::label('Zipcode')}}
-{{ Former::text('zipcode')}}
-<br/>
-{{Former::group('Phone Number')}}
-<br/>
-{{Former::label('Personal')}}
-{{ Former::text('phone1')}}
-{{Former::label('Secondary')}}
-{{ Former::text('phone2')}}
-<h3>
-    
-    Emergency Contact
-    
-</h3>
+            <span class='form-group-sm form-inline'>
+                {{ Former::text('firstname')
+->class('form-control form-inline col-sm-2')
+->placeholder('First Name')
+                }}</span>
+
+            <span class='form-group-sm form-inline'>
+                {{ Former::text('middlename')
+->class('form-control form-inline input-group-sm')
+->placeholder('Middle Name')
+                }}</span>
+
+            <span class='form-group-sm form-inline'>
+                {{ Former::text('lastname')
+->class('form-control form-inline input-group-sm')
+->placeholder('Last Name')
+                }}</span>
+
+
+            {{Former::group('address')}}
+            <br/>
+            <span class='form-group-sm form-inline'>
+                {{ Former::text('address1')
+->class('form-control form-inline input-group-sm')
+->placeholder('Street Address')
+                }}</span>
+            <span class='form-group-sm form-inline'>
+                {{ Former::text('address2')    
+->class('form-control form-inline input-group-sm')
+->placeholder('Apt / Unit #')
+                }}</span>
+
+            <br />
+            <span class='form-group-sm form-inline'>
+                {{ Former::text('city')
+->class('form-control form-inline input-group-sm')
+->placeholder('City')
+                }}</span>
+
+            <span class='form-group-sm form-inline'>
+                {{ Former::text('state')
+->class('form-control form-inline input-group-sm')
+->placeholder('State')
+
+                }}
+            </span>
+
+            <span class='form-group-sm form-inline'>
+                {{ Former::text('zipcode')
+->class('form-control form-inline input-group-sm')
+->placeholder('ZipCode')
+                }}
+            </span>
+
+            {{Former::group('Phone Number')}}
+            <br/>
+
+            <span class="form-group-sm form-inline">
+                {{ Former::text('phone1')
+->class('form-control form-inline input-group-sm')
+->placeholder('Primary Phone')
+                }}
+            </span>
+            <span class="form-group-sm form-inline">
+                {{ Former::text('phone2')
+->class('form-control form-inline input-group-sm')
+->placeholder('Secondary Phone')
+                }}
+            </span>
+
+            <br />
+
+            <h4>Emergency Contact</h4>
+
+            <span class="form-group-sm form-inline">
+                {{ Former::text('contact_full_name')
+->class('form-control form-inline input-group-sm')
+->placeholder('Full Name')
+                }}
+            </span>
+
+            <span class="form-group-sm form-inline">
+                {{ Former::text('relationship')
+->class('form-control form-inline input-group-sm')
+->placeholder('Relationship')
+                }}
+            </span>
+
+
+            {{Former::group('Phone')}}
+            <br />
+
+            <span class="form-group-sm form-inline">
+                {{ Former::text('contact_phone')
+->class('form-control form-inline input-group-sm')
+->placeholder('Primary Phone')
+                }}
+            </span>
+            <span class="form-group-sm form-inline">
+                {{ Former::text('contact_second_phone')
+->class('form-control form-inline input-group-sm')
+->placeholder('Secondary Phone')
+                }}
+            </span>
+        </div>
+    </div>
 
 </div>
 
