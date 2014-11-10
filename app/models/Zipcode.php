@@ -10,5 +10,7 @@ class Zipcode extends \Eloquent {
     protected function address() {
         return $this->belongsToMany('Address');
     }
+    
+    
 
 }

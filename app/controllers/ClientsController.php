@@ -60,7 +60,8 @@ class ClientsController extends \BaseController {
             $client = new \Client;
             
 		//
-            
+            $input = \Input::all();
+           
             //populate fields
             
             
