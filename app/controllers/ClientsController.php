@@ -60,8 +60,7 @@ class ClientsController extends \BaseController {
             $client = new \Client;
             
 		//
-            $input = \Input::all();
-           
+            
             //populate fields
             
             
@@ -121,4 +120,14 @@ class ClientsController extends \BaseController {
 		//
 	}
 
+        // View Controller Fucntions
+        
+        
+        public function basicInfo(){
+            
+            return View::make('clients.panels.basicinfo');
+        }
+        
+        
+        
 }

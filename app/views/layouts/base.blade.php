@@ -95,10 +95,15 @@
   {{ Notification::showAll() }}
   @yield('content')
 </div>
+    
+   
 @section('scripts')
 {{ HTML::script('js/jquery-2.1.1.min.js') }}
  {{ HTML::script('js/bootstrap.min.js') }}
 {{ HTML::script('js/jquery.dataTables.js')}}  
 @show
+
+ @section('panel-scripts')
+    @show
 </body>
 </html>

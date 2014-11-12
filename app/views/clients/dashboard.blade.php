@@ -62,8 +62,42 @@
             $('ul li.active').removeClass('active');
             $(this).closest('li').addClass('active');
         });
-
+        
+        
+        $(document).on('click', '.panel-label',function () {
+        document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";    
+            alert('shaka khan');
+            $('ul li.active').removeClass('active');
+            $(this).closest('li').addClass('active');
+        });
+        
+        $(document).on('click','#link-basic-info', function(){
+            $.ajax({
+                url: "{{URL::action('ClientsController@basicInfo')}}",
+                type: "GET",
+                success: function(data){
+                    document.getElementById('busy-icon').innerHTML = "";
+                    document.getElementById('info-panel').innerHTML = data;
+                }
+            });
+            
+            
+            
+        });
+                
+        
+        
+        
     });
+    
+       
+    
+    @section('panel-scripts')
+    
+@include('layouts.js.basicinfojs')
+
+@stop
+    
 </script>
 
 @stop

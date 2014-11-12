@@ -2,4 +2,4 @@
 @yield('panel')
 
 
-@yield('scripts')
+@yield('panel-scripts')
