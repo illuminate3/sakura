@@ -43,6 +43,7 @@
           <li><a href ="#">ISP</a></li>
           <li><a href ="#">Full Comp</a></li>
           <li><a href ="#">MTK</a></li>
+          
           {{--<li class   ="divider"></li>
           <li><a href ="#">Separated link</a></li>
           <li class   ="divider"></li>
@@ -75,6 +76,8 @@
           <li>{{ link_to_route('admin.staff.index', 'Users') }}</li>
           <li><a href ="#">Logs</a></li>
           <li><a href ="#">Control Panel</a></li>
+          <li><a href ='{{URL::Action("DataimportController@getIndex")}}'>Uploads Panel</a></li>
+          
           {{--<li class   ="divider"></li>
           <li><a href ="#">Separated link</a></li>
           <li class   ="divider"></li>

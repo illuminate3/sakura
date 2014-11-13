@@ -17,7 +17,7 @@ class CreateTimeInTable extends Migration {
             
 
             $table->engine = 'InnoDB';
-            $table->primary('staff_id');
+            $table->primary(array('staff_id', 'time_in'));
         });
     }
 

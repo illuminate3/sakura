@@ -20,7 +20,7 @@
 
             <span class="form-group-sm form-inline">
                 {{ Former::text("firstname")
-                           ->class("form-control form-inline col-sm-2")
+                           ->class("form-control form-inline input-group-sm")
                            ->placeholder("First Name")
                 }}</span>
 
