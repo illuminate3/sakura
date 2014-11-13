@@ -8,7 +8,7 @@ class TimeOut extends \Eloquent {
     // protected $connection = Config::get(tables.staff.name);
     protected $primaryKey = 'id';
     protected $table = 'timeOut';
-
+    protected $timestamps = false;
     public function user() {
 
         //TO-DO

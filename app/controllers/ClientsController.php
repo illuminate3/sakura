@@ -56,9 +56,11 @@ class ClientsController extends \BaseController {
 	 */
 	public function store()
 	{
-            // instantiate mod3l
+                $data = \Input::all();
+
+// instantiate mod3l
             $client = new \Client;
-            
+            return $data;
 		//
             
             //populate fields
