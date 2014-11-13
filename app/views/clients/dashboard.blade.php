@@ -66,8 +66,8 @@
         
         $(document).on('click', '.panel-label',function () {
         document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";    
-            alert('shaka khan');
-            $('ul li.active').removeClass('active');
+           // alert('shaka khan');
+            $('.panel-label li.active').removeClass('active');
             $(this).closest('li').addClass('active');
         });
         
