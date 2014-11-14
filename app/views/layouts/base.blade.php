@@ -36,6 +36,8 @@
       <li><a href="{{ URL::to('/') }}">Home</a></li>
       <li>{{-- link_to_route('clients.index', 'Clients') --}}</li>
       <li>{{ link_to_route('schedule', 'Schedule') }}</li>
+       <li><a href ='{{URL::Action("ClientsController@dashboard")}}'>Clients</a></li>
+       <li><a href ='{{URL::Action("DataimportController@postFile")}}'>Uploads Panel</a></li>
       <li class   ="dropdown">
         <a href   ="#" class="dropdown-toggle" data-toggle="dropdown">Forms <b class="caret"></b></a>
         <ul class ="dropdown-menu">

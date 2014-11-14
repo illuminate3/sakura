@@ -80,9 +80,17 @@
                     document.getElementById('info-panel').innerHTML = data;
                 }
             });
-            
-            
-            
+        });
+        
+        $(document).on('click','#link-meds', function(){
+            $.ajax({
+                url: "{{URL::action('ClientsController@medications')}}",
+                type: "GET",
+                success: function(data){
+                    document.getElementById('busy-icon').innerHTML = "";
+                    document.getElementById('info-panel').innerHTML = data;
+                }
+            });
         });
                 
         

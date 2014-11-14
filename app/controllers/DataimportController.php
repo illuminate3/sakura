@@ -206,6 +206,7 @@ class DataimportController extends \BaseController {
                 $topLine = self::topLine($directory . $filename);
                 $columns = self::prepareColumns($topLine, $delimiter);
                 $upload->columns = $columns;
+               // $directory = \app_path().'/public' . '/uploads/';
                 $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, ',', '\"', '\"', '\r\n', 1);
                 $upload->filename = $filename;
                 $upload->fieldDelimiter = $delimiter;

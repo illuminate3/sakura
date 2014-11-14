@@ -128,8 +128,13 @@ class ClientsController extends \BaseController {
         public function basicInfo(){
             
             return View::make('clients.panels.basicinfo');
+            
         }
         
         
-        
+        public function medications(){
+            
+            return View::make('clients.panels.medications');
+            
+        }
 }

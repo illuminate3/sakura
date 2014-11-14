@@ -42,6 +42,7 @@ Route::group(['before'	=>	'auth'], function() {
         Route::get('clients/show/{mtk}', 'ClientsController@show');
         Route::any('clients/create', 'ClientsController@create');
         Route::any('clients/basicinfo', 'ClientsController@basicInfo');
+        Route::any('clients/medications', 'ClientsController@medications');
         Route::any('clients/dashboard', 'ClientsController@dashboard');
         
         /*
