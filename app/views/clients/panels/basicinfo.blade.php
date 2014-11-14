@@ -128,7 +128,7 @@
             {{
                 Former::button("save", "Save")
                 ->setAttribute("id","save")
-                ->setAttribute('onclick','alert(saveBasicInfo());')
+                ->setAttribute('onclick','saveBasicInfo();')
                 
             }}
         </div>

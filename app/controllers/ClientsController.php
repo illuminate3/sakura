@@ -18,22 +18,7 @@ class ClientsController extends \BaseController {
        
 	}
         
-        /**
-         * Display dashboard
-         * GET /clients/dashboard
-         * 
-         * @return View
-         */
-        
-        
-        
-        public function dashboard()
-        {
-            return View::make('clients.dashboard')
-                    ->with('clients', $clients = \Client::all());
-            
-        }
-        
+       
         
 	/**
 	 * Show the form for creating a new resource.
@@ -124,6 +109,28 @@ class ClientsController extends \BaseController {
 
         // View Controller Fucntions
         
+         /**
+         * Display dashboard
+         * GET /clients/dashboard
+         * 
+         * @return View
+         */
+        
+        
+        
+        public function dashboard()
+        {
+            return View::make('clients.dashboard')
+                    ->with('clients', $clients = \Client::all());
+            
+        }
+        
+        /**
+         * Display basic inforamtion panel
+         * GET /clients/panels/basicinfo
+         * 
+         * @return View
+         */
         
         public function basicInfo(){
             

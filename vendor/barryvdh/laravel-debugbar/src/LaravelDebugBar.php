@@ -154,11 +154,9 @@ class LaravelDebugbar extends DebugBar
         if ($this->shouldCollect('exceptions', true)) {
             try {
                 $exceptionCollector = new ExceptionsCollector();
-                if (method_exists($exceptionCollector, 'setChainExceptions')) {
-                    $exceptionCollector->setChainExceptions(
-                        $this->app['config']->get('laravel-debugbar::config.options.exceptions.chain', true)
-                    );
-                }
+                $exceptionCollector->setChainExceptions(
+                    $this->app['config']->get('laravel-debugbar::config.options.exceptions.chain', true)
+                );
                 $this->addCollector($exceptionCollector);
                 if ($this->checkVersion('5.0', '<')) {
 	                $this->app->error(
@@ -301,6 +299,10 @@ class LaravelDebugbar extends DebugBar
             if ($this->app['config']->get('laravel-debugbar::config.options.db.explain.enabled')) {
                 $types = $this->app['config']->get('laravel-debugbar::config.options.db.explain.types');
                 $queryCollector->setExplainSource(true, $types);
+            }
+
+            if ($this->app['config']->get('laravel-debugbar::config.options.db.hints', true)) {
+                $queryCollector->setShowHints(true);
             }
 
             $this->addCollector($queryCollector);

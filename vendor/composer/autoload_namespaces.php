@@ -36,6 +36,7 @@ return array(
     'Krucas\\Notification' => array($vendorDir . '/edvinaskrucas/notification/src'),
     'Jeremeamia\\SuperClosure' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Illuminate' => array($vendorDir . '/laravel/framework/src'),
+    'HtmlObject' => array($vendorDir . '/anahkiasen/html-object/src'),
     'File' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Faker\\PHPUnit' => array($vendorDir . '/fzaninotto/faker/test'),
     'Faker' => array($vendorDir . '/fzaninotto/faker/src'),
