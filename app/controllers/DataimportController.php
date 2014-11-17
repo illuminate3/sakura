@@ -41,10 +41,10 @@ class DataimportController extends \BaseController {
      */
     public static function toLoadData($fullPath, $columns, $tableName, $fieldDelimiter = ",", $fieldEnclosed = "\"", $fieldEscaped = "\"", $lineDelimiter = "\r\n", $ignoreLines = 0) {
         $query = "";
-       // if ($fieldDelimiter !== 'TAB') {
-            $query .= sprintf("LOAD DATA INFILE '%s' INTO TABLE " . $tableName . " FIELDS TERMINATED BY '" . $fieldDelimiter . "' OPTIONALLY ENCLOSED BY '" . $fieldEnclosed . "' ESCAPED BY '" . $fieldEscaped . "' LINES TERMINATED BY '" . $lineDelimiter . "' IGNORE " . $ignoreLines . " LINES (" . $columns . ");", $fullPath);
+        // if ($fieldDelimiter !== 'TAB') {
+        $query .= sprintf("LOAD DATA INFILE '%s' INTO TABLE " . $tableName . " FIELDS TERMINATED BY '" . $fieldDelimiter . "' OPTIONALLY ENCLOSED BY '" . $fieldEnclosed . "' ESCAPED BY '" . $fieldEscaped . "' LINES TERMINATED BY '" . $lineDelimiter . "' IGNORE " . $ignoreLines . " LINES (" . $columns . ");", $fullPath);
         //} else {
-          //  $query = sprintf("LOAD DATA INFILE '%s' INTO TABLE " . $tableName . " IGNORE " . $ignoreLines . " LINES (" . $columns. ");", $fullPath);
+        //  $query = sprintf("LOAD DATA INFILE '%s' INTO TABLE " . $tableName . " IGNORE " . $ignoreLines . " LINES (" . $columns. ");", $fullPath);
         //}
         return $query;
     }
@@ -69,22 +69,23 @@ class DataimportController extends \BaseController {
      * and returns a string listing 
      */
     public static function prepareColumns($data, $delimiter) {
-         $data = trim(preg_replace('/\s\s+/', ' ', $data));
+        $data = trim(preg_replace('/\t+/', ',', $data));
+        $data = trim(preg_replace('/\s\s+/', ' ', $data));
+        $delimiter = "/\,/";
         $columns = preg_split($delimiter, $data);
         //array_pop($columns);
         $tcol = [];
-        foreach($columns as $column)
-        {
-            
-            //$column = '`'.$column.'`';
-            $column = preg_replace('/\s/', '_', $column);
-            $tcol[] = preg_replace('/\-/', '_', $column);
-            
-            
+        foreach ($columns as $column) {
+            if ($column != '') {
+                $column = '`' . $column . '`';
+                $column = preg_replace('/\s/', '_', $column);
+                $tcol[] = preg_replace('/\-/', '_', $column);
+            }
         }
         $columns = $tcol;
         $columns = array_flatten($columns);
-        $columns = '`' . implode('` , `', $columns) . '`';
+        $columns = implode(' , ', $columns);
+
         return $columns;
     }
 
@@ -101,48 +102,35 @@ class DataimportController extends \BaseController {
      */
     public static function prepareTable($delimiter, $data, $table, $primaries = null) {
         $primary = $table . "_id";
-        
-        //return $delimiter;
-        //$data = str_replace('&#13;&#10;','',$data);
-        //$data = str_replace('\\r\\n','',$data);
-        //if ($delimiter == "TAB" or $delimiter == "/\t+/") {
-            $data = trim(preg_replace('/\t+/', ',', $data));
-       // } else {
-         //   $data = trim(preg_replace('/\s\s+/', ' ', $data));
-       // }
-        //$delimiter = "/,/";
+        $data = trim(preg_replace('/\s\s+/', ' ', $data));
+        $data = trim(preg_replace('/\t+/', ',', $data));
         //return $data;
         $multiPrimary = 0;
         if ($primaries != null) {
             $primary.="," . $primaries;
             $multiPrimary = 1;
         }
+
+        $delimiter = "/\,/";
+
         $schema = " create table IF NOT EXISTS " . $table . " (`" . $primary . "` int NOT NULL AUTO_INCREMENT,";
-        //return $data;
-        //$data.=',';
+
         $columns = preg_split($delimiter, $data);
+
         $tcol = [];
-        foreach($columns as $column)
-        {
-            $column = '`'.$column.'`';
-            $column = preg_replace('/\s/', '_', $column);
+        foreach ($columns as $column) {
+
+            $column = '`' . $column . '`';
+            $column = preg_replace('/\s+/', '_', $column);
             $tcol[] = preg_replace('/\-/', '_', $column);
-            
-            
         }
         $columns = $tcol;
-        //return $columns;
-        //array_pop($columns);
+
         $columns = array_flatten($columns);
         $schema .= implode(' text, ', $columns);
-        /* if($multiPrimary > 0){ 
-          $schema .= ' text, PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
-          }else
-          { */
+        //return $columns;
 
         $schema .= ' text,PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
-
-        //}
         return $schema;
     }
 
@@ -226,7 +214,6 @@ class DataimportController extends \BaseController {
         $upload = new \Upload();
         $file = \Input::file('filename');
         $input = \Input::all();
-        //return  $input['fieldDelimiter'];
         if ($file !== null) {
             $dataResult.='file loaded';
             $directory = self::folder();
@@ -246,12 +233,10 @@ class DataimportController extends \BaseController {
                 $topLine = self::topLine($directory . $filename);
                 $columns = self::prepareColumns($topLine, $delimiter);
                 $upload->columns = $columns;
-                //return $columns;
-                // $directory = \app_path().'/public' . '/uploads/';
                 if ($input['fieldDelimiter'] == ',') {
-                    $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, ',', '\"', '\"', '\r\n', 1);
+                    $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, "\\,", '\"', '\"', '\r\n', 1);
                 } else {
-                    $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, '\t', "\"", '\"', '\r\n', 1);
+                    $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, "\\t", "\"", '\"', '\r\n', 1);
                 }
 
                 $upload->filename = $filename;
@@ -260,10 +245,9 @@ class DataimportController extends \BaseController {
                 \DB::connection('codes')->getpdo()->exec($loaddata);
             }
             $primaries = preg_split('/\,+/', \Input::get('primaryKey'));
-            //self::addPrimaries(\Input::get('table'), $primaries, 'codes');
-           // return \Response::json("Transaction Completed :</br> Created Table and Populated With Data " . $columns);
+            
             return \Response::json("Results:" . $loaddata);
-            } else {
+        } else {
             return \Response::json(var_dump($_FILES));
         }
     }
