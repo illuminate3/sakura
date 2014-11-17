@@ -39,9 +39,13 @@ class DataimportController extends \BaseController {
      * Takes the path of the csv source file, and a string from the prepareColumns function
      * or, in the form "col1, col2, col3" 
      */
-    public static function toLoadData($fullPath, $columns, $tableName, $fieldDelimiter = '\t', $fieldEnclosed = '\"', $fieldEscaped = '\"', $lineDelimiter = '\r\n', $ignoreLines = 0) {
+    public static function toLoadData($fullPath, $columns, $tableName, $fieldDelimiter = ",", $fieldEnclosed = "\"", $fieldEscaped = "\"", $lineDelimiter = "\r\n", $ignoreLines = 0) {
         $query = "";
-        $query .= sprintf("LOAD DATA INFILE '%s' INTO TABLE " . $tableName . " FIELDS TERMINATED BY '" . $fieldDelimiter . "' OPTIONALLY ENCLOSED BY '" . $fieldEnclosed . "' ESCAPED BY '" . $fieldEscaped . "' LINES TERMINATED BY '" . $lineDelimiter . "' IGNORE " . $ignoreLines . " LINES (" . $columns . ");", $fullPath);
+       // if ($fieldDelimiter !== 'TAB') {
+            $query .= sprintf("LOAD DATA INFILE '%s' INTO TABLE " . $tableName . " FIELDS TERMINATED BY '" . $fieldDelimiter . "' OPTIONALLY ENCLOSED BY '" . $fieldEnclosed . "' ESCAPED BY '" . $fieldEscaped . "' LINES TERMINATED BY '" . $lineDelimiter . "' IGNORE " . $ignoreLines . " LINES (" . $columns . ");", $fullPath);
+        //} else {
+          //  $query = sprintf("LOAD DATA INFILE '%s' INTO TABLE " . $tableName . " IGNORE " . $ignoreLines . " LINES (" . $columns. ");", $fullPath);
+        //}
         return $query;
     }
 
@@ -86,26 +90,37 @@ class DataimportController extends \BaseController {
      */
     public static function prepareTable($delimiter, $data, $table, $primaries = null) {
         $primary = $table . "_id";
+        
+        //return $delimiter;
         //$data = str_replace('&#13;&#10;','',$data);
         //$data = str_replace('\\r\\n','',$data);
-        $data = trim(preg_replace('/\s\s+/', ' ', $data));
+        //if ($delimiter == "TAB" or $delimiter == "/\t+/") {
+            $data = trim(preg_replace('/\t+/', ',', $data));
+       // } else {
+         //   $data = trim(preg_replace('/\s\s+/', ' ', $data));
+       // }
+        $delimiter = "/,/";
+        //return $data;
         $multiPrimary = 0;
         if ($primaries != null) {
             $primary.="," . $primaries;
             $multiPrimary = 1;
         }
         $schema = " create table IF NOT EXISTS " . $table . " (" . $primary . " int NOT NULL AUTO_INCREMENT,";
+        //return $data;
+        //$data.=',';
         $columns = preg_split($delimiter, $data);
+        //return $columns;
         //array_pop($columns);
         $columns = array_flatten($columns);
         $schema .= implode(' text, ', $columns);
-       /* if($multiPrimary > 0){ 
-        $schema .= ' text, PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
-        }else
-        {*/
-            
-            $schema .= ' text,PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
-            
+        /* if($multiPrimary > 0){ 
+          $schema .= ' text, PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
+          }else
+          { */
+
+        $schema .= ' text,PRIMARY KEY(' . $primary . ')) ENGINE=MYISAM;';
+
         //}
         return $schema;
     }
@@ -125,7 +140,7 @@ class DataimportController extends \BaseController {
             $directory = DataimportController::folder();
             $topLine = DataimportController::topLine($directory . $filename);
             $create = DataimportController::prepareTable($delimiter, $topLine, $table);
-            var_dump($create);
+            //return var_dump($create);
             return \DB::connection('codes')->getpdo()->exec($create);
         }
     }
@@ -189,25 +204,35 @@ class DataimportController extends \BaseController {
         $dataResult = '';
         $upload = new \Upload();
         $file = \Input::file('filename');
+        $input = \Input::all();
+        //return  $input['fieldDelimiter'];
         if ($file !== null) {
             $dataResult.='file loaded';
             $directory = self::folder();
             $tableName = \Input::get('table');
             $upload->tablename = $tableName;
+
             $delimiter = "/\\" . Input::get('fieldDelimiter') . '+/';
+
             $upload->fieldDelimiter = $delimiter;
             $filename = $file->getClientOriginalName();
             $upload->filename = $filename;
             $dataResult.=$filename;
             $uploadSuccess = $file->move($directory, $filename);
-            
+
             if ($uploadSuccess) {
                 self::createTable($file, $delimiter, $tableName);
                 $topLine = self::topLine($directory . $filename);
                 $columns = self::prepareColumns($topLine, $delimiter);
                 $upload->columns = $columns;
-               // $directory = \app_path().'/public' . '/uploads/';
-                $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, ',', '\"', '\"', '\r\n', 1);
+                //return $columns;
+// $directory = \app_path().'/public' . '/uploads/';
+                if ($input['fieldDelimiter'] == ',') {
+                    $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, ',', '\"', '\"', '\r\n', 1);
+                } else {
+                    $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, '\t', "\"", '\"', '\r\n', 1);
+                }
+
                 $upload->filename = $filename;
                 $upload->fieldDelimiter = $delimiter;
                 $upload->push();
@@ -215,8 +240,9 @@ class DataimportController extends \BaseController {
             }
             $primaries = preg_split('/\,+/', \Input::get('primaryKey'));
             //self::addPrimaries(\Input::get('table'), $primaries, 'codes');
-            return \Response::json("Transaction Completed :</br> Created Table and Populated With Data " . $columns);
-        } else {
+           // return \Response::json("Transaction Completed :</br> Created Table and Populated With Data " . $columns);
+            return \Response::json("Results:" . $loaddata);
+            } else {
             return \Response::json(var_dump($_FILES));
         }
     }

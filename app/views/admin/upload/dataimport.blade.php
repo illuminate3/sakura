@@ -21,6 +21,9 @@
 {{ Form::label('fieldDelimiter', 'Field Delimiter (Optional)')}}
 {{ Form::text('fieldDelimiter')}}
 </br>
+{{"Enter t for TAB, , for comma, ETC..."}}
+
+
 {{ Form::label('fieldEscape', 'Field Escape (Optional)')}}
 {{ Form::text('fieldEscape')}}
 
