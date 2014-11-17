@@ -69,9 +69,20 @@ class DataimportController extends \BaseController {
      * and returns a string listing 
      */
     public static function prepareColumns($data, $delimiter) {
-        $data = trim(preg_replace('/\s\s+/', ' ', $data));
+         $data = trim(preg_replace('/\s\s+/', ' ', $data));
         $columns = preg_split($delimiter, $data);
         //array_pop($columns);
+        $tcol = [];
+        foreach($columns as $column)
+        {
+            
+            //$column = '`'.$column.'`';
+            $column = preg_replace('/\s/', '_', $column);
+            $tcol[] = preg_replace('/\-/', '_', $column);
+            
+            
+        }
+        $columns = $tcol;
         $columns = array_flatten($columns);
         $columns = '`' . implode('` , `', $columns) . '`';
         return $columns;
@@ -99,17 +110,27 @@ class DataimportController extends \BaseController {
        // } else {
          //   $data = trim(preg_replace('/\s\s+/', ' ', $data));
        // }
-        $delimiter = "/,/";
+        //$delimiter = "/,/";
         //return $data;
         $multiPrimary = 0;
         if ($primaries != null) {
             $primary.="," . $primaries;
             $multiPrimary = 1;
         }
-        $schema = " create table IF NOT EXISTS " . $table . " (" . $primary . " int NOT NULL AUTO_INCREMENT,";
+        $schema = " create table IF NOT EXISTS " . $table . " (`" . $primary . "` int NOT NULL AUTO_INCREMENT,";
         //return $data;
         //$data.=',';
         $columns = preg_split($delimiter, $data);
+        $tcol = [];
+        foreach($columns as $column)
+        {
+            $column = '`'.$column.'`';
+            $column = preg_replace('/\s/', '_', $column);
+            $tcol[] = preg_replace('/\-/', '_', $column);
+            
+            
+        }
+        $columns = $tcol;
         //return $columns;
         //array_pop($columns);
         $columns = array_flatten($columns);
@@ -212,7 +233,7 @@ class DataimportController extends \BaseController {
             $tableName = \Input::get('table');
             $upload->tablename = $tableName;
 
-            $delimiter = "/\\" . Input::get('fieldDelimiter') . '+/';
+            $delimiter = "/\\" . Input::get('fieldDelimiter') . '/';
 
             $upload->fieldDelimiter = $delimiter;
             $filename = $file->getClientOriginalName();
@@ -226,7 +247,7 @@ class DataimportController extends \BaseController {
                 $columns = self::prepareColumns($topLine, $delimiter);
                 $upload->columns = $columns;
                 //return $columns;
-// $directory = \app_path().'/public' . '/uploads/';
+                // $directory = \app_path().'/public' . '/uploads/';
                 if ($input['fieldDelimiter'] == ',') {
                     $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, ',', '\"', '\"', '\r\n', 1);
                 } else {

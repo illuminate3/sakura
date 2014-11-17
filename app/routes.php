@@ -94,6 +94,7 @@ Route::any('geographic/zipcodes/save', 'ZipcodeController@postIndex');
  */
 Route::any('upload/index', 'DataimportController@getIndex');
 Route::any('upload/upload', 'DataimportController@postFile');
+Route::any('upload/testing', function(){return View::make('admin/upload/testing');});
 Route::any('DataimportController@upload','DataimportController@upload');
 ///
 Route::get('login',  function()
