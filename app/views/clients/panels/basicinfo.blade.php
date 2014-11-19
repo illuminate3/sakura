@@ -60,12 +60,11 @@
                 }}</span>
 
             <span class="form-group-sm form-inline">
-                {{ Former::label("state")
-                           ->class("form-control form-inline input-group-sm")
-                           ->text("Maine")
-
-                }}
-            </span>
+                {{ Former::select("state")
+                            ->fromQuery(\Zipcode::all(),"State","zip_code_id")
+                            ->class("form-control form-inline input-group-sm")
+                           ->setAttribute("onchange","$('#state').val($('#city').val());")
+                }}</span>
 
             <span class="form-group-sm form-inline">
                 {{ Former::select("zipcode")

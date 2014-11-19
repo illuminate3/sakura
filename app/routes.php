@@ -45,6 +45,12 @@ Route::group(['before'	=>	'auth'], function() {
         Route::any('clients/medications', 'ClientsController@medications');
         Route::any('clients/dashboard', 'ClientsController@dashboard');
         
+        
+        /**
+         * Medication Routes
+         */
+        Route::any('search/medications', 'MedicationController@getMedicationDropdown');
+        Route::any('medications/details', 'MedicationController@getDetails');
         /*
          * // NEEDS ROUTES
          */
@@ -116,6 +122,10 @@ Route::post('admin/login', [
 
 Route::get('hello', function(){
     return View::make('hello');
+});
+
+Route::get('test', function(){
+    return View::make('testscript');
 });
 
 Route::get('surveys/questions/create', 'QuestionController@create');

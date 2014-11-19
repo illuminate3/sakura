@@ -1017,6 +1017,8 @@ return array(
     'MedicalConcerns' => $baseDir . '/app/models/MedicalConcerns.php',
     'MedicalManagement' => $baseDir . '/app/models/MedicalManagement.php',
     'MedicalSupports' => $baseDir . '/app/models/MedicalSupports.php',
+    'Medication' => $baseDir . '/app/models/Medication.php',
+    'MedicationController' => $baseDir . '/app/controllers/MedicationController.php',
     'Medications' => $baseDir . '/app/database/migrations/2014_11_13_214509_medications.php',
     'MigrationCartalystSentryInstallGroups' => $baseDir . '/app/database/migrations/2012_12_06_225929_migration_cartalyst_sentry_install_groups.php',
     'MigrationCartalystSentryInstallThrottle' => $baseDir . '/app/database/migrations/2012_12_06_225988_migration_cartalyst_sentry_install_throttle.php',

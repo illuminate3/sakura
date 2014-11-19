@@ -25,6 +25,8 @@
 @parent
 <script>
     $(function () {
+        
+        
         $('#roster').click(function () {
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
@@ -42,7 +44,7 @@
         });
 
         
- $('#info').click(function () {
+        $('#info').click(function () {
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
                 url: "{{URL::action('ClientsController@create')}}",
@@ -65,7 +67,7 @@
         
         
         $(document).on('click', '.panel-label',function () {
-        document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";    
+            document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";    
            // alert('shaka khan');
             $('.panel-label li.active').removeClass('active');
             $(this).closest('li').addClass('active');
@@ -80,19 +82,51 @@
                     document.getElementById('info-panel').innerHTML = data;
                 }
             });
+            return false;
         });
         
+        {{-- MEDICATIONS SECTION --}}
         $(document).on('click','#link-meds', function(){
             $.ajax({
                 url: "{{URL::action('ClientsController@medications')}}",
+                
                 type: "GET",
                 success: function(data){
                     document.getElementById('busy-icon').innerHTML = "";
                     document.getElementById('info-panel').innerHTML = data;
                 }
             });
+            return false;
         });
                 
+        $(document).on('change', '#meds-search', function(){
+            var term = $('#meds-search').val();
+            var type = $('#field-select-medication').val();
+            if(term.length > 3){
+               $.ajax({
+                    url: "{{URL::action('MedicationController@getMedicationDropdown')}}",
+                    data: 'term='+term+'&type='+type,
+                    type: "GET",
+                    success: function(data){
+                        document.getElementById('meds-dropdown').innerHTML = data;
+                    }
+                }); 
+            }
+            return false;
+        });
+        
+        $(document).on('change', '#meds-dropdown', function(){
+            
+            var medication = $('#medication').val($(this).find('option:selected').attr('value'));
+            $.ajax({
+                url: "{{URL::action('MedicationController@getDetails')}}",
+                data: 'medication=' + $('#medication').find('option:selected').attr('value'),
+                type: "GET",
+                success: function(data){
+                    document.getElementById('medication-details').innerHTML = data;
+                }
+            });
+        });
         
         
         
