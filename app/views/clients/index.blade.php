@@ -49,16 +49,3 @@
     </table>
 @stop
 
-
-
-@section('scripts')
-
-@parent
-
-<script>
-$('.dtable').ready(function(){
-    $('.dtable').dataTable();
-    alert('running');
-});
-</script>
-@stop

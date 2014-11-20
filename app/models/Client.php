@@ -90,11 +90,7 @@ class Client extends Eloquent {
         return $this->hasMany('HealthcareProviders', 'mtk', 'mtk');
     }
 
-    public function cellPhone() {
-        return $this->hasOne('ClientPhone', 'mtk', 'mtk');
-    }
-
-    public function homePhone() {
+    public function phone() {
         return $this->hasOne('ClientPhone', 'mtk', 'mtk');
     }
 

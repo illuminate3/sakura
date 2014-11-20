@@ -53,7 +53,7 @@
         </div>
     </div>
     {{ Former::close()}}
-   
+    <button id="add-medication">Add Medication</button>
     <div id='medication-details'>
     </div>
     @overwrite

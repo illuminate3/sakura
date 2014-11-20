@@ -61,12 +61,11 @@ class ClientsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id =1)
+	public function show($id = 1)
 	{
 		//
-             $client = Client::find($id);
-        
-        return View::make('clients.show', array('client' => $client));
+            $client = Client::find($id);
+            return View::make('clients.show', array('client' => $client));
 	}
 
 	/**
@@ -76,11 +75,17 @@ class ClientsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id  = null)
 	{
+            if($id==null)
+            {
+                $id = Input::get('selected');
+            }
+            
 		//
-            $client = Client::find($id);
-            return View::make('clients.create', array('client' => $client));
+            $client = Client::find(4);
+            return json_encode($id);
+            //return View::make('clients.create', array('client' => $client));
 	}
 
 	/**
@@ -90,9 +95,16 @@ class ClientsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id = null)
 	{
+            if($id==null)
+            {
+                $id = Input::all();
+            }
+            
 		//
+            $client = Client::find(4);
+            return json_encode($id);
 	}
 
 	/**
@@ -133,12 +145,15 @@ class ClientsController extends \BaseController {
          */
         
         public function basicInfo(){
-            
-            return View::make('clients.panels.basicinfo');
-            
+            $client = Client::find(Input::get('selected'));
+            return View::make('clients.panels.basicinfo')
+                    ->with('client', $client);
         }
         
-        
+        /**
+         * 
+         * @return type
+         */
         public function medications(){
             
             return View::make('clients.panels.medications');

@@ -37,9 +37,9 @@ Route::group(['before'	=>	'auth'], function() {
           Route::get('clients/index', 'ClientsController@index'
         );
           
-        Route::get('clients/edit/{mtk}', 'ClientsController@edit');
-        Route::any('clients/update', 'ClientsController@update');
-        Route::get('clients/show/{mtk}', 'ClientsController@show');
+        Route::any('clients/edit/{mtk}', 'ClientsController@edit');
+        Route::get('clients/update', 'ClientsController@update');
+        Route::any('clients/show/{mtk}', 'ClientsController@show');
         Route::any('clients/create', 'ClientsController@create');
         Route::any('clients/basicinfo', 'ClientsController@basicInfo');
         Route::any('clients/medications', 'ClientsController@medications');
