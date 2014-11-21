@@ -34,12 +34,13 @@
          * acquire model through AJAX
          */
         
-        var table = $('.dtable').dataTable({
+       /* var table = $('.dtable').dataTable({
             dom: 'T<"clear">lfrtip',
             "tableTools": {
                 "sRowSelect": "single",
                 "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
-            }});
+            }});*/
+        
         $('#roster').click(function () {
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
@@ -93,8 +94,8 @@
         
         
         $(document).on('click', '.panel-label',function () {
-            document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";    
-            $('.panel-label li').removeClass('active');
+            document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";   
+            $('.panel-label').removeClass('active');
             $(this).closest('li').addClass('active');
             return false;
         });
@@ -108,6 +109,7 @@
                 success: function(data){
                     document.getElementById('busy-icon').innerHTML = "";
                     document.getElementById('info-panel').innerHTML = data;
+                    
                 }
             });
             return false;

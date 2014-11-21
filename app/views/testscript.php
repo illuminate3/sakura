@@ -13,16 +13,20 @@
 $id = Input::get('selected');
 
 
-$client =  Client::find($id);
+//$client =  Client::find($id);
+//$client->phone = new ClientPhone(array('mtk'=>'5', 'home'=>'555-5555', 'cell'=>'555-5555', 'work'=> '555-5555'));
+//$phone = (ClientPhone::find(5) !== null) ? 'fail' :  ClientPhone::find($id);
 
-$phone = new \ClientPhone();
-$phone->home = '666-5666';
-$phone->work = '666-6266';
-$phone->cell = '666-6656';
+//echo $client->phone->home;
 
+//echo $phone;
+$client = Client::find(5);
+if($client->emergencyContact() == null)
+{
+    echo "relation is null";
+}else{
+    echo "relatioon is not null";
+}
 
-$client->phone()->save($phone);
-
-echo $client;
-
-echo $client->phone();
+$emergencyContact = new EmergencyContact();
+var_dump($emergencyContact);

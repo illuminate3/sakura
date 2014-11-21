@@ -45,9 +45,6 @@
                             ->placeholder('Search for a medication!')
                             ->label("Search Results")               
                }}
-               
-               
-            
             </span> 
             
         </div>

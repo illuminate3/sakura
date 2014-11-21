@@ -12,7 +12,7 @@ class CreateEmergencyContactTable extends Migration {
      */
     public function up() {
         Schema::connection('fcs_clients')->create('emergency_contacts', function($table) {
-            $table->integer('index');
+            $table->increments('index');
             $table->integer('mtk')->unsigned();
             $table->string('full_name', 90);
             $table->string('phone_number', 45);
@@ -21,7 +21,7 @@ class CreateEmergencyContactTable extends Migration {
             $table->softDeletes();
 
             $table->engine = 'InnoDB';
-            $table->primary('index');
+            
             
         });
     }

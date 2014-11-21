@@ -85,7 +85,11 @@ class Client extends Eloquent {
     public function marital() {
         return $this->hasOne('Marital', 'mtk', 'mtk');
     }
-
+    
+    public function medicatons(){
+        return $this->hasMany('ClientMedication','mtk','mtk');
+    }
+    
     public function healthcareProviders() {
         return $this->hasMany('HealthcareProviders', 'mtk', 'mtk');
     }

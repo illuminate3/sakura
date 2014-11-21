@@ -31,7 +31,7 @@ class CreateQuestionSurveyTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::connection('survey')->drop('question_survey');
+		Schema::connection('survey')->dropIfExists('question_survey');
 	}
 
 }

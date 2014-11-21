@@ -5,34 +5,36 @@
 
 {{ Former::horizontal_open()
     ->id("frm-basic-info")
-    ->method("POST")
-    
-    ->class("navbar-form navbar-left")
-    
-   
+    ->method("POST")    
+    ->class("navbar-form navbar-left")   
 }}
-{{ $client->address->address1 }}
-{{ $client->address->address2 }}
-{{ $client->address->zipcode->ZIPCode }}
-{{Former::populate(array(
-                    'firstname'  => $client->name->first,
-                    'middlename' => $client->name->middle,
-                    'lastname'   => $client->name->last,
-                    'address1'   => $client->address->address_1,
-                    'address2'   => $client->address->address_2,
-                    'city'       => $client->address->zip_code_id,
-                    'state'      => $client->address->zip_code_id,
-                    'zipcode'    => $client->address->zip_code_id,
-                    'cell'       => $client->phone->cell,
-                    'home'       => $client->phone->home,
-                    'work'       => $client->phone->work
+
+
+{{
+    Former::populate(array(
+                    'mtk'                   => $client->mtk,
+                    'firstname'             => $client->name->first,
+                    'middlename'            => $client->name->middle,
+                    'lastname'              => $client->name->last,
+                    'address1'              => $client->address->address_1,
+                    'address2'              => $client->address->address_2,
+                    'city'                  => $client->address->zip_code_id,
+                    'state'                 => $client->address->zip_code_id,
+                    'zipcode'               => $client->address->zip_code_id,
+                    'cell'                  => $client->phone->cell,
+                    'home'                  => $client->phone->home,
+                    'work'                  => $client->phone->work,
+                    'contact_full_name'     => $client->emergencyContact->full_name,
+                    'relationship'          => $client->emergencyContact->relationship,
+                    'contact_phone'         => $client->emergencyContact->phone_number,
             ))}}
-{{ $client->name->first }}
+
 
 <div class="panel panel-default">
 
     <div class="panel-body">
         <div class="input-group-sm">
+            {{ Former::hidden("mtk")}}
             {{ Former::group("Name:")}}
             <br />
 
@@ -41,7 +43,7 @@
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("First Name")                
                            
-               }}
+                }}
                 {{ Former::text("middlename")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Middle Name")
@@ -67,6 +69,7 @@
                            ->placeholder("Apt / Unit #")
                 }}
 
+            <br />
             <br />
             
 
@@ -137,12 +140,6 @@
                 {{ Former::text("contact_phone")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Primary Phone")
-                }}
-            
-            
-                {{ Former::text("contact_second_phone")
-                           ->class("form-control form-inline input-group-sm")
-                           ->placeholder("Secondary Phone")
                 }}
             
             {{
