@@ -11,7 +11,7 @@ class ClientsController extends \BaseController {
     public function index() {
         //return "shit balls"; 
         // $clients = Client::orderBy('mtk', 'asc');
-        return View::make('clients.index')
+        return View::make('sections.clients.index')
                         ->with('clients', $clients = \Client::all());
     }
 
@@ -23,7 +23,7 @@ class ClientsController extends \BaseController {
      */
     public function create() {
         //
-        return View::make('clients.create');
+        return View::make('sections.clients.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class ClientsController extends \BaseController {
     public function show($id = 1) {
         //
         $client = Client::find($id);
-        return View::make('clients.show', array('client' => $client));
+        return View::make('sections.clients.show', array('client' => $client));
     }
 
     /**
@@ -112,7 +112,7 @@ class ClientsController extends \BaseController {
      * @return View
      */
     public function dashboard() {
-        return View::make('clients.dashboard')
+        return View::make('dashboards.clients.dashboard')
                         ->with('clients', $clients = \Client::all());
     }
 
@@ -138,7 +138,7 @@ class ClientsController extends \BaseController {
             $client->emergencyContact = new \EmergencyContact();
         }
 
-        return View::make('clients.panels.basicinfo')
+        return View::make('panels.clients.basicinfo')
                         ->with('client', $client);
     }
 
@@ -206,8 +206,8 @@ class ClientsController extends \BaseController {
      */
     public function medications() {
         $mtk = Input::get('mtk');
-        $clientMedications = ClientMedications::where('mtk','=',$mtk);
-        return View::make('clients.panels.medications')
+        $clientMedications = ClientMedication::where('mtk','=',$mtk);
+        return View::make('panels.clients.medications')
                 ->with('medications',$clientMedications);
     }
 
