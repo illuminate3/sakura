@@ -20,13 +20,17 @@ $id = Input::get('selected');
 //echo $client->phone->home;
 
 //echo $phone;
-$client = Client::find(5);
-if($client->emergencyContact() == null)
-{
-    echo "relation is null";
-}else{
-    echo "relatioon is not null";
-}
+//$client = Client::find(5);
+//if($client->emergencyContact() == null)
+//{
+ //   echo "relation is null";
+//}else{
+//    echo "relatioon is not null";
+//}
 
-$emergencyContact = new EmergencyContact();
-var_dump($emergencyContact);
+//$emergencyContact = new EmergencyContact();
+//var_dump($emergencyContact);
+
+$client = \Client::find(1);
+$clientAddress = new \Address();
+var_dump($client->address);

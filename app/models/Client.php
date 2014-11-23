@@ -24,9 +24,9 @@ class Client extends Eloquent {
     public function name() {
         return $this->hasOne('ClientName', 'mtk', 'mtk');
     }
-
+    
     public function address() {
-        return $this->hasOne('Address', 'mtk', 'mtk');
+        return $this->hasOne('Address', 'address_id', 'mtk');
     }
 
     /*

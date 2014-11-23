@@ -160,7 +160,7 @@ class ClientsController extends \BaseController {
         $name->first = $data['firstname'];
         $name->middle = $data['middlename'];
         $name->last = $data['lastname'];
-        $client->name() - save($name);
+        $client->name()->save($name);
 
         // ensure address exists, then populate with data from view
 
@@ -175,9 +175,9 @@ class ClientsController extends \BaseController {
 
         // ensure phone exists, then populate with data from view
 
-        $phone = \Phone::find($data['mtk']);
+        $phone = \ClientPhone::find($data['mtk']);
         if ($phone == null) {
-            $phone = new \Phone();
+            $phone = new \ClientPhone();
         }
         $phone->mtk = $data['mtk'];
         $phone->home = $data['home'];
@@ -206,9 +206,9 @@ class ClientsController extends \BaseController {
      */
     public function medications() {
         $mtk = Input::get('mtk');
-        $medications = ClientMedications::where('mtk','=',$mtk);
+        $clientMedications = ClientMedications::where('mtk','=',$mtk);
         return View::make('clients.panels.medications')
-                ->with('medications',$medications);
+                ->with('medications',$clientMedications);
     }
 
 }

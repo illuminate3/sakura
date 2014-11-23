@@ -6,7 +6,7 @@
  */
 
         $("#basic-info").on("submit", function (e) {
-            alert("Saving!");
+            alert("basicinfo.js");
             e.preventDefault();
             var forminfo = $("#basic-info").serialize();
             alert(forminfo);

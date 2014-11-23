@@ -13,8 +13,8 @@ class CreateAddressTable extends Migration {
     public function up() {
         Schema::connection('fcs_clients')->create('addresses', function($table) {
             $table->integer('mtk')->unsigned();
-            $table->string('address_1', 45);
-            $table->string('address_2', 45)->nullable();
+            $table->string('address1', 45);
+            $table->string('address2', 45)->nullable();
             $table->integer('zip_code_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();

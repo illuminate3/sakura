@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientAddressTable extends Migration {
+class CreateAddressClientTable extends Migration {
 
     /**
      * Run the migrations.
@@ -11,14 +11,14 @@ class CreateClientAddressTable extends Migration {
      * @return void
      */
     public function up() {
-       /* Schema::connection('fcs_clients')->create('client_addresses', function($table) {
+        Schema::connection('fcs_clients')->create('address_client', function($table) {
             $table->integer('mtk')->unsigned();
             $table->integer('address_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->engine = 'InnoDB';
             $table->primary('mtk');
-        });*/
+        });
     }
 
     /**
@@ -27,7 +27,7 @@ class CreateClientAddressTable extends Migration {
      * @return void
      */
     public function down() {
-        //Schema::connection('fcs_clients')->dropIfExists('client_addresses');
+        Schema::connection('fcs_clients')->dropIfExists('address_client');
     }
 
 }

@@ -12,7 +12,7 @@
  * and affiliates
  */
   function saveBasicInfo(){
-            alert("Saving!");
+            alert("basicinfojs.blade.php");
             //e.preventDefault();
             var forminfo = $("#frm-basic-info").serialize();
             alert(forminfo);
