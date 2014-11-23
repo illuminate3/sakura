@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 echo Attempting to refresh system migrations and seed database.
 php artisan migrate:refresh --force
