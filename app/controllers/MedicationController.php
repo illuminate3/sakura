@@ -17,7 +17,7 @@ Class MedicationController extends BaseController {
     public function getDetails($id = null) {
         if($id==null){$id = Input::get('medication');}
         $medication = Medication::find($id);
-        return View::make('medications.details', array('medication' => $medication));
+        return View::make('panels.medications.details', array('medication' => $medication));
     }
 
     /**
