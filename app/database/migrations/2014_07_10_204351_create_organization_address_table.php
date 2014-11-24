@@ -13,7 +13,8 @@ class CreateOrganizationAddressTable extends Migration {
     public function up() {
         Schema::connection('fcs_clients')->create('organization_addresses', function($table) {
             $table->integer('org_id')->unsigned();
-            $table->integer('address_id')->unsigned();
+            $table->text('address1');
+            $table->text('address2');
             $table->integer('zip_code_id')->unsigned();
             $table->primary('org_id');
             

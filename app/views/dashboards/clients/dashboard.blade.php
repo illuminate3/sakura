@@ -13,7 +13,7 @@
 </ul>
 <span id="busy-icon"></span>
 
-<div class='container' id='pane'>
+<div class='container-fluid' id='pane'>
 
 
 </div>
@@ -127,7 +127,23 @@
             });
             return false;
         });
-                
+        
+        $(document).on('click', '#link-biography', function(){
+            var selected = $('#current-entity').text();
+            $.ajax({
+                url: "{{URL::action('ClientsController@biography')}}",
+                type: 'GET',
+                data: 'selected='+selected,
+                success: function(data){
+                    document.getElementById('busy-icon').innerHTML = "";
+                    document.getElementById('info-panel').innerHTML = data;
+                }
+            });
+            return false;
+            
+        });   
+        
+        
         $(document).on('change', '#meds-search', function(){
             var term = $('#meds-search').val();
             var type = $('#field-select-medication').val();
@@ -153,6 +169,14 @@
                 type: "GET",
                 success: function(data){
                     document.getElementById('medication-details').innerHTML = data;
+                                   //document.getElementById('pane').innerHTML = data;
+            /*        table = $('.dtable').dataTable({
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "sRowSelect": "single",
+                "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+        }
+        });*/
                 }
             });
             return false;
@@ -162,8 +186,12 @@
         
             event.preventDefault();
         });
-        
-        
+           
+        $(document).on('ready', '#client-medication-select', function(){
+            
+            alert('empty select box thing loaded!!!!! ALERT THE CITIZENS!!!!');
+            
+        });
     });
     
        

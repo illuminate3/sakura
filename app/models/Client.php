@@ -23,7 +23,7 @@ class Client extends Eloquent {
     
     
     public function address() {
-        return $this->hasOne('Address', 'address_id', 'mtk');
+        return $this->hasOne('Address', 'mtk', 'mtk');
     }
 
     /*
@@ -41,7 +41,7 @@ class Client extends Eloquent {
     }
 
     public function birthday() {
-        return $this->hasOne('Birthday', 'mtk', 'mtk');
+        return $this->hasOne('ClientBirthday', 'mtk', 'mtk');
     }
 
     public function diagnosis() {

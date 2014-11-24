@@ -13,12 +13,18 @@ class CreateContactsTable extends Migration {
     public function up() {
         Schema::connection('fcs_clients')->dropIfExists('contacts');
         Schema::connection('fcs_clients')->create('contacts', function($table) {
-            $table->integer('org_id')->unsigned();
+            
             $table->increments('contact_id');
+            
             $table->string('first', 45)->nullable();
             $table->string('last', 45)->nullable();
             $table->string('title', 45)->nullable();
+            
+            $table->integer('org_id')->unsigned();
+            
+            // technical details
             $table->timestamps();
+            
             $table->softDeletes();
 
             $table->engine = 'InnoDB';

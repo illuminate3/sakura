@@ -2,30 +2,59 @@
 
 
 @section('panel')
-{{ Former::horizontal_open()
+<div class='container-fluid'>
+
+    {{ Former::horizontal_open()
     ->id("frm-medications")
     ->method("POST")
-    ->class("navbar-form navbar-left")
-}}
+    ->class("form-horizontal")
+    }}
+
+    <span class='popover' id="busy-icon"></span>
+    <div class="row">
+        <div class='panel panel-default'>
+            <div class="panel-body">
+                <div id='meds-pane-details' class="pull-right col-sm-6">
+                    <div class='panel pull-right'>Item Details
+                        <div class='pull-right'>
+
+                            <table class="table table-condensed" id="medication-table">
+                                <thead>
+                                    <tr>
+                                        <th>NDC:</th>
+                                        <th>Type</th>
+                                        <th>Market Name</th>
+                                        <th>Generic</th>
+                                        <th>DoseForm</th>
+                                        <th>Substance Name</th>
+                                        <th>Dose Strength(s) </th>
+                                        <th>Ingredient Unit(s) </th>
+                                        <th>Drug Class </th>
+                                        <th>Schedule</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="medication-details">
 
 
-<div class='panel panel-default'>
-    <div class="panel-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div></div>
+                <div class='col-sm-2 pull-left' >
 
-        <div class="input-group-sm">
 
-            <br />
-            <span id="busy-icon"></span>
-            <span class="form-group-sm form-inline" >
-                {{
+
+
+                    {{
                 Former::text("meds-search")
                         ->class("form-control input-group-sm")
                         ->placeholder("Search Medications")
                         ->label("Search for Medications")
                         
-                }}
-                
-                {{
+                    }}
+                </div>
+                <div class='col-sm-2 pull-left'> 
+                    {{
                 
                 Former::select("field-select-medication")
                         ->class("form-control input-group-sm")
@@ -35,22 +64,56 @@
                                         3=>'Substance Name'            
                                   ))
                         ->label("Search in Field:")               
-                }}
-            </span>
-            <br />
-            <span class="form-group-sm form-inline" id="meds-dropdown">
-               {{
+                    }}
+                </div>
+
+                <div class="col-sm-4 pull-left" id="meds-dropdown">
+                    {{
                Former::select("medication")
                             ->class("form-control input-group-sm")
                             ->placeholder('Search for a medication!')
                             ->label("Search Results")               
-               }}
-            </span> 
+                    }}
+                </div> 
+
+            </div>
+        </div>
+        {{ Former::close()}}
+
+        <button id="add-medication" class=" btn btn-default btn-primary">Add Medication</button>
+
+    </div>
+    <div class ="row">
+        <div class='col-sm-4 pull-left'>
+            <table class="table table-condensed" id="medication-table">
+                                <thead>
+                                    <tr>
+                                        <th>NDC:</th>
+                                        <th>Type</th>
+                                        <th>Market Name</th>
+                                        <th>Generic</th>
+                                        <th>DoseForm</th>
+                                        <th>Substance Name</th>
+                                        <th>Dose Strength(s) </th>
+                                        <th>Ingredient Unit(s) </th>
+                                        <th>Drug Class </th>
+                                        <th>Schedule</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="client-medication-table">
+
+
+                                </tbody>
+                            </table>
+        </div>
+        <div class='col-sm-2 '>
+            <select id='client-medication-select'>
+                {{-- ClientMedicationController::getClientMedications() --}}
+            </select>
             
         </div>
+             
     </div>
-    {{ Former::close()}}
-    <button id="add-medication">Add Medication</button>
-    <div id='medication-details'>
-    </div>
-    @overwrite
+
+</div>
+@overwrite

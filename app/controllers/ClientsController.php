@@ -210,5 +210,26 @@ class ClientsController extends \BaseController {
         return View::make('panels.clients.medications')
                 ->with('medications',$clientMedications);
     }
-
+    
+    /**
+     * 
+     * 
+     */
+    public function biography(){
+        $client = Client::find(Input::get('selected'));
+        if($client->familyHistory == null)
+        {
+            $client->familyHistory = new FamilyHistory();
+        }
+        if
+            ($client->birthday == null)
+        {
+            $client->birthday = new ClientBirthday();
+        }
+        return View::make('panels.clients.biography')
+                ->with('client',$client);
+    }
+    
+    
+    
 }

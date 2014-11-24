@@ -97,7 +97,7 @@
       </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
-<div class="container">
+<div class="container-fluid">
   {{ Notification::showAll() }}
   @yield('content')
 </div>

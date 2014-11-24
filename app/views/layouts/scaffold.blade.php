@@ -13,7 +13,7 @@
 
 	<body>
 
-		<div class="container">
+		<div class="container-fluid">
 			@if (Session::has('message'))
 				<div class="flash alert">
 					<p>{{ Session::get('message') }}</p>

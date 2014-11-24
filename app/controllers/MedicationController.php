@@ -19,7 +19,8 @@ Class MedicationController extends BaseController {
         $medication = Medication::find($id);
         return View::make('panels.medications.details', array('medication' => $medication));
     }
-
+ 
+        
     /**
      * Function to retrieve all medications
      * @return View
@@ -46,12 +47,19 @@ Class MedicationController extends BaseController {
                 $type = 'PROPRIETARYNAME';
                 break;
         }
-        $html = Former::select("medication","Search Results: ")
+        $html = Former::select("medication")
                 ->fromQuery(Medication::search($term), $type, "PRODUCT_ID")
                 ->class("form-control input-group-sm")
-                ->setAttribute("onchange", "$('#proprietary-name').val($(this).find('option:selected').text());");
-                
+                ->setAttribute("onchange", "$('#proprietary-name').val($(this).find('option:selected').text());")
+                ->label("Search Results: ");
         return $html;
     }
-    
+            public function getMedicationTable(){
+                $term = Input::get('term');
+                $type = Input::get('type');
+                $results = Medication::where($type,'LIKE', "%".$term."%");    
+                $html="";
+                
+            }
+            
 }
