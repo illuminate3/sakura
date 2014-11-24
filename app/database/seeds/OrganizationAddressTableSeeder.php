@@ -14,8 +14,8 @@ class OrganizationAddressTableSeeder extends Seeder {
         foreach (range(1, 200) as $index) {
             
                 OrganizationAddress::create([
-                
-                'org_id' => $index,
+                'org_id'     => $index,
+                'address_id' => $index,
                 'address1' => $faker->address,
                 'address2' => $faker->text,
                 'zip_code_id' => $faker->numberBetween(1,128)

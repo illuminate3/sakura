@@ -19,10 +19,11 @@ class CreateClientMedsTable extends Migration {
                     $table->integer('product_id')->unsigned();
                     $table->date('started');
                     $table->date('stopped');
+                    $table->integer('org_id')->unsigned();
                     $table->integer('contact_id')->unsigned();
+                    $table->text('org_note');
                     $table->text('client_note');
-                    $table->text('referal_note');
-                    $table->integer('referer_id')->unsigned();
+                    $table->integer('staff_id');
                     $table->text('staff_note');
                     $table->longText('additional_history');
                     $table->timestamps();

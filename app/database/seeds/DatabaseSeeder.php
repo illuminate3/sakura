@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('ClientNameTableSeeder');
 
-        $this->call('ClientPhonesTableSeeder');
         $this->call('ClientBirthdaysTableSeeder');
         
         $this->call('EmergencyContactsTableSeeder');
@@ -24,10 +23,13 @@ class DatabaseSeeder extends Seeder {
         $this->call('AddressTableSeeder');
 
        // $this->call('ZipCodesTableSeeder');
-
+        $this->call('ContactTableSeeder');
+        
         $this->call('OrganizationTableSeeder');
 
         $this->call('OrganizationAddressTableSeeder');
+        
+        $this->call('OrganizationPhonesTableSeeder');
 
         $this->call('ProgramTableSeeder');
         

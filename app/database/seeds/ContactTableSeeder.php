@@ -17,8 +17,8 @@ class ContactTableSeeder extends Seeder {
                 
                 'org_id' => $faker->numberBetween(0,123),
                 'first'  => $faker->firstName,
-                'middle'  => $faker->middle,
-                'last'  => $faker->lastName
+                'last'   => $faker->lastName,
+                'title'  => $faker->opera
                 
                 
             ]);
