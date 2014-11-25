@@ -21,7 +21,7 @@ class CreateClientMedsTable extends Migration {
                     $table->date('stopped');
                     $table->integer('org_id')->unsigned();
                     $table->integer('contact_id')->unsigned();
-                    $table->text('org_note');
+                    $table->text('prescriber_notes');
                     $table->text('client_note');
                     $table->integer('staff_id');
                     $table->text('staff_note');

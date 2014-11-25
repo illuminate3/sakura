@@ -6,7 +6,7 @@ use Faker\Factory as Faker;
 class OrganizationTableSeeder extends Seeder {
 
     public function run() {
-        /*DB::table('fcs_clients.organizations')->truncate();
+        DB::table('fcs_clients.organizations')->truncate();
 
         $faker = Faker::create();
 
@@ -17,7 +17,7 @@ class OrganizationTableSeeder extends Seeder {
                 'description' => $faker->realText(),
                 'zip_code_id' => $index
             ]);
-     */
+        }
         
     }
 
