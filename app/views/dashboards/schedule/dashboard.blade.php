@@ -25,7 +25,7 @@
     
     @section('panel-scripts')
     
-@include('dashboards.schedule.js.')
+@include('dashboards.schedule.js.openFullCalendarjs')
 
 @stop
     
