@@ -200,7 +200,9 @@ class DataimportController extends \BaseController {
 
     public static function folder() {
         $directory = \public_path() . '/uploads/';
-        return \str_replace('\\', '/', $directory);
+        //$directory =  'public/uploads/';
+        //return \str_replace('\\', '/', $directory);
+        return $directory;
     }
 
     /**

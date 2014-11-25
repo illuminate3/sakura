@@ -161,22 +161,14 @@
         });
         
         $(document).on('change', '#meds-dropdown', function(){
-            
-            var medication = $('#medication').val($(this).find('option:selected').attr('value'));
+           
             $.ajax({
                 url: "{{URL::action('MedicationController@getDetails')}}",
                 data: 'medication=' + $('#medication').find('option:selected').attr('value'),
                 type: "GET",
                 success: function(data){
                     document.getElementById('medication-details').innerHTML = data;
-                                   //document.getElementById('pane').innerHTML = data;
-            /*        table = $('.dtable').dataTable({
-            "dom": 'T<"clear">lfrtip',
-            "tableTools": {
-                "sRowSelect": "single",
-                "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
-        }
-        });*/
+        
                 }
             });
             return false;
@@ -198,7 +190,7 @@
     
     @section('panel-scripts')
     
-@include('layouts.js.basicinfojs')
+@include('dashboards.clients.js.basicinfojs')
 
 @stop
     
