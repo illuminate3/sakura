@@ -10,8 +10,8 @@
 
 namespace DebugBar;
 
-use DebugBar\DataCollector\AssetProvider;
 use DebugBar\DataCollector\Renderable;
+use DebugBar\DataCollector\AssetProvider;
 
 /**
  * Renders the debug bar using the client side javascript implementation
@@ -69,8 +69,6 @@ class JavascriptRenderer
     protected $ajaxHandlerClass = 'PhpDebugBar.AjaxHandler';
 
     protected $ajaxHandlerBindToJquery = true;
-
-    protected $ajaxHandlerBindToXHR = false;
 
     protected $openHandlerClass = 'PhpDebugBar.OpenHandler';
 
@@ -449,27 +447,6 @@ class JavascriptRenderer
     }
 
     /**
-     * Sets whether to call bindToXHR() on the ajax handler
-     *
-     * @param boolean $bind
-     */
-    public function setBindAjaxHandlerToXHR($bind = true)
-    {
-        $this->ajaxHandlerBindToXHR = $bind;
-        return $this;
-    }
-
-    /**
-     * Checks whether bindToXHR() will be called on the ajax handler
-     *
-     * @return boolean
-     */
-    public function isAjaxHandlerBoundToXHR()
-    {
-        return $this->ajaxHandlerBindToXHR;
-    }
-
-    /**
      * Sets the class name of the js open handler
      *
      * @param string $className
@@ -618,7 +595,7 @@ class JavascriptRenderer
             return $uris;
         }
 
-        if (substr($uri, 0, 1) === '/' || preg_match('/^([a-zA-Z]+:\/\/|[a-zA-Z]:\/|[a-zA-Z]:\\\)/', $uri)) {
+        if (substr($uri, 0, 1) === '/' || preg_match('/^([a-z]+:\/\/|[a-zA-Z]:\/)/', $uri)) {
             return $uri;
         }
         return rtrim($root, '/') . "/$uri";
@@ -840,9 +817,7 @@ class JavascriptRenderer
 
         if ($this->ajaxHandlerClass) {
             $js .= sprintf("%s.ajaxHandler = new %s(%s);\n", $this->variableName, $this->ajaxHandlerClass, $this->variableName);
-            if ($this->ajaxHandlerBindToXHR) {
-                $js .= sprintf("%s.ajaxHandler.bindToXHR();\n", $this->variableName);
-            } elseif ($this->ajaxHandlerBindToJquery) {
+            if ($this->ajaxHandlerBindToJquery) {
                 $js .= sprintf("if (jQuery) %s.ajaxHandler.bindToJquery(jQuery);\n", $this->variableName);
             }
         }
@@ -881,6 +856,7 @@ class JavascriptRenderer
         }
         $controls = array_merge($widgets, $this->controls);
 
+
         foreach (array_filter($controls) as $name => $options) {
             $opts = array_diff_key($options, array_flip($excludedOptions));
 
@@ -895,7 +871,7 @@ class JavascriptRenderer
                     substr(json_encode($opts, JSON_FORCE_OBJECT), 1, -1),
                     isset($options['widget']) ? sprintf('%s"widget": new %s()', count($opts) ? ', ' : '', $options['widget']) : ''
                 );
-            } elseif (isset($options['indicator']) || isset($options['icon'])) {
+            } else if (isset($options['indicator']) || isset($options['icon'])) {
                 $js .= sprintf("%s.addIndicator(\"%s\", new %s(%s), \"%s\");\n",
                     $varname,
                     $name,
