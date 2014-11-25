@@ -13,7 +13,7 @@ class AddressTableSeeder extends Seeder {
 
 		foreach(range(1, 200) as $index) {
                     Address::create([
-				'mtk'            =>      $index,
+				'address_id'            =>      $index,
 				'address1'		=>	$faker->streetAddress,
 				'address2'		=>	$faker->word,
 				'zip_code_id'		=>	$index

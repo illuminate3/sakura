@@ -43,7 +43,7 @@
         $('#roster').click(function () {
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
-                url: "{{URL::action('ClientsController@index')}}",
+                url: "{{URL::action('OrganizationController@index')}}",
                 type: "get",
                 success: function (data) {
                     document.getElementById('pane').innerHTML = data;
@@ -197,7 +197,7 @@
     
     @section('panel-scripts')
     
-@include('layouts.js.basicinfojs')
+@include('dashboards.organizations.js.basicinfojs')
 
 @stop
     

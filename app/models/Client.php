@@ -23,7 +23,7 @@ class Client extends Eloquent {
     
     
     public function address() {
-        return $this->hasOne('Address', 'mtk', 'mtk');
+        return $this->hasOne('ClientAddress', 'mtk', 'mtk');
     }
 
     /*

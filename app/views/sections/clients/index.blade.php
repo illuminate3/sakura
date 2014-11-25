@@ -36,11 +36,11 @@
 		<td>{{ $client->name->middle }}</td>
 		<td>{{ $client->name->last }}</td>
                 
-		<td>{{ $client->address->address1 }}</td>
-		<td>{{ $client->address->address2 }}</td>
-		<td>{{ $client->address->zipcode->City }}</td>
-		<td>{{ $client->address->zipcode->State }}</td>
-                <td>{{ $client->address->zipcode->ZIPCode }}</td>
+		<td>{{ $client->address->address->address1 }}</td>
+		<td>{{ $client->address->address->address2 }}</td>
+		<td>{{ $client->address->address->zipcode->City }}</td>
+		<td>{{ $client->address->address->zipcode->State }}</td>
+                <td>{{ $client->address->address->zipcode->ZIPCode }}</td>
                
 		</tr>
                 @endforeach
