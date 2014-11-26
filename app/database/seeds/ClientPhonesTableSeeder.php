@@ -13,7 +13,7 @@ class ClientPhonesTableSeeder extends Seeder {
 
 		foreach(range(1, 200) as $index) {
                     ClientPhone::create([
-				'mtk'            =>      $index,
+				'mtk'            =>     $index,
 				'home'		=>	$faker->phoneNumber,
 				'work'		=>	$faker->phoneNumber,
 				'cell'		=>	$faker->phoneNumber

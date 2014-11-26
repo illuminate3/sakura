@@ -10,33 +10,35 @@ class DatabaseSeeder extends Seeder {
     public function run() {
         Eloquent::unguard();
 
-        $this->call('UserTableSeeder');
+        //$this->call('UserTableSeeder');
 
-        $this->call('ClientTableSeeder');
+        //$this->call('ClientTableSeeder');
 
-        $this->call('ClientNameTableSeeder');
+        //$this->call('ClientNameTableSeeder');
         
-        $this->call('ClientAddressTableSeeder');
+        //$this->call('ClientAddressTableSeeder');
         
-        $this->call('ClientMedicationTableSeeder');
+        //$this->call('ClientMedicationTableSeeder');
 
-        $this->call('ClientBirthdaysTableSeeder');
+        //$this->call('ClientBirthdaysTableSeeder');
         
-        $this->call('EmergencyContactsTableSeeder');
+        $this->call('ClientPhonesTableSeeder');
         
-        $this->call('AddressTableSeeder');
+        //$this->call('EmergencyContactsTableSeeder');
+        
+       // $this->call('AddressTableSeeder');
 
         
        
-        $this->call('ContactTableSeeder');
+        //$this->call('ContactTableSeeder');
         
-        $this->call('OrganizationTableSeeder');
+        //$this->call('OrganizationTableSeeder');
 
-        $this->call('OrganizationAddressTableSeeder');
+        //$this->call('OrganizationAddressTableSeeder');
         
-        $this->call('OrganizationPhonesTableSeeder');
+        //$this->call('OrganizationPhonesTableSeeder');
 
-        $this->call('ProgramTableSeeder');
+        //$this->call('ProgramTableSeeder');
         
         $this->call('NeedTableSeeder');
         

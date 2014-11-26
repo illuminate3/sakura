@@ -35,7 +35,7 @@
                     <td>{{$organization->address->address->address2}}</td>
                     <td>{{$organization->address->address->zipcode->City}}</td>
                     <td>{{$organization->address->address->zipcode->State}}</td>
-                    <td>{{$organization->address->address->zipcode->ZIPcode}}</td>
+                    <td>{{$organization->address->address->zipcode->ZIPCode}}</td>
                     <td>{{$organization->phone->local}}</td>
                     <td>{{$organization->phone->tollfree}}</td>
                     <td>{{$organization->phone->fax}}</td>    
