@@ -74,7 +74,7 @@
         $('#info').click(function () {
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
-                url: "{{URL::action('ClientsController@create')}}",
+                url: "{{URL::action('OrganizationController@create')}}",
                 type: "get",
                 success: function (data) {
                     document.getElementById('pane').innerHTML = data;
@@ -102,7 +102,7 @@
         $(document).on('click','#link-basic-info', function(){
             var selected = $('#current-entity').text();
             $.ajax({
-                url: "{{URL::action('ClientsController@basicInfo')}}",
+                url: "{{URL::action('OrganizationController@information')}}",
                 type: "GET",
                 data: 'selected='+selected,
                 success: function(data){
