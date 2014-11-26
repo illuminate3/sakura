@@ -6,7 +6,7 @@
 {{ Former::horizontal_open()
     ->id("frm-basic-info")
     ->method("POST")    
-    ->class("navbar-form navbar-left")   
+    ->class("panel-body")   
 }}
 
 

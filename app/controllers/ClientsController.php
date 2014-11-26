@@ -70,7 +70,7 @@ class ClientsController extends \BaseController {
         }
 
         //
-        $client = Client::find(4);
+        //$client = Client::find(4);
         return json_encode($id);
         //return View::make('clients.create', array('client' => $client));
     }
@@ -78,9 +78,14 @@ class ClientsController extends \BaseController {
     /**
      * Update the specified resource in storage.
      * PUT /clients/{id}
-     *
+     * BAD DONT USE
      * @param  int  $id
      * @return Response
+     * ITS BAD DON'T USE, UPDATE 
+     * THE FORM BY FUNCTION NAMED
+     * W/E --> WILL MAKE RESTFUL API 
+     * FOR THESE TYPE OF FUNCTIONS, LATER.
+     * NOT NOW. DON'T DO IT. 
      */
     public function update($id = null) {
         if ($id == null) {
