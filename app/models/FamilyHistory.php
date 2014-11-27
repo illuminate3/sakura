@@ -1,5 +1,5 @@
 <?php
-
+ 
 class FamilyHistory extends \Eloquent {
 
     protected $fillable=[

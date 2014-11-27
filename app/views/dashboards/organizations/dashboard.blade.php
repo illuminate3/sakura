@@ -7,7 +7,7 @@
     <li role='presentation' class='dashboard-li' id="information-li"><a href='#' id='info'>Information</a></li>
     <li role='presentation' class='dashboard-li' id="contacts-li"><a href='#' id='contacts'>Contacts</a></li>
     <li role='presentation' class='dashboard-li' id="reports-li"><a href='#' id='reports'>Reports<span class="badge">42</span></a></li>
-    <li role='presentation' class='dashboard-li' id='current-entity-li'><span  class="">Organization:</span><span id='current-entity'></span></li>
+    <li role='presentation' class='dashboard-li' id='current-entity-li'><span  class="">Organization:</span><span hidden='hidden' id='current-entity'></span><span id='current-entity-title'></span></li>
 
 </ul>
 <span id="busy-icon"></span>
@@ -64,6 +64,7 @@
         $('.dtable tbody').on( 'click', 'tr', function () {        
            //console.log($("td:first", this).text());
            $('#current-entity').html($("td:first", this).text());
+           $('#current-entity-title').html($("td:nth-child(2)", this).text());
         } );
          }
 
@@ -75,6 +76,7 @@
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
                 url: "{{URL::action('OrganizationController@create')}}",
+                data: 'selected='+$('#current-entity').text(),
                 type: "get",
                 success: function (data) {
                     document.getElementById('pane').innerHTML = data;
@@ -128,7 +130,7 @@
         });
         
         $(document).on('click', '#link-biography', function(){
-            var selected = $('#current-entity').text();
+            var selected = $('#current-entity-title').text();
             $.ajax({
                 url: "{{URL::action('ClientsController@biography')}}",
                 type: 'GET',

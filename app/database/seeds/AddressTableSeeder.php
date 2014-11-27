@@ -11,7 +11,7 @@ class AddressTableSeeder extends Seeder {
 
 		$faker = Faker::create();
 
-		foreach(range(1, 200) as $index) {
+		foreach(range(1, 484) as $index) {
                     Address::create([
 				'address_id'            =>      $index,
 				'address1'		=>	$faker->streetAddress,

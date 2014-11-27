@@ -2,11 +2,12 @@
 
 class OrganizationAddress extends \Eloquent {
 
-    protected $fillable = ['org_id', 'address_id', 'zip_code_id'];
+    protected $fillable = ['org_id', 'address_id'];
     
     protected $connection = 'fcs_clients';
     
-    protected $table='organization_addresses';
+    protected $table='address_organization';
+    
     
     protected $primaryKey = 'org_id';
     
@@ -18,8 +19,6 @@ class OrganizationAddress extends \Eloquent {
         return $this->hasOne('Address', 'address_id', 'address_id');
     }
     
-    protected function zipcode() {
-        return $this->hasOne('Zipcode', 'zip_code_id' ,'zip_code_id');
-    }
+    
 
 }

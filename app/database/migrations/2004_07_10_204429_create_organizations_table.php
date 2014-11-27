@@ -16,8 +16,8 @@ class CreateOrganizationsTable extends Migration {
             $table->integer('org_id')->unsigned();
             $table->string('title');
             $table->string('description');
-            $table->integer('address_id')->unsigned();
-            $table->integer('zip_code_id')->unsigned();
+            //$table->integer('address_id')->unsigned();
+           // $table->integer('zip_code_id')->unsigned();
            
             $table->timestamps();
             $table->softDeletes();

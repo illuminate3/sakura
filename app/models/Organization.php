@@ -10,15 +10,20 @@ class Organization extends \Eloquent {
     
     protected $primaryKey = 'org_id';
     
-    protected function address() {
-        return $this->hasOne('OrganizationAddress', 'org_id', 'org_id');
+   
+    public function address(){
+        return $this->hasOne('OrganizationAddress','org_id', 'org_id');
     }
-
-    protected function contact() {
+    
+    protected function zipcode() {
+        return $this->hasOne('Zipcode', 'zip_code_id' ,'zip_code_id');
+    }
+    
+    public function contact() {
         return $this->hasMany('Contacts', 'org_id', 'org_id');
     }
 
-    protected function phone() {
+    public function phone() {
         return $this->hasOne('OrganizationPhones', 'org_id', 'org_id');
     }
 

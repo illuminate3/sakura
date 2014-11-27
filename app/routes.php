@@ -77,6 +77,7 @@ Route::group(['before' => 'auth'], function() {
     Route::any('organizations/dashboard', 'OrganizationController@dashboard');
     Route::get('organizations/index', 'OrganizationController@index');
     Route::get('organizations/create', 'OrganizationController@create');
+    Route::get('organizations/information', 'OrganizationController@information');
     /*
      * Programs Routes
      */

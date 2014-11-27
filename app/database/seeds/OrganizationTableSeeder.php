@@ -15,7 +15,8 @@ class OrganizationTableSeeder extends Seeder {
                 'org_id' => $index,
                 'title' => $faker->company . ' ' . $faker->companySuffix,
                 'description' => $faker->realText(),
-                'zip_code_id' => $index
+                //'address_id'  => $faker->numberBetween(0,200),
+               // 'zip_code_id' => $index
             ]);
         }
         

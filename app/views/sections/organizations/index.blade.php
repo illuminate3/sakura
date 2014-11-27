@@ -15,6 +15,7 @@
         <table id='allOrganizations' class='display dtable'> 
             <thead>
                 <tr>
+                    <th hidden='hidden'></th>
                     <th>Organization Name</th>
                     <th>Street Address</th>
                     <th>Unit</th>
@@ -30,6 +31,8 @@
             <tbody>
                 @foreach($organizations as $organization)
                 <tr>
+                    <td hidden="hidden">{{$organization->org_id}}</td>
+                    
                     <td>{{$organization->title}}</td>
                     <td>{{$organization->address->address->address1}}</td>
                     <td>{{$organization->address->address->address2}}</td>

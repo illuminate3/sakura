@@ -18,6 +18,10 @@ class Program Extends \Eloquent {
         return $this->belongsToMany('Client');
     }
 
+    public function directors(){
+        return $this->hasOne('Hierarchy');
+    }
+    
     public function team() {
         return $this->hasOne('Team');
     }
