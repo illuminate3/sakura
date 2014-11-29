@@ -5,7 +5,7 @@
     <li role='presentation' class='dashboard-li active' id="home-li"><a href='#' id='home'>Home</a></li>
     <li role='presentation' class='dashboard-li' id="roster-li"><a href='#' id='roster'>Roster</a></li>
     <li role='presentation' class='dashboard-li' id="information-li"><a href='#' id='info'>Information</a></li>
-    <li role='presentation' class='dashboard-li' id="contacts-li"><a href='#' id='contacts'>Contacts</a></li>
+    <li role='presentation' class='dashboard-li' id="contactslist-li"><a href='#' id='contacts'>Contacts</a></li>
     <li role='presentation' class='dashboard-li' id="reports-li"><a href='#' id='reports'>Reports<span class="badge">42</span></a></li>
     <li role='presentation' class='dashboard-li' id='current-entity-li'><span  class="">Organization:</span><span hidden='hidden' id='current-entity'></span><span id='current-entity-title'></span></li>
 
@@ -71,7 +71,13 @@
             });
             return false;
         });
-
+        
+        $('.dtable tbody').on( 'click', 'tr', function () {        
+           alert('tbody on contacts clicked');
+           $('#current-contact').html($("td:first", this).text());
+           $('#current-contact-fullname').html($("td:nth-child(2)", this).text()+" "+$("td:nth-child(3)", this).text());
+        } );
+        
         $('#info').click(function () {
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
@@ -88,6 +94,22 @@
             return false;
         });
 
+        $('#info').click(function () {
+            document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
+            $.ajax({
+                url: "{{URL::action('OrganizationController@editContacts')}}",
+                data: 'selected='+$('#current-entity').text(),
+                type: "get",
+                success: function (data) {
+                    document.getElementById('pane').innerHTML = data;
+                
+                    document.getElementById('busy-icon').innerHTML = "";
+                }
+                    
+            });
+            return false;
+        });
+        
         $('ul li a').click(function () {
             $('ul li.active').removeClass('active');
             $(this).closest('li').addClass('active');
@@ -117,13 +139,22 @@
         });
         
         // MEDICATIONS SECTION 
-        $(document).on('click','#link-meds', function(){
+        $(document).on('click','#link-contacts', function(){
+            var selected = $('#current-entity').text();
             $.ajax({
-                url: "{{URL::action('ClientsController@medications')}}",
+                url: "{{URL::action('OrganizationController@getContacts')}}",
                 type: "GET",
+                data: 'selected='+selected,
                 success: function(data){
                     document.getElementById('busy-icon').innerHTML = "";
                     document.getElementById('info-panel').innerHTML = data;
+           var table = $('.dtable').dataTable({
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "sRowSelect": "single",
+                "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+        }
+        });
                 }
             });
             return false;
@@ -197,14 +228,15 @@
     
        
     
-    @section('panel-scripts')
-    
-@include('dashboards.organizations.js.basicinfojs')
-
-@stop
+ 
     
 </script>
+   @section('panel-scripts')
+    
+@include('dashboards.organizations.js.informationjs')
+@include('dashboards.organizations.js.editcontactsjs')
 
+@stop
 @stop
 
 

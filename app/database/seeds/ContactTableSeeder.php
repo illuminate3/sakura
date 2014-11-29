@@ -10,20 +10,24 @@ class ContactTableSeeder extends Seeder {
 		DB::table('fcs_clients.contacts')->truncate();
 
         $faker = Faker::create();
-
-        foreach (range(1, 200) as $index) {
-            
-                Contact::create([
+        $fakee = new Contact();
+        foreach (range(1, 20) as $index) {
+            foreach (range(1, 200) as $index){
+               $fakee = Contact::create([
                 
-                'org_id' => $faker->numberBetween(0,123),
+                'org_id' => $index,
                 'first'  => $faker->firstName,
                 'last'   => $faker->lastName,
-                'title'  => $faker->opera
+                'phone'   => $faker->phoneNumber,
+                'title'  => $faker->word
                 
                 
             ]);
-        
-        }
+                echo json_encode($fakee);
+                
+            }   
+            
+            }
 	}
 
 }

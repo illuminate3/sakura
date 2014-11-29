@@ -19,6 +19,7 @@ class CreateContactsTable extends Migration {
             $table->string('first', 45)->nullable();
             $table->string('last', 45)->nullable();
             $table->string('title', 45)->nullable();
+            $table->string('phone', 45)->nullable();
             
             $table->integer('org_id')->unsigned();
             

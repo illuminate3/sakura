@@ -50,6 +50,12 @@ Route::group(['before' => 'auth'], function() {
     Route::any('clients/storebasicinfo', 'ClientsController@storeBasicInfo');
 
     /**
+     * 
+     * Contacts Routes
+     */
+    Route::post('forms/contact/details', 'ContactController@getDetails');
+    
+    /**
      * Medication Routes
      */
     Route::any('search/medications', 'MedicationController@getMedicationDropdown');
@@ -78,6 +84,10 @@ Route::group(['before' => 'auth'], function() {
     Route::get('organizations/index', 'OrganizationController@index');
     Route::get('organizations/create', 'OrganizationController@create');
     Route::get('organizations/information', 'OrganizationController@information');
+    Route::any('organizations/dashborad/information/contacts', 'OrganizationController@getContacts');
+    Route::any('organizations/dashborad/information/contacts/edit', 'OrganizationController@editContacts');
+    Route::any('organizations/save', 'OrganizationController@storeInformation');
+    Route::any('organizations/save', 'OrganizationController@storeInformation');
     /*
      * Programs Routes
      */

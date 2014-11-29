@@ -20,7 +20,7 @@ class Organization extends \Eloquent {
     }
     
     public function contact() {
-        return $this->hasMany('Contacts', 'org_id', 'org_id');
+        return $this->hasMany('Contact', 'org_id', 'org_id');
     }
 
     public function phone() {

@@ -58,4 +58,24 @@ class OrganizationController extends \BaseController{
         
         
     }
+    public function storeInformation()
+    {
+        
+    }
+    
+    public function getContacts(){
+        $org_id = Input::get('selected');
+        //$org = Organization::find($org_id);
+        $contacts = Contact::where("org_id","=",$org_id)->get();
+        
+        
+        return View::make('panels.organizations.contacts')
+                ->with('contacts',$contacts);
+    }
+    
+    public function editContacts()
+    {
+        
+    }
+    
 }

@@ -11,13 +11,13 @@
  * pegas corporation
  * and affiliates
  */
-  function saveBasicInfo(){
-            alert("basicinfojs.blade.php");
+  function saveInformation(){
+            alert("informationjs.blade.php");
             //e.preventDefault();
-            var forminfo = $("#frm-basic-info").serialize();
+            var forminfo = $("#frm-information").serialize();
             alert(forminfo);
             var token = $("input[name=_token]").val();
-            var action = '{{ URL::action("ClientsController@storeBasicInfo")}}';
+            var action = '{{ URL::action("OrganizationController@storeInformation")}}';
             document.getElementById("busy-icon").innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
                 type: "post",
@@ -25,7 +25,7 @@
                 data: forminfo,
                 success: function (data) {
                     console.log(data);
-                    $("#frm-basic-info").trigger("reset");
+                    $("#frm-information").trigger("reset");
                     document.getElementById("busy-icon").innerHTML = "Save Complete.";
                 }
             }, "json");
@@ -33,7 +33,7 @@
         }
         
         
-            $('#link-basic-info').click(function(){
+            $('#link-information').click(function(){
             
             $('li.active').removeClass('active');
             $(this).closest('li').addClass('active');

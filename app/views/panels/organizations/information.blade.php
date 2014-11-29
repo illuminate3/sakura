@@ -112,7 +112,7 @@ Former::populate(array(
 </div>
 </div><div class="row"><br />
 <div class="col-lg-">
-<div class="btn btn-primary">Save</div>
+<div class="btn btn-primary" onclick="saveInformation();">Save</div>
 </div></div>
 {{ Former::close() }}
 </div>
