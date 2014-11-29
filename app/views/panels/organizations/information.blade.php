@@ -28,8 +28,8 @@ Former::populate(array(
 {{ Former::hidden("org_id")}}
 {{ Former::group('General Information:')}}
 <br/><div class="row">
-<div class="col-sm-12">
-    <div class="col-sm-4">
+<div class="col-lg-12">
+    <div class="col-sm-2">
         <label class='label label-primary' for='title'>Title:</label>
 {{ Former::text('title')
     ->class('form-control')
@@ -37,24 +37,27 @@ Former::populate(array(
 
 }}
     </div>
-    <div class="col-md-12">
+    <div class="col-lg-4 pull-left">
         <label class='label label-primary' for='description'>Description</label>
 {{ Former::textarea('description')
     ->class('form-control')
     ->placeholder('description')
 }}
     </div>
-</div>
     </div>
+    </div>
+
+
+
 <div class="row">
-<div class="col-sm-4">
+<div class="col-xs-2">
     <label class='label label-primary' for='address1'>Street Address</label>
 {{ Former::text('address1')
     ->class('form-control')
     ->placeholder('address1')
 }}
 </div>
-<div class="col-sm-2">
+<div class="col-xs-1">
     <label class='label label-primary' for='address2'>Building/Unit</label>
 {{ Former::text('address2')
     ->class('form-control')
@@ -111,7 +114,7 @@ Former::populate(array(
 </div>
 </div>
 </div><div class="row"><br />
-<div class="col-lg-">
+<div class="col-lg-1">
 <div class="btn btn-primary" onclick="saveInformation();">Save</div>
 </div></div>
 {{ Former::close() }}

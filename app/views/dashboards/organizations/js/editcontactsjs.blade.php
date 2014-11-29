@@ -1,6 +1,8 @@
 @section('panel-scripts')
 @parent
 <script>
+    
+    
 function getSelectedContact(){
      $('#contactstable').on( 'click', 'tr', function () {        
            var selected = $("td:first", this).text();
@@ -11,8 +13,7 @@ function getSelectedContact(){
                url: '{{URL::action("ContactController@getDetails")}}',
                data: 'selected='+selected,
                success: function(data){
-                   //console.log('huzzah');
-                   console.log(data);
+                
                    document.getElementById('contact-form').innerHTML = data;
                }
                

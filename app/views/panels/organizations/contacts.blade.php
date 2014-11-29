@@ -7,7 +7,8 @@
 </div>
 
 <div class="col-sm-5 col-sm-offset-1 pull-left">
-<table id='contactstable' class='dtable display' onclick='getSelectedContact();'>
+    
+    <table id='contactstable' class='dtable display' >
     <thead>
         <tr>
             <th hidden="hidden">id</th>
@@ -18,7 +19,7 @@
             
         </tr>
     </thead>
-    <tbody>
+    <tbody onclick='getSelectedContact();'>
         
         @foreach($contacts as $contact)
         <tr>
@@ -31,7 +32,7 @@
         @endforeach
     </tbody>
 </table>
-
+    
 </div>
 </div>
 @stop
