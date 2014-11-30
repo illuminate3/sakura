@@ -69,7 +69,7 @@ class OrganizationController extends \BaseController{
         $contacts = Contact::where("org_id","=",$org_id)->get();
         
         
-        return View::make('panels.organizations.contacts')
+        return View::make('panels.contacts.all')
                 ->with('contacts',$contacts);
     }
     

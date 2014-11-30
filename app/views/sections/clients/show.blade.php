@@ -11,9 +11,9 @@
 
 @parent
 <script>
-$(document).ready(function(){
-    $('#allClient').dataTable();
-});
+    $(document).ready(function() {
+        $('#allClient').dataTable();
+    });
 
 
 </script>
@@ -26,7 +26,7 @@ $(document).ready(function(){
 
 
 <div class="page-header">
-	<h4>All Clients</h4>
+    <h4>All Clients</h4>
 </div>
-	{{ var_dump($client) }}
+{{ var_dump($client) }}
 @stop

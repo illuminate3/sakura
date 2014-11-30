@@ -9,9 +9,9 @@
 
 <div class='container-fluid'>
     <h4>Organizations Roster</h4>
-    
+
     <div class='col-12 col-8'>
-    
+
         <table id='allOrganizations' class='display dtable'> 
             <thead>
                 <tr>
@@ -26,13 +26,13 @@
                     <th>Toll-Free</th>
                     <th>Fax</th>
                 </tr>
-                
+
             </thead>
             <tbody>
                 @foreach($organizations as $organization)
                 <tr>
                     <td hidden="hidden">{{$organization->org_id}}</td>
-                    
+
                     <td>{{$organization->title}}</td>
                     <td>{{$organization->address->address->address1}}</td>
                     <td>{{$organization->address->address->address2}}</td>
@@ -42,12 +42,12 @@
                     <td>{{$organization->phone->local}}</td>
                     <td>{{$organization->phone->tollfree}}</td>
                     <td>{{$organization->phone->fax}}</td>    
-                
+
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    
+
     </div>
 
 

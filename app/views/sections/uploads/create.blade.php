@@ -37,9 +37,9 @@ jQuery( document ).ready( function( $ ) {
 @section('scripts')
 @parent
 <script>
-    $("document").ready(function ($) {
+    $("document").ready(function($) {
 
-        $('#frm-add-program').on('submit', function (e) {
+        $('#frm-add-program').on('submit', function(e) {
 
             e.preventDefault();
 
@@ -48,21 +48,21 @@ jQuery( document ).ready( function( $ ) {
             var action = "{{ URL::action('DataimportController@upload')}}";
             //var formData = 'title=' + title + '&description=' + description;
             // we should do saving animation herre id='busy-icon'
-            document.getElementById('busy-icon').innerHTML="<img src='../../images/load-wings-small.gif'/>";
+            document.getElementById('busy-icon').innerHTML = "<img src='../../images/load-wings-small.gif'/>";
             if (title === "")
             {
                 document.getElementById('filename').focus();
-                document.getElementById('busy-icon').innerHTML="";
+                document.getElementById('busy-icon').innerHTML = "";
                 return false;
-            } 
+            }
             $.ajax({
                 type: "post",
                 url: action,
                 data: formData,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     $('#frm-add-program').trigger("reset");
-                    document.getElementById('busy-icon').innerHTML="Save Complete. Enter new Program.";
+                    document.getElementById('busy-icon').innerHTML = "Save Complete. Enter new Program.";
                 }
             }, 'json');
             return false;

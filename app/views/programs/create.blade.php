@@ -38,9 +38,9 @@
 
 @parent
 <script>
-    $("document").ready(function ($) {
+    $("document").ready(function($) {
 
-        $('#frm-add-program').on('submit', function (e) {
+        $('#frm-add-program').on('submit', function(e) {
 
             e.preventDefault();
 
@@ -66,7 +66,7 @@
                 type: "post",
                 url: action,
                 data: formData,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     $('#frm-add-program').trigger("reset");
                     document.getElementById('busy-icon').innerHTML = "Save Complete. Enter new Program.";

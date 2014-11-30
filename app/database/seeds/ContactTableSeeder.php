@@ -19,7 +19,9 @@ class ContactTableSeeder extends Seeder {
                 'first'  => $faker->firstName,
                 'last'   => $faker->lastName,
                 'phone'   => $faker->phoneNumber,
-                'title'  => $faker->word
+                'title'  => $faker->word,
+                'specialization'  => $faker->word,
+                'notes'  => $faker->text()
                 
                 
             ]);

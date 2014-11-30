@@ -13,21 +13,21 @@
 <div class='container'>
     <span id='busy-icon'></span>
     <div class='panel'>
-{{ Form::open(array('action' => 'NeedController@postNeed', 'method' => 'post', 'id' => 'frm-add-need', 'class'=>'navbar-form navbar-left'))}}
-<div class='input-group input-group-sm'>
-    
-    <span class='input-group-addon'>Title</span>
+        {{ Form::open(array('action' => 'NeedController@postNeed', 'method' => 'post', 'id' => 'frm-add-need', 'class'=>'navbar-form navbar-left'))}}
+        <div class='input-group input-group-sm'>
+
+            <span class='input-group-addon'>Title</span>
             {{ Form::text('title', '', array('class'=>'form-control form-sm', 'id' => 'title'))}}
         </div>
-<div class='input-group input-group-sm'>
-<span class= 'input-group-addon'>Description</span>
+        <div class='input-group input-group-sm'>
+            <span class= 'input-group-addon'>Description</span>
             {{ Form::text('description', '',array('class'=>'form-control form-sm', 'id'=>'description'))}}
-</div>
-    
+        </div>
 
 
-    <button class='form-control btn btn-default'>Save</button>
-</div>
+
+        <button class='form-control btn btn-default'>Save</button>
+    </div>
 </div>
 {{ Form::close() }}
 
@@ -38,9 +38,9 @@
 
 @parent
 <script>
-    $("document").ready(function ($) {
+    $("document").ready(function($) {
 
-        $('#frm-add-need').on('submit', function (e) {
+        $('#frm-add-need').on('submit', function(e) {
 
             e.preventDefault();
 
@@ -50,26 +50,26 @@
             var action = "{{ URL::action('NeedController@postNeed')}}";
             var formData = 'title=' + title + '&description=' + description;
             // we should do saving animation herre id='busy-icon'
-            document.getElementById('busy-icon').innerHTML="<img src='../images/load-wings-small.gif'/>";
+            document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             if (title === "")
             {
                 document.getElementById('title').focus();
-                document.getElementById('busy-icon').innerHTML="";
+                document.getElementById('busy-icon').innerHTML = "";
                 return false;
             } else
             if (description === "") {
                 document.getElementById('description').focus();
-                document.getElementById('busy-icon').innerHTML="";
+                document.getElementById('busy-icon').innerHTML = "";
                 return false;
             }
             $.ajax({
                 type: "post",
                 url: action,
                 data: formData,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     $('#frm-add-need').trigger("reset");
-                    document.getElementById('busy-icon').innerHTML="Save Complete. Enter new Need.";
+                    document.getElementById('busy-icon').innerHTML = "Save Complete. Enter new Need.";
                 }
             }, 'json');
             return false;

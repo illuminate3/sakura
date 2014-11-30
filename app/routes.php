@@ -85,7 +85,7 @@ Route::group(['before' => 'auth'], function() {
     Route::get('organizations/create', 'OrganizationController@create');
     Route::get('organizations/information', 'OrganizationController@information');
     Route::any('organizations/dashborad/information/contacts', 'OrganizationController@getContacts');
-    Route::any('organizations/dashborad/information/contacts/edit', 'OrganizationController@editContacts');
+    Route::any('organizations/dashboard/information/contacts/edit', 'OrganizationController@editContacts');
     Route::any('organizations/save', 'OrganizationController@storeInformation');
     Route::any('organizations/save', 'OrganizationController@storeInformation');
     /*

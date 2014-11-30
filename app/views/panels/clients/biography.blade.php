@@ -36,87 +36,87 @@ Former::populate(array(
 }}
 {{ Former::hidden('mtk')}}
 <div class='row'>
-<div class='col-xs-2'>
-{{ Former::text('mothers_name')
+    <div class='col-xs-2'>
+        {{ Former::text('mothers_name')
     ->class("form-control")
     ->label("mothers full name")
     
-}}
-</div>
-<div class='col-xs-2'>
-{{ Former::text('fathers_name')
+        }}
+    </div>
+    <div class='col-xs-2'>
+        {{ Former::text('fathers_name')
     ->class("form-control")
     ->label("fathers full name")
-}}
-</div>
-<div class='col-sm-3'>
-{{ Former::textarea('parental_history')
+        }}
+    </div>
+    <div class='col-sm-3'>
+        {{ Former::textarea('parental_history')
     ->class("form-control")
     ->label("Parental history")
-}}
-</div>
-<div class='col-sm-3'>
-{{ Former::textarea('other_guardians')
+        }}
+    </div>
+    <div class='col-sm-3'>
+        {{ Former::textarea('other_guardians')
     ->class("form-control")
     ->label("other guardians")
-}}
-</div>
+        }}
+    </div>
 </div>
 <div class='row'>
-<div class='col-sm-5'>
-{{ Former::textarea('male_siblings')
+    <div class='col-sm-5'>
+        {{ Former::textarea('male_siblings')
     ->class("form-control")
     ->label("male siblings")
-}}
-</div>
-<div class='col-sm-5'>
-{{ Former::textarea('female_siblings')
+        }}
+    </div>
+    <div class='col-sm-5'>
+        {{ Former::textarea('female_siblings')
     ->class("form-control")
     ->label("female siblings")
-}}
-</div>
-<div class='col-sm-3'>
-{{ Former::text('client_birth_order')
+        }}
+    </div>
+    <div class='col-sm-3'>
+        {{ Former::text('client_birth_order')
     ->class("form-control")
     ->label("Client birth order")
-}}
-</div>
+        }}
+    </div>
 </div>
 <div class='row'>
-<div class='col-sm-4'>
-{{ Former::textarea('developmental_milestone_history')
+    <div class='col-sm-4'>
+        {{ Former::textarea('developmental_milestone_history')
     ->class("form-control")
     ->label("developmental milestone history")
-}}
-</div>
+        }}
+    </div>
     <div class='col-sm-4'>
-{{ Former::textarea('developmental_notes')
+        {{ Former::textarea('developmental_notes')
     ->class("form-control")
     ->label("developmental notes")
-}}
+        }}
     </div>
     <div class='col-sm-4'>
-{{ Former::textarea('childhood_events')
+        {{ Former::textarea('childhood_events')
     ->class("form-control")
     ->label("childhood events")
-}}
+        }}
     </div>
     <div class='col-sm-4'>
-{{ Former::textarea('interpersonal_relationships')
+        {{ Former::textarea('interpersonal_relationships')
     ->class("form-control")
     ->label("interpersonal relationships")
-}}
+        }}
     </div>
     <div class='col-sm-4'>
-{{ Former::textarea('client_family_values')
+        {{ Former::textarea('client_family_values')
     ->class("form-control")
     ->label("client family values")
-}}</div>
+        }}</div>
     <div class='col-sm-4'>
-{{ Former::textarea('additional_information')
+        {{ Former::textarea('additional_information')
     ->class("form-control")
     ->label("additional information")
-}}</div>
+        }}</div>
 </div>
 {{Former::close()}}
 

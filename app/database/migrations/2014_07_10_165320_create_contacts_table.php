@@ -20,7 +20,7 @@ class CreateContactsTable extends Migration {
             $table->string('last', 45)->nullable();
             $table->string('title', 45)->nullable();
             $table->string('phone', 45)->nullable();
-            $table->string('speciality', 45)->nullable();
+            $table->string('specialization', 45)->nullable();
             $table->string('notes',45)->nullable();
             $table->integer('org_id')->unsigned();
             

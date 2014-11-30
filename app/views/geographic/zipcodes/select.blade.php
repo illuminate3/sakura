@@ -6,9 +6,9 @@
 {{Former::select('zipcodes')->options($zipcodes)}}
 {{Former::close()}}
 <div id='test'>
-    
-    
-    
+
+
+
 </div>
 @stop
 
@@ -17,15 +17,15 @@
 
 @parent
 <script>
-$('#cities').change(function(){
-    var zipcode = $('#cities').val();
-    $('#zipcodes').val(zipcode);
-});
+    $('#cities').change(function() {
+        var zipcode = $('#cities').val();
+        $('#zipcodes').val(zipcode);
+    });
 
-$('#zipcodes').change(function(){
-    var city = $('#zipcodes').val();
-    $('#cities').val(city);
-});
+    $('#zipcodes').change(function() {
+        var city = $('#zipcodes').val();
+        $('#cities').val(city);
+    });
 
 </script>
 @stop

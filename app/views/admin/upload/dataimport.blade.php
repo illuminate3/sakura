@@ -36,8 +36,8 @@
 {{ Form::submit('Upload File') }}
 {{Form::close()}}
 <div id="debug">
-    
-    
+
+
 </div>
 @stop
 @section('scripts')
@@ -45,16 +45,16 @@
 
 @parent
 <script type="text/javascript">
-    $(document).ready(function ($) {
+    $(document).ready(function($) {
         console.log('im ready');
-        $('#form').on('submit', function (e) {
+        $('#form').on('submit', function(e) {
             e.preventDefault();
             document.getElementById('debug').innerHTML = 'uploading data...';
             var form = $(this);
-            
+
             var formdata = false;
             console.log(new FormData(form[0]));
-            if(window.FormData){
+            if (window.FormData) {
                 formdata = new FormData(form[0]);
                 console.log(formdata);
             }
@@ -75,23 +75,23 @@
                 url: action,
                 data: formdata ? formdata : form.serialize(),
                 cache: false,
-                contentType : false,
-                processData : false,
-                success: function (data) {
+                contentType: false,
+                processData: false,
+                success: function(data) {
                     //console.log(data);
-                    document.getElementById('debug').innerHTML =  data;
+                    document.getElementById('debug').innerHTML = data;
                     //alert('done ' + data);
                     $('#upload_form').trigger('reset');
                     document.getElementById('busy-icon').innerHTML = "Upload Complete";
-                    
+
                 },
                 statusCode:
                         {
-                            500: function(data){
-                               document.getElementById('debug').innerHTML =  data;
+                            500: function(data) {
+                                document.getElementById('debug').innerHTML = data;
                             }
                         }
-                
+
 
             }, 'json');
 
