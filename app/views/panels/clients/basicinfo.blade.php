@@ -29,132 +29,175 @@
                     'contact_phone'         => $client->emergencyContact->phone_number,
             ))}}
 
+<dic class='col-sm-12'>
+    <div class="panel panel-default">
 
-<div class="panel panel-default">
+        <div class="panel-body">
 
-    <div class="panel-body">
-        <div class="input-group-sm">
-            {{ Former::hidden("mtk")}}
-            {{ Former::group("Name:")}}
-            <br />
+            <div class='row'>
+                {{ Former::hidden("mtk")}}
+                {{ Former::group()
+                        
+                }}
 
-            
-                {{ $firstname = Former::text("firstname")
+                <div class='col-sm-2'>
+                    <label for='firstname' class='label label-primary'>First Name</label>
+                    {{ $firstname = Former::text("firstname")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("First Name")                
                            
-                }}
-                {{ Former::text("middlename")
+                    }}
+                </div>
+                <div class='col-sm-2'>
+                    <label for='middlename' class='label label-primary'>Middle Name</label>
+                    {{ Former::text("middlename")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Middle Name")
-                }}
-
-            
-                {{ Former::text("lastname")
+                    }}
+                </div>
+                <div class='col-sm-2'>
+                    <label for='lastname' class='label label-primary'>Last Name</label>
+                    {{ Former::text("lastname")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Last Name")
-                }}
+                    }}
 
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-lg-8'>
+                    {{Former::group()}}
 
-            {{Former::group("address")}}
-            <br/>
-            
-                {{ Former::text("address1")
+                    <div class='col-sm-2'>
+                        <label for='address1' class='label label-primary'>Street Address</label>
+
+                        {{ Former::text("address1")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Street Address")
-                }}
-            
-                {{ Former::text("address2")    
+                        }}
+                    </div>
+                    <div class='col-sm-1'>
+                        <label for='address2' class='label label-primary'>Unit</label>
+
+                        {{ Former::text("address2")    
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Apt / Unit #")
-                }}
+                        }}
+                    </div>
+                    <div class='col-sm-2'>
+                        <label for='city' class='label label-primary'>City</label>
 
-            <br />
-            <br />
-            
-
-                {{ Former::select("city")
+                        {{ Former::select("city")
                             ->fromQuery(\Zipcode::all(),"City","zip_code_id")
                             ->class("form-control form-inline input-group-sm")
                            ->setAttribute("onchange","$('#zipcode').val($('#city').val());")
-                }}
+                        }}
+                    </div>
+                    <div class='col-sm-2'>
+                        <label for='state' class='label label-primary'>State</label>
 
-            
-                {{ Former::select("state")
+                        {{ Former::select("state")
                             ->fromQuery(\Zipcode::all(),"State","zip_code_id")
                             ->class("form-control form-inline input-group-sm")
                            ->setAttribute("onchange","$('#state').val($('#city').val());")
-                }}
+                        }}
+                    </div>
+                    <div class='col-sm-2'>
+                        <label for='zipcode' class='label label-primary'>Zipcode</label>
 
-            
-                {{ Former::select("zipcode")
+                        {{ Former::select("zipcode")
                            ->fromQuery(\Zipcode::all(), "ZIPCode", "zip_code_id")
                            ->class("form-control form-inline input-group-sm")
                            ->setAttribute("onchange","$('#city').val($('#zipcode').val());")
-                }}
-            
+                        }}
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-lg-12'>
+                    {{Former::group()}}
 
-            {{Former::group("Phone Number")}}
-            <br/>
 
-            
-                {{ Former::text("cell")
+                    <div class='col-sm-2'>
+                        <label for='cell' class='label label-primary'>Cell</label>
+
+                        {{ Former::text("cell")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Cell Phone")
-                }}
-            
-            
-                {{ Former::text("home")
+                        }}
+                    </div>
+                    <div class='col-sm-2'>
+                        <label for='home' class='label label-primary'>Home</label>
+
+                        {{ Former::text("home")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Home Phone")
-                }}
-                
-                {{ Former::text("work")
+                        }}
+                    </div>
+                    <div class='col-sm-2'>
+                        <label for='work' class='label label-primary'>Work</label>
+
+                        {{ Former::text("work")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Work Phone")
-                }}
+                        }}
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-12'>
+                    {{Former::group()}}
+                    <h4>Emergency Contact</h4>
+                    <div class='col-sm-2'>
+                        <label for='contact_full_name' class='label label-primary'>Full Name</label>
 
-            <br />
 
-            <h4>Emergency Contact</h4>
-
-            
-                {{ Former::text("contact_full_name")
+                        {{ Former::text("contact_full_name")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Full Name")
-                }}
-            
+                        }}
 
-            
-                {{ Former::text("relationship")
+                    </div>
+                    <div class='col-sm-2'>
+                        <label for='relationship' class='label label-primary'>Relationship</label>
+
+
+                        {{ Former::text("relationship")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Relationship")
-                }}
-            
+                        }}
+                    </div>
 
 
-            {{Former::group("Phone")}}
-            <br />
+                    {{Former::group()}}
 
-            
-                {{ Former::text("contact_phone")
+
+                    <div class='col-sm-2'>
+                        <label for='contact_phone' class='label label-primary'>Phone</label>
+
+
+                        {{ Former::text("contact_phone")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Primary Phone")
-                }}
-            
-            {{
+                        }}
+                    </div>
+
+                </div>
+                {{
                 Former::button("save", "Save")
                 ->setAttribute("id","save")
                 ->setAttribute('onclick','saveBasicInfo();')
                 
-            }}
+                }}
+
+            </div>
         </div>
     </div>
 
-</div>
 
 
-{{ Former::close() }}
+
+    {{ Former::close() }}
 
 
-@stop
+    @stop

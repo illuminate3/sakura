@@ -17,7 +17,7 @@
                 <div id='meds-pane-details' class="pull-right col-sm-6">
                     <div class='panel pull-right'>Item Details
                         <div class='pull-right'>
-
+{{-- comment: make this section datatable, and have searches pop to it --}}
                             <table class="table table-condensed" id="medication-table">
                                 <thead>
                                     <tr>
