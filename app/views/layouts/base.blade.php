@@ -110,8 +110,9 @@
         {{ HTML::script('js/jquery.dataTables.js')}}  
         {{ HTML::script('js/extensions/TableTools/js/dataTables.tableTools.js')}}  
         @show
-
+        <script>
         @section('panel-scripts')
         @show
+        </script>
     </body>
 </html>

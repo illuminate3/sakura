@@ -1,6 +1,6 @@
 @section('panel-scripts')
 @parent
-<script>
+
 
 
     function getSelectedContact() {
@@ -24,6 +24,6 @@
 
 
 
-</script>
+
 
 @stop

@@ -25,7 +25,7 @@ class ContactTableSeeder extends Seeder {
                 
                 
             ]);
-                echo json_encode($fakee);
+                //echo json_encode($fakee);
                 
             }   
             

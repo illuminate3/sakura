@@ -35,9 +35,9 @@ class UserTableSeeder extends Seeder {
 
 		$faker = Faker::create();
 
-		foreach(range(1, 20) as $index) {
+		foreach(range(5, 20) as $index) {
 			Sentry::getUserProvider()->create([
-				'staff_id'		=>	$faker->unique()->numberBetween($min = 2, $max = 400),
+				'staff_id'		=>	$faker->unique()->numberBetween($min = 3, $max = 400),
 				'username'		=>	$faker->unique()->userName,
 				'email'			=>	$faker->unique()->email,
 				'password'		=>	$faker->unique()->word,

@@ -25,7 +25,7 @@ Route::group(['before' => 'auth'], function() {
 
     Route::get('schedule', [
         'as' => 'schedule', function() {
-    return \View::make('schedule/schedule');
+    return \View::make('dashboards/schedule/dashboard');
 }]);
 
     Route::get('logout', [
