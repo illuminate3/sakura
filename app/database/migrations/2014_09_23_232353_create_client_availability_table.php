@@ -14,6 +14,7 @@ class CreateClientAvailabilityTable extends Migration {
 	{
 		//
             Schema::connection('fcs_clients')->create('client_availabilitys',function($table){
+                $table->increments('id');
                 $table->integer('mtk')->unsigned();
                 $table->integer('editor_id')->unsigned();
                 $table->integer('daystart')->unsigned();
@@ -21,6 +22,7 @@ class CreateClientAvailabilityTable extends Migration {
                 $table->time('timestart');
                 $table->time('timeend');
                 $table->tinyInteger('allday');    
+                $table->primaryKey('id');
             });
 	}
 

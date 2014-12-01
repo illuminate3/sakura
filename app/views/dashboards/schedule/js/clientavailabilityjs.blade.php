@@ -1,5 +1,5 @@
 <script>
-$('#calendar').fullCalendar({
+$('#clientavailability').fullCalendar({
 header:{
     left: 'prev,next,today',
     center: 'title',

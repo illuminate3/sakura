@@ -1,7 +1,7 @@
 @extends('layouts.module')
 
 @section('content')
-<h3>Staff Availability</h3>
+<h3>Client Availability</h3>
 
 @overwrite
 

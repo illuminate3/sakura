@@ -14,6 +14,7 @@ class CreateStaffAvailabilityTable extends Migration {
 	{
 		//
             Schema::connection('fcs_staff')->create('staff_availabilitys',function($table){
+                $table->increments('id');
                 $table->integer('staff_id')->unsigned();
                 $table->integer('editor_id')->unsigned();
                 $table->integer('daystart')->unsigned();
@@ -21,6 +22,7 @@ class CreateStaffAvailabilityTable extends Migration {
                 $table->time('timestart');
                 $table->time('timeend');
                 $table->tinyInteger('allday');
+                $table->primaryKey('id');
                 
                 
             });
