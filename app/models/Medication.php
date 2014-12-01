@@ -15,10 +15,7 @@ Class Medication Extends \Eloquent
     
     protected $primaryKey = 'product_id';
     
-    public static function search($term){
-        return \Medication::where('proprietaryname', 'LIKE', '%'.$term.'%')->take(15)->get();
-        
-    }
+    
     
     
     

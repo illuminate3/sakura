@@ -9,24 +9,28 @@
 
 //$medication = Input::get('medication');
 //echo $medication;
+$term = Input::get('term');
+$html = "";
+$medications = Medication::where("SUBSTANCENAME", "LIKE", "%MORPHINE%")->take(15)->get();
 
-$faker = \Faker::create();
+foreach($medications as $medication)
+{
+    
+   $html.="  <tr>";
 
-foreach (range(1, 200) as $index) {
-    foreach (range(1, 15) as $med) {
-        $med = ClientMedication::create([
-                    'mtk' => $index,
-                    'product_id' => Medication::find($faker->numberBetween(0, 258000)),
-                    'started' => $faker->date(),
-                    'stopped' => $faker->date(),
-                    'client_note' => $faker->words(),
-                    'referal_note' => $faker->words(),
-                    'staff_note' => $faker->words(),
-                    'additional_history' => $faker->words()
-        ]);
-        var_dump($med);
-    }
+$html.=                        "<td>".$medication->PRODUCTNDC."</td>";
+$html.=                        "<td>".$medication->PRODUCTTYPENAME."</td>";
+$html.=                        "<td>".$medication->PROPRIETARYNAME." ".$medication->PROPRIETARYNAMESUFFIX."</td>";
+$html.=                        "<td>".$medication->NONPROPRIETARYNAME."</td>";
+$html.=                        "<td>".$medication->DOSAGEFORMNAME."</td>";
+$html.=                        "<td>".$medication->SUBSTANCENAME."</td>";
+$html.=                        "<td>".$medication->ACTIVE_NUMERATOR_STRENGTH."</td>";
+$html.=                        "<td>".$medication->ACTIVE_INGRED_UNIT."</td>";
+$html.=                        "<td>".$medication->PHARM_CLASSES ."</td>";
+$html.=                        "<td>".$medication->DEASCHEDULE."</td>";
+
+$html.="</tr>";
+    
 }
-
 
 echo $html;

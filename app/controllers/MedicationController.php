@@ -19,7 +19,11 @@ Class MedicationController extends BaseController {
         $medication = Medication::find($id);
         return View::make('panels.medications.details', array('medication' => $medication));
     }
- 
+    
+    public static function search($term){
+        return \Medication::where('proprietaryname', 'LIKE', '%'.$term.'%')->take(15)->get();
+        
+    }
         
     /**
      * Function to retrieve all medications
@@ -48,7 +52,7 @@ Class MedicationController extends BaseController {
                 break;
         }
         $html = Former::select("medication")
-                ->fromQuery(Medication::search($term), $type, "PRODUCT_ID")
+                ->fromQuery($this->search($term), $type, "PRODUCT_ID")
                 ->class("form-control input-group-sm")
                 ->setAttribute("onchange", "$('#proprietary-name').val($(this).find('option:selected').text());")
                 ->label("Search Results: ");
@@ -56,10 +60,26 @@ Class MedicationController extends BaseController {
     }
             public function getMedicationTable(){
                 $term = Input::get('term');
-                $type = Input::get('type');
-                $results = Medication::where($type,'LIKE', "%".$term."%");    
-                $html="";
-                
+                $type = '';
+        switch (Input::get('type')) {
+            case 1:
+                $type = 'PROPRIETARYNAME';
+                break;
+            case 2:
+                $type = 'NONPROPRIETARYNAME';
+                break;
+            case 3:
+                $type = 'SUBSTANCENAME';
+                break;
+            default:
+                $type = 'PROPRIETARYNAME';
+                break;
+        }
+                //$term = Input::get('term');
+                $medications = Medication::where($type, "LIKE", "%".$term."%")->get();
+
+               
+                return View::make('components.medications.table', array('medications'=>$medications));
             }
             
 }

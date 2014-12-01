@@ -15,30 +15,9 @@
         <div class='panel panel-default'>
             <div class="panel-body">
                 <div id='meds-pane-details' class="pull-right col-sm-6">
-                    <div class='panel pull-right'>Item Details
-                        <div class='pull-right'>
-                            {{-- comment: make this section datatable, and have searches pop to it --}}
-                            <table class="table table-condensed" id="medication-table">
-                                <thead>
-                                    <tr>
-                                        <th>NDC:</th>
-                                        <th>Type</th>
-                                        <th>Market Name</th>
-                                        <th>Generic</th>
-                                        <th>DoseForm</th>
-                                        <th>Substance Name</th>
-                                        <th>Dose Strength(s) </th>
-                                        <th>Ingredient Unit(s) </th>
-                                        <th>Drug Class </th>
-                                        <th>Schedule</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="medication-details">
-
-
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class='panel pull-right' >Item Details
+                        <div class='col-sm-3' id='med-details'>
+                            </div>
                     </div></div>
 
                 <div class='col-sm-2 pull-left' >
@@ -68,15 +47,6 @@
                     }}
                 </div>
 
-                <div class="col-sm-4 pull-left" id="meds-dropdown">
-                    {{
-               Former::select("medication")
-                            ->class("form-control input-group-sm")
-                            ->placeholder('Search for a medication!')
-                            ->label("Search Results")               
-                    }}
-                </div> 
-
             </div>
         </div>
         {{ Former::close()}}
@@ -98,24 +68,9 @@
 
                     </tr>
                 </thead>
-                <tbody onclick='getSearchResults();'>
+                <tbody id='search-results-table' onclick='getSearchResults();'>
 
-                    @foreach($medications as $medication)
-                    <tr>
 
-                        <td>{{$medication->PRODUCTNDC}}</td>
-                        <td>{{$medication->PRODUCTTYPENAME}}</td>
-                        <td>{{$medication->PROPRIETARYNAME." ".$medication->PROPRIETARYNAMESUFFIX}}</td>
-                        <td>{{$medication->NONPROPRIETARYNAME}}</td>
-                        <td>{{$medication->DOSAGEFORMNAME}}</td>
-                        <td>{{$medication->SUBSTANCENAME}}</td>
-                        <td>{{$medication->ACTIVE_NUMERATOR_STRENGTH}}</td>
-                        <td>{{$medication->ACTIVE_INGRED_UNIT}}</td>
-                        <td>{{$medication->PHARM_CLASSES }}</td>
-                        <td>{{$medication->DEASCHEDULE}}</td>
-
-                    </tr>
-                    @endforeach
                 </tbody>
             </table>
 
@@ -142,17 +97,13 @@
                 </tr>
             </thead>
             <tbody id="client-medication-table">
-
-
+                
+                    
+                
             </tbody>
         </table>
     </div>
-    <div class='col-sm-2 '>
-        <select id='client-medication-select'>
-            {{-- ClientMedicationController::getClientMedications() --}}
-        </select>
-
-    </div>
+    
 
 </div>
 

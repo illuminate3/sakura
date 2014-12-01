@@ -59,6 +59,7 @@ Route::group(['before' => 'auth'], function() {
      * Medication Routes
      */
     Route::any('search/medications', 'MedicationController@getMedicationDropdown');
+    Route::any('search/medications', 'MedicationController@getMedicationTable');
     Route::any('medications/details', 'MedicationController@getDetails');
     /*
      * // NEEDS ROUTES
