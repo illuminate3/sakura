@@ -117,7 +117,7 @@
             success: function(data) {
             document.getElementById('busy-icon').innerHTML = "";
             document.getElementById('info-panel').innerHTML = data;
-                    //if (med_search_table === null){
+            if (med_search_table === null){
             med_search_table = $('.dtable').dataTable({
             "dom": 'T<"clear">lfrtip',
                     "tableTools": {
@@ -125,8 +125,8 @@
                             "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
                     }
             });
-            //}
-            //if (client_med_table === null){
+            }
+            if (client_med_table === null){
             client_med_table = $('.dtable').dataTable({
             "dom": 'T<"clear">lfrtip',
                     "tableTools": {
@@ -134,7 +134,7 @@
                             "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
                     }
             });
-            //}
+            }
         }
     });
             return false;
@@ -152,8 +152,9 @@
             });
             return false;
     });
-            $(document).on('change', '#meds-search', function() {
-    var term = $('#meds-search').val();
+    
+    $(document).on('change', '#meds-search', function() {
+            var term = $('#meds-search').val();
             var type = $('#field-select-medication').val();
             if (term.length > 3) {
     $.ajax({

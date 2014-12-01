@@ -12,6 +12,7 @@ class CreateClientAvailabilityTable extends Migration {
 	 */
 	public function up()
 	{
+            Schema::connection('fcs_clients')->dropIfExists('client_availabilitys');
 		//
             Schema::connection('fcs_clients')->create('client_availabilitys',function($table){
                 $table->increments('id');
@@ -22,7 +23,7 @@ class CreateClientAvailabilityTable extends Migration {
                 $table->time('timestart');
                 $table->time('timeend');
                 $table->tinyInteger('allday');    
-                $table->primaryKey('id');
+             
             });
 	}
 

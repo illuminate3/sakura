@@ -12,6 +12,7 @@ class CreateStaffAvailabilityTable extends Migration {
 	 */
 	public function up()
 	{
+            Schema::connection('fcs_staff')->dropIfExists('staff_availabilitys');
 		//
             Schema::connection('fcs_staff')->create('staff_availabilitys',function($table){
                 $table->increments('id');
@@ -22,7 +23,7 @@ class CreateStaffAvailabilityTable extends Migration {
                 $table->time('timestart');
                 $table->time('timeend');
                 $table->tinyInteger('allday');
-                $table->primaryKey('id');
+              
                 
                 
             });
