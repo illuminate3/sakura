@@ -117,16 +117,16 @@
             success: function(data) {
             document.getElementById('busy-icon').innerHTML = "";
             document.getElementById('info-panel').innerHTML = data;
-            if (med_search_table === null){
-            med_search_table = $('.dtable').dataTable({
-            "dom": 'T<"clear">lfrtip',
-                    "tableTools": {
-                    "sRowSelect": "single",
-                            "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
-                    }
-            });
-            }
-            if (client_med_table === null){
+            //if (med_search_table === null){
+           // med_search_table = $('.dtable').dataTable({
+           // "dom": 'T<"clear">lfrtip',
+           //         "tableTools": {
+           //         "sRowSelect": "single",
+           //                 "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+           //         }
+           // });
+            //}
+            /*if (client_med_table === null){
             client_med_table = $('.dtable').dataTable({
             "dom": 'T<"clear">lfrtip',
                     "tableTools": {
@@ -134,7 +134,7 @@
                             "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
                     }
             });
-            }
+            }*/
         }
     });
             return false;
@@ -162,22 +162,27 @@
             data: 'term=' + term + '&type=' + type,
             type: "GET",
             success: function(data) {
-            document.getElementById('search-results-table').innerHTML = data;
-                    if (med_search_table === null){
-            med_search_table = $('.dtable').dataTable({
-            "dom": 'T<"clear">lfrtip',
+            //document.getElementById('search-window').innerHTML = "";
+            document.getElementById('search-window').innerHTML = data;
+           // med_search_table = null;
+            med_search_table = $('#searchtable').dataTable({
+                    paging      : false,
+                    scrollY     : "200px",
+                    "dom"       : 'T<"clear">lfrtip',
                     "tableTools": {
                     "sRowSelect": "single",
-                            "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+                     "sSwfPath" : "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
                     }
             });
-            }
+           
+           
             }
     });
     }
     
     });
-            $(document).on('change', '#meds-dropdown', function() {
+    
+    $(document).on('change', '#meds-dropdown', function() {
 
     $.ajax({
     url: "{{URL::action('MedicationController@getDetails')}}",
@@ -189,20 +194,22 @@
     });
             return false;
     });
-            $(document).on('click', '#add-medication', function(event) {
-
+    
+    
+    $(document).on('click', '#add-medication', function(event) {
+        alert('adding medication');
     event.preventDefault();
     });
-            $(document).on('ready', '#client-medication-select', function() {
+    $(document).on('ready', '#client-medication-select', function() {
 
     alert('empty select box thing loaded!!!!! ALERT THE CITIZENS!!!!');
     });
     });
-            @section('panel-scripts')
+    @section('panel-scripts')
 
-            @include('dashboards.clients.js.basicinfojs')
+        @include('dashboards.clients.js.basicinfojs')
 
-            @stop
+    @stop
 
 </script>
 

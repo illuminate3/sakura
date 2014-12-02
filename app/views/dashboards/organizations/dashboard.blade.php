@@ -72,7 +72,7 @@
         });
 
         $('#info').click(function () {
-            alert('load create');
+            //alert('load create');
             document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
                 url: "{{URL::action('OrganizationController@create')}}",

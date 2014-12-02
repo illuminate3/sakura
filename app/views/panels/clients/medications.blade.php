@@ -50,36 +50,8 @@
             </div>
         </div>
         {{ Former::close()}}
-        <div class="col-sm-4 col-xs-offset-1">
-
-            <table id='searchtable' class='dtable display' >
-                <thead>
-                    <tr>
-                        <th>NDC:</th>
-                        <th>Type</th>
-                        <th>Market Name</th>
-                        <th>Generic</th>
-                        <th>DoseForm</th>
-                        <th>Substance Name</th>
-                        <th>Dose Strength(s) </th>
-                        <th>Ingredient Unit(s) </th>
-                        <th>Drug Class </th>
-                        <th>Schedule</th>
-
-                    </tr>
-                </thead>
-                <tbody id='search-results-table' onclick='//getSearchResults();'>
-
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-    <button id="add-medication" class=" btn btn-default btn-primary">Add Medication</button>
+        <div class="col-sm-8" id='search-window'>
 
 </div>
-
-
 
 @overwrite
