@@ -91,7 +91,7 @@
             $(this).closest('li').addClass('active');
     });
             $(document).on('click', '.panel-label', function() {
-    document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
+            document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $('.panel-label').removeClass('active');
             $(this).closest('li').addClass('active');
             return false;
@@ -153,12 +153,12 @@
             return false;
     });
     
-    $(document).on('change', '#meds-search', function() {
+    $(document).on('keyup', '#meds-search', function() {
             var term = $('#meds-search').val();
             var type = $('#field-select-medication').val();
             if (term.length > 3) {
-    $.ajax({
-    url: "{{URL::action('MedicationController@getMedicationTable')}}",
+            $.ajax({
+            url: "{{URL::action('MedicationController@getMedicationTable')}}",
             data: 'term=' + term + '&type=' + type,
             type: "GET",
             success: function(data) {
@@ -175,7 +175,7 @@
             }
     });
     }
-    return false;
+    
     });
             $(document).on('change', '#meds-dropdown', function() {
 

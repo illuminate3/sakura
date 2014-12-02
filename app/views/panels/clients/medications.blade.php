@@ -68,7 +68,7 @@
 
                     </tr>
                 </thead>
-                <tbody id='search-results-table' onclick='getSearchResults();'>
+                <tbody id='search-results-table' onclick='//getSearchResults();'>
 
 
                 </tbody>
@@ -79,33 +79,7 @@
     <button id="add-medication" class=" btn btn-default btn-primary">Add Medication</button>
 
 </div>
-<div class ="row">
-    <div class='col-sm-4 pull-left'>
-        <table class="table table-condensed" id="medication-table">
-            <thead>
-                <tr>
-                    <th>NDC:</th>
-                    <th>Type</th>
-                    <th>Market Name</th>
-                    <th>Generic</th>
-                    <th>DoseForm</th>
-                    <th>Substance Name</th>
-                    <th>Dose Strength(s) </th>
-                    <th>Ingredient Unit(s) </th>
-                    <th>Drug Class </th>
-                    <th>Schedule</th>
-                </tr>
-            </thead>
-            <tbody id="client-medication-table">
-                
-                    
-                
-            </tbody>
-        </table>
-    </div>
-    
 
-</div>
 
-</div>
+
 @overwrite
