@@ -210,10 +210,10 @@ class ClientsController extends \BaseController {
      * @return type
      */
     public function medications() {
-        $mtk = Input::get('mtk');
+        $mtk = Input::get('selected');
         $clientMedications = ClientMedication::where('mtk','=',$mtk);
         return View::make('panels.clients.medications')
-                ->with('medications',$clientMedications);
+                ->with('clientMedications',$clientMedications);
     }
     
     /**

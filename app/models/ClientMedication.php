@@ -25,7 +25,7 @@ class ClientMedication Extends Eloquent
     
     public function medication()
     {
-        return $this->hasOne('Medication','product_id','product_id');
+        return $this->hasOne('Medication','productndc','productndc');
     }
     
     public function referer(){
@@ -33,5 +33,12 @@ class ClientMedication Extends Eloquent
         return $this->hasOne('Referer');
         
     }
+    
+    public function staff()
+    {
+        return $this->hasOne('Staff', 'staff_id', 'staff_id');
+    }
+    
+    
     
 }

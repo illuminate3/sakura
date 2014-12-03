@@ -17,7 +17,8 @@ Class MedicationController extends BaseController {
     public function getDetails($id = null) {
         if($id==null){$id = Input::get('medication');}
         $medication = Medication::find($id);
-        return View::make('panels.medications.details', array('medication' => $medication));
+        $medications = Medication::where('PRODUCTNDC', "LIKE", $id)->get();
+        return View::make('panels.medications.details', array('medications' => $medications));
     }
     
     public static function search($term){

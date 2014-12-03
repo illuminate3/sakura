@@ -15,6 +15,8 @@ Class Medication Extends \Eloquent
     
     protected $primaryKey = 'product_id';
     
+    protected $fillable = ['PRODUCTID', 'PRODUCTNDC'];
+    
     
     
     

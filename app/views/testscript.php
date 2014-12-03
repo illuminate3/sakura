@@ -9,28 +9,14 @@
 
 //$medication = Input::get('medication');
 //echo $medication;
-$term = Input::get('term');
-$html = "";
-$medications = Medication::where("SUBSTANCENAME", "LIKE", "%MORPHINE%")->take(15)->get();
 
-foreach($medications as $medication)
-{
-    
-   $html.="  <tr>";
 
-$html.=                        "<td>".$medication->PRODUCTNDC."</td>";
-$html.=                        "<td>".$medication->PRODUCTTYPENAME."</td>";
-$html.=                        "<td>".$medication->PROPRIETARYNAME." ".$medication->PROPRIETARYNAMESUFFIX."</td>";
-$html.=                        "<td>".$medication->NONPROPRIETARYNAME."</td>";
-$html.=                        "<td>".$medication->DOSAGEFORMNAME."</td>";
-$html.=                        "<td>".$medication->SUBSTANCENAME."</td>";
-$html.=                        "<td>".$medication->ACTIVE_NUMERATOR_STRENGTH."</td>";
-$html.=                        "<td>".$medication->ACTIVE_INGRED_UNIT."</td>";
-$html.=                        "<td>".$medication->PHARM_CLASSES ."</td>";
-$html.=                        "<td>".$medication->DEASCHEDULE."</td>";
+$client = Client::find(5);
 
-$html.="</tr>";
-    
-}
+echo $client->mtk;
 
-echo $html;
+
+$med = ClientMedication::find(5);
+
+
+$client->medications()->save($med);

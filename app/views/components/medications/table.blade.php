@@ -17,8 +17,8 @@
 @foreach($medications as $medication)
 <tr>
 <td>{{$medication->PRODUCTNDC}}</td>
-<td>{{$medication->PROPRIETARYNAME ." ". $medication->PROPRIETARYNAMESUFFIX}}</td>
-<td>{{$medication->NONPROPRIETARYNAME}}</td>
+<td>{{substr($medication->PROPRIETARYNAME ." ". $medication->PROPRIETARYNAMESUFFIX,0,32)}}</td>
+<td>{{substr($medication->NONPROPRIETARYNAME,0,32)}}</td>
 <td>{{$medication->DOSAGEFORMNAME}}</td>
 <td>{{$medication->ACTIVE_NUMERATOR_STRENGTH."".$medication->ACTIVE_INGRED_UNIT}}</td>
 </tr>

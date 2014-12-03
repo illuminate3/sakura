@@ -92,7 +92,7 @@ class Client extends Eloquent {
         return $this->hasMany('MedicalConcerns', 'mtk', 'mtk');
     }
 
-    public function medicatons() {
+    public function medications() {
         return $this->hasMany('ClientMedication', 'mtk', 'mtk');
     }
 

@@ -14,11 +14,13 @@
     <div class="row">
         <div class='panel panel-default'>
             <div class="panel-body">
-                <div id='meds-pane-details' class="pull-right col-sm-6">
-                    <div class='panel pull-right' >Item Details
-                        <div class='col-sm-3' id='med-details'>
-                            </div>
-                    </div></div>
+
+                <div id='meds-pane-details' class="well pull-right col-sm-4">
+                    <span class='label label-primary'> Item Details</span>    
+
+                    <div class='' id='med-details' style='max-height: 150px; min-height: 150px; overflow:scroll;'>
+                    </div>
+                </div>
 
                 <div class='col-sm-2 pull-left' >
 
@@ -47,11 +49,21 @@
                     }}
                 </div>
 
+
+
+                {{ Former::close()}}
+                <div class="col-sm-8" id='search-window'>
+
+                </div>
             </div>
         </div>
-        {{ Former::close()}}
-        <div class="col-sm-8" id='search-window'>
-
-</div>
-
-@overwrite
+        
+        <div class='panel panel-default'>
+            <div class='panel-body'>
+                <div id='client-medications-pane'>
+                   
+                    {{----}}
+                </div>
+            </div>
+        </div>
+        @overwrite

@@ -16,7 +16,7 @@ class CreateClientMedsTable extends Migration {
                 Schema::connection('fcs_clients')->create('client_meds', function($table){
                     $table->increments('id');
                     $table->integer('mtk')->unsigned();
-                    $table->integer('product_id')->unsigned();
+                    $table->integer('productndc')->unsigned();
                     $table->date('started');
                     $table->date('stopped');
                     $table->integer('org_id')->unsigned();

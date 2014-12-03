@@ -42,7 +42,11 @@
      "sRowSelect": "single",
      "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
      }});*/
-
+    $(document).submit(function(event){
+        
+        event.preventDefault();
+        
+    });
     $('#roster').click(function() {
     document.getElementById('busy-icon').innerHTML = "<img src='../images/load-wings-small.gif'/>";
             $.ajax({
@@ -112,8 +116,9 @@
             // MEDICATIONS SECTION 
             $(document).on('click', '#link-meds', function() {
     $.ajax({
-    url: "{{URL::action('ClientsController@medications')}}",
+            url: "{{URL::action('ClientsController@medications')}}",
             type: "GET",
+            data: "selected="+$('#current-entity').text(),
             success: function(data) {
             document.getElementById('busy-icon').innerHTML = "";
             document.getElementById('info-panel').innerHTML = data;
@@ -167,7 +172,7 @@
            // med_search_table = null;
             med_search_table = $('#searchtable').dataTable({
                     paging      : false,
-                    scrollY     : "200px",
+                    scrollY     : "100px",
                     "dom"       : 'T<"clear">lfrtip',
                     "tableTools": {
                     "sRowSelect": "single",
@@ -182,14 +187,14 @@
     
     });
     
-    $(document).on('change', '#meds-dropdown', function() {
+    $(document).on('click', '#searchtable tr', function() {
 
     $.ajax({
     url: "{{URL::action('MedicationController@getDetails')}}",
-            data: 'medication=' + $('#medication').find('option:selected').attr('value'),
+            data: 'medication=' + $("td:first", this).text(),
             type: "GET",
             success: function(data) {
-            document.getElementById('medication-details').innerHTML = data;
+            document.getElementById('med-details').innerHTML = data;
             }
     });
             return false;

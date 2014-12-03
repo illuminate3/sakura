@@ -1,15 +1,19 @@
+@foreach($medications as $medication )
+                    <ul>
 
+                        <li>NDC: {{$medication->PRODUCTNDC}}</li>
+                        <li>Proprietary Name: {{$medication->PROPRIETARYNAME." ".$medication->PROPRIETARYNAMESUFFIX}}</li>
+                        <li>{{$medication->NONPROPRIETARYNAME}}</li>
+                        <li>{{$medication->DOSAGEFORMNAME}}</li>
+                        <li>{{$medication->SUBSTANCENAME}}</li>
+                        <li>{{$medication->ACTIVE_NUMERATOR_STRENGTH ." ". $medication->ACTIVE_INGRED_UNIT }} </li>
+                        <li>{{$medication->PHARM_CLASSES }}</li>
+                        <li>{{$medication->DEASCHEDULE}}</li>
 
-                    <tr>
+                    </ul>
 
-                        <td>{{$medication->PRODUCTNDC}}</td>
-                        <td>{{$medication->PROPRIETARYNAME." ".$medication->PROPRIETARYNAMESUFFIX}}</td>
-                        <td>{{$medication->NONPROPRIETARYNAME}}</td>
-                        <td>{{$medication->DOSAGEFORMNAME}}</td>
-                        <td>{{$medication->SUBSTANCENAME}}</td>
-                        <td>{{$medication->ACTIVE_NUMERATOR_STRENGTH ." ". $medication->ACTIVE_INGRED_UNIT }} </td>
-                        <td>{{$medication->PHARM_CLASSES }}</td>
-                        <td>{{$medication->DEASCHEDULE}}</td>
-
-                    </tr>
-
+@endforeach    
+                    
+                    
+                    
+                    
