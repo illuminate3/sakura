@@ -21,14 +21,22 @@ class ClientMedicationController extends BaseController{
         $html = '';
         foreach($clientMeds as $clientMed)
         {
-            $med = Medication::find($clientMed->product_id);
-            $html.="<option value='".$clientMed->product_id."'>".$med->substance_name."</option>";
+            $med = Medication::find($clientMed->productndc);
+            $html.="<option value='".$clientMed->productndc."'>".$med->substance_name."</option>";
             
             
         }
         return $html;
     }
             
-    
+    public function getClientMedication($id = null)
+    {
+        if($id==null)
+        {
+            $id = Input::get('selected');
+        }
+        $clientMed = ClientMedication::find($id);
+        return json_encode($clientMed);
+    }
     
 }

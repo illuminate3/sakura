@@ -57,13 +57,35 @@
                 </div>
             </div>
         </div>
-        
-        <div class='panel panel-default'>
-            <div class='panel-body'>
+    </div>
+        <div class='panel-default' >
+            <div class='panel-body col-sm-6'>
                 <div id='client-medications-pane'>
-                   
-                    {{----}}
+                    <table class='dtable display compact nowrap' id='client-meds-table'>
+                        <thead>
+                        <th>Product NDC</th>
+                        <th>Med name</th>
+                        <th>Generic</th>
+                        <th>Substance</th>
+                        
+                    </thead>
+                    @foreach($clientMedications as $medication )
+                    <tr>
+                    <td>{{$medication->productndc}}</td>
+                    <td>{{ Medication::find($medication->productndc)->PROPRIETARYNAME}}</td>
+                    <td>{{ Medication::find($medication->productndc)->NONPROPRIETARYNAME}}</td>
+                    <td>{{ Medication::find($medication->productndc)->SUBSTANCENAME}}</td>
+                    </tr>
+                    @endforeach  
+                    </table>
                 </div>
+                
             </div>
+                    <div class='panel-body'>
+                       
+                           @include('forms.medication.clientMedication')
+                     
+                    
+                    </div>
         </div>
         @overwrite

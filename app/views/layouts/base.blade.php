@@ -12,6 +12,9 @@
 
         {{-- HTML::style('css/layout.css') --}}
         {{ HTML::style('css/bootstrap.min.css') }}
+        {{ HTML::style('js/jquery-ui/jquery-ui.min.css') }}
+        {{ HTML::style('js/jquery-ui/jquery-ui.structure.min.css') }}
+        {{ HTML::style('js/jquery-ui/jquery-ui.theme.min.css') }}
         {{ HTML::style('css/jquery.dataTables.css') }}
         {{ HTML::style('css/jquery.dataTables_themeroller.css') }}
         {{ HTML::style('js/extensions/TableTools/css/dataTables.tableTools.min.css')}}
@@ -106,6 +109,7 @@
 
         @section('scripts')
         {{ HTML::script('js/jquery-2.1.1.min.js') }}
+        {{ HTML::script('js/jquery-ui/jquery-ui.min.js') }}
         {{ HTML::script('js/bootstrap.min.js') }}
         {{ HTML::script('js/jquery.dataTables.js')}}  
         {{ HTML::script('js/extensions/TableTools/js/dataTables.tableTools.js')}}  

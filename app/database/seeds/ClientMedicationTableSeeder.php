@@ -9,13 +9,18 @@ class ClientMedicationTableSeeder extends Seeder {
         DB::table('fcs_clients.client_meds')->truncate();
 
         $faker = Faker::create();
-
+            $medication = "";
         foreach (range(1, 200) as $index) {
             $client = Client::find($index);
             foreach (range(1, 15) as $med) {
+                $medications  = Medication::where('product_id','=', rand(0,$med*$index))->take(1)->get();
+                foreach($medications as $med)
+                {
+                    $medication = $med->PRODUCTNDC;
+                }
             $model = ClientMedication::create(array(
                 'mtk'                => $index,
-                'productndc'         => Medication::find(rand($med,$med+$index))->PRODUCTNDC,
+                'productndc'         => $medication,
                 'started'            => $faker->date,
                 'stopped'            => $faker->date,
                 'client_note'        => $faker->text,
@@ -34,3 +39,4 @@ class ClientMedicationTableSeeder extends Seeder {
     }
 
 }
+

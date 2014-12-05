@@ -25,7 +25,7 @@
 @parent
 <script>
     var med_search_table = null;
-    var client_med_table = null;
+    var client_meds_table = null;
     $(function() {
 
 
@@ -122,6 +122,8 @@
             success: function(data) {
             document.getElementById('busy-icon').innerHTML = "";
             document.getElementById('info-panel').innerHTML = data;
+            $("#start-date").datepicker();
+            $("#end-date").datepicker();
             //if (med_search_table === null){
            // med_search_table = $('.dtable').dataTable({
            // "dom": 'T<"clear">lfrtip',
@@ -131,15 +133,18 @@
            //         }
            // });
             //}
-            /*if (client_med_table === null){
-            client_med_table = $('.dtable').dataTable({
-            "dom": 'T<"clear">lfrtip',
+//            if (client_meds_table === null){
+                //alert('making data table?');
+            client_meds_table = $('#client-meds-table').dataTable({
+                    paging      : false,
+                    scrollY     : "100px",
+                    "dom"       : 'T<"clear">lfrtip',
                     "tableTools": {
                     "sRowSelect": "single",
-                            "sSwfPath": "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+                     "sSwfPath" : "../js/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
                     }
             });
-            }*/
+           // }
         }
     });
             return false;
@@ -161,7 +166,7 @@
     $(document).on('keyup', '#meds-search', function() {
             var term = $('#meds-search').val();
             var type = $('#field-select-medication').val();
-            if (term.length > 3) {
+            if (term.length >= 3) {
             $.ajax({
             url: "{{URL::action('MedicationController@getMedicationTable')}}",
             data: 'term=' + term + '&type=' + type,
@@ -200,19 +205,31 @@
             return false;
     });
     
+    $(document).on('click', '#client-meds-table tr', function(){
+        alert($("td:first", this).text());
+        $.ajax({
+            url: "{{URL::action('ClientMedicationController@getClientMedication')}}",
+            data: 'medication=' + $("td:first", this).text(),
+            type: "GET",
+            success:function(data){
+                alert(data);
+            }
+        });
+        
+    });
     
     $(document).on('click', '#add-medication', function(event) {
         alert('adding medication');
     event.preventDefault();
     });
-    $(document).on('ready', '#client-medication-select', function() {
+    $(document).on('click', '#client-medication-select', function() {
 
     alert('empty select box thing loaded!!!!! ALERT THE CITIZENS!!!!');
     });
     });
     @section('panel-scripts')
 
-        @include('dashboards.clients.js.basicinfojs')
+        @include('dashboards.clients.js.basicinfojs' )
 
     @stop
 

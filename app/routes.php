@@ -50,6 +50,12 @@ Route::group(['before' => 'auth'], function() {
     Route::any('clients/storebasicinfo', 'ClientsController@storeBasicInfo');
 
     /**
+     * ClientMedication Routes
+     * 
+     */
+    Route::any('clientmedication/medication', 'ClientMedicationController@getClientMedication');
+    
+    /**
      * 
      * Contacts Routes
      */
