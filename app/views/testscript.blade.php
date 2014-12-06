@@ -44,4 +44,9 @@ $med = $client->medication;
     {{ ucwords(strtolower($medication->medication->SUBSTANCENAME))}}    <br />
 @endif
     @endforeach
+    
+    <br />
+    
+    <h3>Client Providers </h3>
+    
 </strong>

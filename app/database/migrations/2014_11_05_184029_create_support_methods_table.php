@@ -13,6 +13,15 @@ class CreateSupportMethodsTable extends Migration {
 	public function up()
 	{
 		//
+            Schema::connection('fcs_clients')->dropIfExists('suport_methods');
+            
+            Schema::connection('fcs_clients')->create('support_methods', function($table){
+                
+               $table->increments('id');
+               $table->integer('objective_id')->unsigned();
+               $table->text('body');
+               
+            });
 	}
 
 	/**
@@ -23,6 +32,7 @@ class CreateSupportMethodsTable extends Migration {
 	public function down()
 	{
 		//
+            Schema::connection('fcs_clients')->dropIfExists('suport_methods');
 	}
 
 }

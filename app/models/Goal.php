@@ -19,4 +19,11 @@ class Goal extends \Eloquent
     public function supports(){
         return $this->hasMany('Supports','goal_id','goal_id');
     }
+    public function objectives(){
+        return $this->hasMany('Objectives');
+    }
+    
+    public function goalArea(){
+        return $this->hasOne('GoalArea');
+    }
 }
