@@ -11,7 +11,7 @@ class Address extends \Eloquent {
     protected $primaryKey = 'address_id';
     
     
-    protected function client() {
+    public function client() {
         return $this->belongsTo('Client','mtk', 'mtk');
     }
 

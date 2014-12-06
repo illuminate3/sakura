@@ -7,7 +7,7 @@ class Zipcode extends \Eloquent {
     protected $fillable = ['zip_codes_id', 'zipcode', 'city', 'state'];
     protected $primaryKey = 'zip_codes_id';
 
-    protected function address() {
+    public function address() {
         return $this->belongsToMany('Address');
     }
     
