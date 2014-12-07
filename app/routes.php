@@ -46,7 +46,7 @@ Route::group(['before' => 'auth'], function() {
     Route::any('clients/basicinfo', 'ClientsController@basicInfo');
     Route::any('clients/medications', 'ClientsController@medications');
     Route::any('clients/biography', 'ClientsController@biography');
-
+    Route::post('clients/set/{mtk}', 'ClientsController@setCurrentClient');
     Route::any('clients/storebasicinfo', 'ClientsController@storeBasicInfo');
 
     /**

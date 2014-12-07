@@ -80,7 +80,7 @@ Class MedicationController extends BaseController {
                 $medications = Medication::where($type, "LIKE", "%".$term."%")->get();
 
                
-                return View::make('components.medications.table', array('medications'=>$medications));
+                return View::make('components.medications.searchtable', array('medications'=>$medications));
             }
             
 }

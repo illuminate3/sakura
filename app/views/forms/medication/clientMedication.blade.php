@@ -5,7 +5,8 @@
     Former::open()
         ->id('frm-edit-client-med')
         ->class('col-md-6')
-       
+        ->populate(ClientsController::$current_client)
+                
         
 }}
 

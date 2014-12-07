@@ -8,6 +8,7 @@
     ->id("frm-medications")
     ->method("POST")
     ->class("form-horizontal")
+    
     }}
 
     <span class='popover' id="busy-icon"></span>
