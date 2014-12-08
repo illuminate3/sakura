@@ -2,6 +2,19 @@
 
 class ClientsController extends \BaseController {
 
+    static $current_client;
+    
+    /**
+     * Set the current Client the system is working with.
+     */
+    public static function setCurrentClient($id = null){
+        if($id!==null)
+        {
+            ClientsController::$current_client = \Client::find($id);
+        }elseif(Input::has('id')){
+            ClientsController::$current_client = \Client::find(Input::get('id'));
+        }
+    }
     /**
      * Display a listing of the resource.
      * GET /clients
@@ -9,8 +22,6 @@ class ClientsController extends \BaseController {
      * @return View
      */
     public function index() {
-        //return "shit balls"; 
-        // $clients = Client::orderBy('mtk', 'asc');
         return View::make('sections.clients.index')
                         ->with('clients', $clients = \Client::all());
     }
@@ -23,7 +34,7 @@ class ClientsController extends \BaseController {
      */
     public function create() {
         //
-        return View::make('sections.clients.create');
+        return View::make('sections.clients.create', array('client', ClientsController::$current_client));
     }
 
     /**

@@ -13,6 +13,13 @@ class CreateBarriersTable extends Migration {
 	public function up()
 	{
 		//
+            Schema::connection('fcs_clients')->dropIfExists('barriers');
+            Schema::connection('fcs_clients')->create('barriers', function($table){
+                $table->increments('id');
+                $table->integer('objective_id')->unsigned();
+                $table->text('personal');
+                $table->text('resource');
+            });
 	}
 
 	/**
@@ -23,6 +30,7 @@ class CreateBarriersTable extends Migration {
 	public function down()
 	{
 		//
+            Schema::connection('fcs_clients')->dropIfExists('barriers');
 	}
 
 }

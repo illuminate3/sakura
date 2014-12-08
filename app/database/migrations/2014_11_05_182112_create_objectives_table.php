@@ -13,6 +13,7 @@ class CreateObjectivesTable extends Migration {
 	public function up()
 	{
 		//
+             Schema::connection('fcs_clients')->dropIfExists('objectives');
             Schema::connection('fcs_clients')->create('objectives', function($table){
                 $table->increments('id');
                 $table->integer('goal_id');
@@ -30,7 +31,7 @@ class CreateObjectivesTable extends Migration {
 	public function down()
 	{
 		//
-            Schema::connection('fcs_clients')->drop('objectives');
+            Schema::connection('fcs_clients')->dropIfExists('objectives');
 	}
 
 }

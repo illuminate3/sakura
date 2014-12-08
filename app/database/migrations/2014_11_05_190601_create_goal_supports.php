@@ -13,6 +13,12 @@ class CreateGoalSupports extends Migration {
 	public function up()
 	{
 		//
+            Schema::connection('fcs_clients')->dropIfExists('goal_supports');
+            Schema::connection('fcs_clients')->create('goal_supports', function($table){
+               $table->integer('goal_id')->unsigned();
+               $table->integer('support_id')->unsigned();
+               
+            });
 	}
 
 	/**
@@ -23,6 +29,7 @@ class CreateGoalSupports extends Migration {
 	public function down()
 	{
 		//
+            Schema::connection('fcs_clients')->dropIfExists('goal_supports');
 	}
 
 }

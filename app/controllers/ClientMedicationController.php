@@ -33,9 +33,9 @@ class ClientMedicationController extends BaseController{
     {
         if($id==null)
         {
-            $id = Input::get('selected');
+            $id = Input::get('medication');
         }
-        $clientMed = ClientMedication::find($id);
+        $clientMed = ClientMedication::where('productndc','like',"%".$id."%");
         return json_encode($clientMed);
     }
     

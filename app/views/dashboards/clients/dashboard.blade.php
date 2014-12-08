@@ -71,6 +71,11 @@
                             $('.dtable tbody').on('click', 'tr', function() {
                     //console.log($("td:first", this).text());
                     $('#current-entity').html($("td:first", this).text());
+                    $.ajax({
+                        url: "{{URL::action('ClientsController@setCurrentClient')}}",
+                        type: "post",
+                        data: $('#current-entity').text()
+                    });
                     });
                     }
 
@@ -206,7 +211,7 @@
     });
     
     $(document).on('click', '#client-meds-table tr', function(){
-        alert($("td:first", this).text());
+       //alert($("td:first", this).text());
         $.ajax({
             url: "{{URL::action('ClientMedicationController@getClientMedication')}}",
             data: 'medication=' + $("td:first", this).text(),
