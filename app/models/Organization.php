@@ -4,13 +4,18 @@ class Organization extends \Eloquent {
 
     protected $fillable = ['org_id','title','description'];
     
+    
+    public static $key = 'org_id';
+    
     protected $connection = 'fcs_clients';
     
     protected $table = 'organizations';
     
     protected $primaryKey = 'org_id';
     
-   
+   public function __toString() {
+       return $this->title;
+   }
     public function address(){
         return $this->hasOne('OrganizationAddress','org_id', 'org_id');
     }

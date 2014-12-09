@@ -11,7 +11,7 @@ class ClientMedication Extends Eloquent
 {
     protected $connection = 'fcs_clients';
     protected $table = 'client_meds';
-    protected $fillable=['mtk','productndc','started','stopped','contact_id','client_note','referal_note','referer_id','staff_note','additional_history'];
+    protected $fillable=['mtk','productndc','started','stopped','contact_id','prescriber_notes','client_note','referal_note','referer_id','staff_id','org_id','staff_note','additional_history'];
     protected $primaryKey = 'id';
     
     public function client()
@@ -28,9 +28,10 @@ class ClientMedication Extends Eloquent
         return $this->hasOne('Medication','PRODUCTNDC','productndc');
     }
     
-    public function referer(){
+    public function organization()
+    {
         
-        return $this->hasOne('Referer');
+        return $this->hasOne('Organization', 'org_id', 'org_id');
         
     }
     

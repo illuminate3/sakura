@@ -31,12 +31,27 @@ class ClientMedicationController extends BaseController{
             
     public function getClientMedication($id = null)
     {
-        if($id==null)
+        $medication = "";
+        if(Input::has('medication'))
         {
-            $id = Input::get('medication');
+            $started = Input::get('started');
+            $stopped = Input::get('stopped');
+            $med = Input::get('medication');
+            $client = Input::get('selected');
+            $medid = DB::select("select id from fcs_clients.client_meds where PRODUCTNDC = ? and mtk = ? and started = ? and stopped = ?", array($med,$client,"$started","$stopped"));
+            $medication = ClientMedication::find($medid[0]->id);
+            $organizations = Organization::all();
+            $contacts = Contact::all();
+            $html = View::make('forms.medication.clientMedication')
+                    ->with('medication',$medication)
+                    ->with('organizations', $organizations)
+                    ->with('contacts', $contacts);
+            return $html;
         }
-        $clientMed = ClientMedication::where('productndc','like',"%".$id."%");
-        return json_encode($clientMed);
+        else
+        {
+            return  "NO RESULTS";
+        }
     }
     
 }

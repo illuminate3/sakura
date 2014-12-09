@@ -198,7 +198,7 @@
     });
     
     $(document).on('click', '#searchtable tr', function() {
-
+      
     $.ajax({
     url: "{{URL::action('MedicationController@getDetails')}}",
             data: 'medication=' + $("td:first", this).text(),
@@ -212,12 +212,14 @@
     
     $(document).on('click', '#client-meds-table tr', function(){
        //alert($("td:first", this).text());
+         alert($('td:nth-child(3)', this).text());
+         alert($('td:nth-child(4)', this).text());
         $.ajax({
             url: "{{URL::action('ClientMedicationController@getClientMedication')}}",
-            data: 'medication=' + $("td:first", this).text(),
+            data: 'medication=' + $("td:first", this).text()+'&selected='+ $('#current-entity').text()+'&started='+$('td:nth-child(3)', this).text()+'&stopped='+$('td:nth-child(4)', this).text(),
             type: "GET",
             success:function(data){
-                alert(data);
+               $('#client-med-form').html(data);
             }
         });
         

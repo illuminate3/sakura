@@ -65,17 +65,24 @@
                     <table class='dtable display compact nowrap' id='client-meds-table'>
                         <thead>
                         <th>Product NDC</th>
-                        <th>Med name</th>
-                        <th>Generic</th>
-                        <th>Substance</th>
-                        
+                        <th>Name</th>
+                        <th>Started</th>
+                        <th>Stopped</th>
                     </thead>
                     @foreach($clientMedications as $medication )
                     <tr>
                     <td>{{$medication->productndc}}</td>
-                    <td>{{ Medication::find($medication->productndc)->PROPRIETARYNAME}}</td>
-                    <td>{{ Medication::find($medication->productndc)->NONPROPRIETARYNAME}}</td>
-                    <td>{{ Medication::find($medication->productndc)->SUBSTANCENAME}}</td>
+                    <td>
+                    @if(Medication::find($medication->productndc)->PROPRIETARYNAME != "")
+                    {{ Medication::find($medication->productndc)->PROPRIETARYNAME}}
+                    @elseif(Medication::find($medication->productndc)->NONPROPRIETARYNAME != "")
+                    {{ Medication::find($medication->productndc)->NONPROPRIETARYNAME}}
+                    @elseif(Medication::find($medication->productndc)->SUBSTANCENAME != "")
+                    {{ Medication::find($medication->productndc)->SUBSTANCENAME}}
+                    @endif
+                    </td>
+                    <td>{{ $medication->started}}</td>
+                    <td>{{ $medication->stopped}}</td>
                     </tr>
                     @endforeach  
                     </table>
@@ -83,9 +90,9 @@
                 
             </div>
                     <div class='panel-body'>
-                       
-                           @include('forms.medication.clientMedication')
-                     
+                        <div id="client-med-form">
+                           @include('forms.medication.clientMedication', array('organizations'=>Organization::all(), 'contacts'=>Contact::all()))
+                        </div>
                     
                     </div>
         </div>

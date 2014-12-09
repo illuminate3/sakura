@@ -11,14 +11,14 @@ class ContactTableSeeder extends Seeder {
 
         $faker = Faker::create();
         $fakee = new Contact();
-        foreach (range(1, 20) as $index) {
-            foreach (range(1, 200) as $index){
+        foreach (range(1, 20) as $i) {
+            foreach (range(1, 200) as $x){
                $fakee = Contact::create([
                 
-                'org_id' => $index,
+                'org_id' => $i,
                 'first'  => $faker->firstName,
                 'last'   => $faker->lastName,
-                'phone'   => $faker->phoneNumber,
+                'phone'  => $faker->phoneNumber,
                 'title'  => $faker->word,
                 'specialization'  => $faker->word,
                 'notes'  => $faker->text()

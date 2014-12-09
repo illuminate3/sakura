@@ -10,10 +10,10 @@ class ClientMedicationTableSeeder extends Seeder {
 
         $faker = Faker::create();
             $medication = "";
-        foreach (range(1, 200) as $index) {
+        foreach (range(1, 20) as $index) {
             $client = Client::find($index);
-            foreach (range(1, 15) as $med) {
-                $medications  = Medication::where('product_id','=', rand(0,$med*$index))->take(1)->get();
+            foreach (range(1, 5) as $medex) {
+                $medications  = Medication::where('product_id','=', rand(0,$medex*$index))->take(1)->get();
                 foreach($medications as $med)
                 {
                     $medication = $med->PRODUCTNDC;
@@ -25,13 +25,17 @@ class ClientMedicationTableSeeder extends Seeder {
                 'stopped'            => $faker->date,
                 'client_note'        => $faker->text,
                 'prescriber_notes'   => $faker->text,
-                'org_id'             => $index,
-                'contact_id'         => $index,
-                'staff_id'           => $index,
+                'org_id'             => $medex,
+                'contact_id'         => $medex,
+                'staff_id'           => rand(5,19),
                 'staff_note'         => $faker->text,
                 'additional_history' => $faker->text,
             ));
+            $model->staff_id = rand(1,19);
+            $model->org_id = rand(1,19);
             
+            //var_dump($model);
+            //echo "<br /> <br />";
             $client->medications()->save($model);
             
         }

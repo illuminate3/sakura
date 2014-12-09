@@ -1,4 +1,4 @@
-<strong>
+
     
 <?php
 
@@ -49,4 +49,3 @@ $med = $client->medication;
     
     <h3>Client Providers </h3>
     
-</strong>
