@@ -91,7 +91,7 @@
             </div>
                     <div class='panel-body'>
                         <div id="client-med-form">
-                           @include('forms.medication.clientMedication', array('organizations'=>Organization::all(), 'contacts'=>Contact::all()))
+                           @include('forms.medication.clientMedication', array('organizations'=>Organization::all(), 'contacts'=>Contact::all(), 'medication'=>$clientMedications[0]))
                         </div>
                     
                     </div>

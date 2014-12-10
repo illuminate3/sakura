@@ -8,7 +8,7 @@
 
 class ContactController extends BaseController
 {
-public function getDetails()
+public static function getDetails()
 {
     if(Input::has('selected')){
         $contact_id = Input::get('selected');
@@ -21,5 +21,20 @@ public function getDetails()
     {return "fail";}
     
 }    
-    
-}
+public static function getContactsList($id = null){
+    if(Input::has('org_id') )
+    {$org_id = Input::get('org_id');}
+    else{$org_id = $id;}
+        $contacts = DB::table('fcs_clients.contacts')->select('first','last','title','specialization','org_id', 'contact_id')->where('org_id','=',$org_id)->get();
+        $list = null;
+        foreach($contacts as $contact)
+        {
+           
+            $list[] = ['name'=>$contact->first.' '.$contact->last, 'title'=>$contact->title,'specialization'=>$contact->specialization, 'org_id'=>$contact->org_id, 'contact_id'=>$contact->contact_id ];
+            
+        }
+        
+        return $list;
+        
+        }
+    }

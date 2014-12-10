@@ -26,26 +26,27 @@
  @endif
  
  
- <div class='col-md-3'>
+ <div class='col-md-5'>
    
-        <label class='label label-primary' for='prescriber'>Prescriber First</label>
+        <label class='label label-primary' for='prescriber'>Prescribing Facility</label>
    
       {{
-          Former::text('organization')->useDatalist(Organization::all(), 'id', 'title')
+          Former::select('organization')->fromQuery(Organization::all(), 'title', 'id')->select($medication->org_id)
             ->label(null)
-            ->class("scrollable")
-            ->size("15")
+            ->class("form-control scrollable form-inline")
+            ->size("3")
             
       }}
     </div>
     <div class='col-md-3'>
-    <label class='label label-primary' for='prescriber'>Prescriber Last</label>
+    <label class='label label-primary' for='prescriber'>Prescribing Doctor</label>
    
       {{
-          Former::text('last')
+          Former::select('contact')->fromQuery(ContactController::getContactsList($medication->org_id),'name','contact_id')->select($medication->contact_id)
             ->label(null)
-            ->class("form-control form-inline input-group-sm")
-      }}
+            ->class("form-control scrollable form-inline")
+            ->size("3")
+    }}
     </div>
     <div class='col-md-3'>
     <label class='label label-primary' for='start'>Start</label>
