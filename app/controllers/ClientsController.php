@@ -2,6 +2,8 @@
 
 class ClientsController extends \BaseController {
 
+    
+    // was like 4am or something... this code needs a review and a chart. 
     static $current_client;
     
     /**
@@ -10,9 +12,9 @@ class ClientsController extends \BaseController {
     public static function setCurrentClient($id = null){
         if($id!==null)
         {
-            ClientsController::$current_client = \Client::find($id);
+            return \Client::find($id);
         }elseif(Input::has('id')){
-            ClientsController::$current_client = \Client::find(Input::get('id'));
+            return \Client::find(Input::get('id'));
         }
     }
     /**
