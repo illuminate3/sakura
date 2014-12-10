@@ -7,7 +7,7 @@
         ->id('frm-edit-client-med')
         ->class('col-md-6')
         }}
-        {{$organizations[0]}}
+        {{--$organizations[0]--}}
         @if($medication!=null)
         
  {{Former::populate(array(
@@ -35,6 +35,7 @@
             ->label(null)
             ->class("scrollable")
             ->size("15")
+            
       }}
     </div>
     <div class='col-md-3'>

@@ -12,6 +12,7 @@
 
         {{-- HTML::style('css/layout.css') --}}
         {{ HTML::style('css/bootstrap.min.css') }}
+        {{ HTML::style('css/datalist.css') }}
         {{ HTML::style('js/jquery-ui/jquery-ui.min.css') }}
         {{ HTML::style('js/jquery-ui/jquery-ui.structure.min.css') }}
         {{ HTML::style('js/jquery-ui/jquery-ui.theme.min.css') }}
