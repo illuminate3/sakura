@@ -78,4 +78,10 @@ class OrganizationController extends \BaseController{
         
     }
     
+    public static function getOrganizationPopup(){
+        
+        return View::make('forms.organization.createPopup');
+        
+    }
+    
 }

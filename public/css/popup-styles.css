@@ -1,0 +1,20 @@
+/*
+Copyright 2014
+Jeremy Leach
+pegas corporation
+and affiliates
+*/
+/* 
+    Created on : Dec 10, 2014, 3:13:31 PM
+    Author     : jleach
+*/
+
+.white-popup {
+  position: absolute;
+  top:10%;
+  left: auto;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  margin: 20px auto;
+}

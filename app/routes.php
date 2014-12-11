@@ -60,7 +60,8 @@ Route::group(['before' => 'auth'], function() {
      * Contacts Routes
      */
     Route::post('forms/contact/details', 'ContactController@getDetails');
-    
+    Route::any('components/contacts/prescriberselectlist', 'ContactController@getContactsListBox');
+    Route::any('forms/contact/createPopup', 'ContactController@getContactPopup');
     /**
      * Medication Routes
      */
@@ -94,7 +95,7 @@ Route::group(['before' => 'auth'], function() {
     Route::any('organizations/dashborad/information/contacts', 'OrganizationController@getContacts');
     Route::any('organizations/dashboard/information/contacts/edit', 'OrganizationController@editContacts');
     Route::any('organizations/save', 'OrganizationController@storeInformation');
-    Route::any('organizations/save', 'OrganizationController@storeInformation');
+    Route::any('forms/organizations/createPopup', 'OrganizationController@getOrganizationPopup');
     /*
      * Programs Routes
      */

@@ -35,6 +35,9 @@
 
     </div>
     {{Former::close()}}
+    <div class='bottom-right'>
+
     <div class="col-sm-4 col-xs-offset-6"><div class="btn btn-default">Save</div>
+        </div>
     </div>
 

@@ -20,6 +20,7 @@
         {{ HTML::style('css/jquery.dataTables_themeroller.css') }}
         {{ HTML::style('js/extensions/TableTools/css/dataTables.tableTools.min.css')}}
         {{ HTML::style('css/magnific-popup.css') }}
+        {{ HTML::style('css/popup-styles.css') }}
         @show
 
     </head>
@@ -113,6 +114,7 @@
         {{ HTML::script('js/jquery-ui/jquery-ui.min.js') }}
         {{ HTML::script('js/bootstrap.min.js') }}
         {{ HTML::script('js/jquery.dataTables.js')}}  
+        {{ HTML::script('js/magnific-popup.min.js')}}  
         {{ HTML::script('js/extensions/TableTools/js/dataTables.tableTools.js')}}  
         @show
         <script>

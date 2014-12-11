@@ -11,8 +11,8 @@ class ContactTableSeeder extends Seeder {
 
         $faker = Faker::create();
         $fakee = new Contact();
-        foreach (range(1, 20) as $i) {
-            foreach (range(1, 200) as $x){
+        foreach (range(1, 200) as $i) {
+            foreach (range(1, 20) as $x){
                $fakee = Contact::create([
                 
                 'org_id' => $i,

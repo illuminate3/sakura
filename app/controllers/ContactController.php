@@ -37,4 +37,20 @@ public static function getContactsList($id = null){
         return $list;
         
         }
+    
+ 
+    
+    public static function getContactsListBox(){
+        $organization = Input::get('organization');
+        $client = Input::get('selected');
+        return View::make('components.contacts.prescriberselectlist')
+                    ->with(array('organization'=>$organization));
     }
+    
+    public static function getContactPopup(){
+        
+        return View::make('forms.contact.createPopup');
+        
+    }            
+    
+}
