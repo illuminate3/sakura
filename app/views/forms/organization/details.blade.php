@@ -1,4 +1,5 @@
-<div class="panel"><div class="panel-body panel-primary col-md-12">
+<div class="panel-body">
+    <div>
         {{
 Former::open()
     ->id("frm-information")

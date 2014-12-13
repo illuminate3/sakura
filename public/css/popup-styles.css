@@ -9,12 +9,21 @@ and affiliates
     Author     : jleach
 */
 
+
+/* text-based popup styling */
 .white-popup {
-  position: absolute;
-  top:10%;
-  left: auto;
-  background: #FFF;
-  padding: 20px;
-  width: auto;
-  margin: 20px auto;
+display: initial;
+position: inherit;
+width: auto;
+
+left: auto;
+background: white;
+padding: 20px;
+text-align: initial;
+max-width: 400px;
+margin: 0px auto;
+margin-left: -250px;
 }
+
+
+

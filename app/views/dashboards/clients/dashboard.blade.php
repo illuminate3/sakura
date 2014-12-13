@@ -261,6 +261,7 @@ callbacks: {
     
   },
   verticalFit: true,
+  overflowY: 'scroll',
   ajaxContentAdded: function() {
     // Ajax content is loaded and appended to DOM
     console.log(this.content);
@@ -293,6 +294,7 @@ callbacks: {
     console.log('Ajax content loaded:', mfpResponse);
     
   },
+  overflowY: 'scroll',
   verticalFit: true,
   ajaxContentAdded: function() {
     // Ajax content is loaded and appended to DOM

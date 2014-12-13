@@ -1,13 +1,13 @@
 <div id="create-contact-popup" class="white-popup " >
-    <div class=' panel panel-default'>
-        <div class='panel-heading'>
-            <h3 class='panel-title'> Create a new Contact:
-            </h3></div>
+   
+      
+            <h3 > Create a new Contact:
+            </h3>
 
-        <div class="panel-body form-group" style="width:auto;height:auto;" >
+        <div class="form-group"  >
 
             @include('forms.contact.details', array('contact'=> new Contact()))
 
         </div>
-    </div>
+   
 </div>
