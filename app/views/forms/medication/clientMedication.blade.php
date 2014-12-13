@@ -27,7 +27,7 @@
  
  
  <div class='col-md-5'>
-   
+     <a href="" data-mfp-src=""><span class='glyphicon glyphicon-plus' id='add-new-organization'></span></a>
         <label class='label label-primary' for='prescriber'>Prescribing Facility</label>
    
       {{
@@ -35,10 +35,12 @@
             ->label(null)
             ->class("form-control scrollable form-inline")
             ->size("3")
+            ->id("organization-select")
             
       }}
     </div>
-    <div class='col-md-3'>
+    <div class='col-md-3' id='prescriber-area'>
+        <a href="" data-mfp-src="">   <span class='glyphicon glyphicon-plus' id='add-new-contact'></span></a>
     <label class='label label-primary' for='prescriber'>Prescribing Doctor</label>
    
       {{
@@ -46,6 +48,7 @@
             ->label(null)
             ->class("form-control scrollable form-inline")
             ->size("3")
+            ->id("contact-select")
     }}
     </div>
     <div class='col-md-3'>

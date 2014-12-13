@@ -225,6 +225,88 @@
         
     });
     
+    $(document).on('change','#organization-select', function(){
+       //alert('selected org'); 
+       var selected = $('#current-entity').text();
+       var organization = $('option:selected',$(this)).val();
+       alert('organization: '+ organization);
+       $.ajax({
+          data:"selected="+selected+"&organization="+organization,
+          url: "{{URL::action('ContactController@getContactsListBox')}}"  ,
+          type: "GET",
+          success:function(data){
+              $("#prescriber-area").html(data);
+          } 
+       });
+    });
+    
+    $(document).on('click', '#add-new-contact', function(e){
+       $.magnificPopup.open({
+  items: {
+    src: "{{URL::action('ContactController@getContactPopup')}}"
+  },
+  type: 'ajax',
+
+callbacks: {
+  parseAjax: function(mfpResponse) {
+    // mfpResponse.data is a "data" object from ajax "success" callback
+    // for simple HTML file, it will be just String
+    // You may modify it to change contents of the popup
+    // For example, to show just #some-element:
+    // mfpResponse.data = $(mfpResponse.data).find('#some-element');
+    
+    // mfpResponse.data must be a String or a DOM (jQuery) element
+    
+    console.log('Ajax content loaded:', mfpResponse);
+    
+  },
+  verticalFit: true,
+  overflowY: 'scroll',
+  ajaxContentAdded: function() {
+    // Ajax content is loaded and appended to DOM
+    console.log(this.content);
+    $('.mfp-container').html(this.content);
+  }
+}
+});
+e.preventDefault;
+return false;
+});
+        
+        
+    $(document).on('click', '#add-new-organization', function(e){
+       $.magnificPopup.open({
+  items: {
+    src: "{{URL::action('OrganizationController@getOrganizationPopup')}}"
+  },
+  type: 'ajax',
+
+callbacks: {
+  parseAjax: function(mfpResponse) {
+    // mfpResponse.data is a "data" object from ajax "success" callback
+    // for simple HTML file, it will be just String
+    // You may modify it to change contents of the popup
+    // For example, to show just #some-element:
+    // mfpResponse.data = $(mfpResponse.data).find('#some-element');
+    
+    // mfpResponse.data must be a String or a DOM (jQuery) element
+    
+    console.log('Ajax content loaded:', mfpResponse);
+    
+  },
+  overflowY: 'scroll',
+  verticalFit: true,
+  ajaxContentAdded: function() {
+    // Ajax content is loaded and appended to DOM
+    console.log(this.content);
+    $('.mfp-container').html(this.content);
+  }
+}
+});
+e.preventDefault;
+return false;
+});        
+   
     $(document).on('click', '#add-medication', function(event) {
         alert('adding medication');
     event.preventDefault();
