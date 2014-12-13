@@ -27,8 +27,8 @@
     var med_search_table = null;
     var client_meds_table = null;
     $(function() {
-
-
+    
+    @include('dashboards.clients.js.ui-actionsjs')
     /**
      * Roster Section :: 
      * setup datatable,

@@ -29,18 +29,18 @@
                     'contact_phone'         => $client->emergencyContact->phone_number,
             ))}}
 
-<dic class='col-sm-12'>
-    <div class="panel panel-default">
-
+<dic class='col-md-12'>
+    <div class="panel panel-default draggable resizable ui-widget-content">
+        <h3 class='ui-widget-header'>Client Basic info -resizable</div>
         <div class="panel-body">
 
-            <div class='row'>
+            <div class="well ">
                 {{ Former::hidden("mtk")}}
                 {{ Former::group()
                         
                 }}
 
-                <div class='col-sm-2'>
+                <div class='col-md-2'>
                     <label for='firstname' class='label label-primary'>First Name</label>
                     {{ $firstname = Former::text("firstname")
                            ->class("form-control form-inline input-group-sm")
@@ -48,14 +48,14 @@
                            
                     }}
                 </div>
-                <div class='col-sm-2'>
+                <div class='col-md-2'>
                     <label for='middlename' class='label label-primary'>Middle Name</label>
                     {{ Former::text("middlename")
                            ->class("form-control form-inline input-group-sm")
                            ->placeholder("Middle Name")
                     }}
                 </div>
-                <div class='col-sm-2'>
+                <div class='col-md-2'>
                     <label for='lastname' class='label label-primary'>Last Name</label>
                     {{ Former::text("lastname")
                            ->class("form-control form-inline input-group-sm")
@@ -63,12 +63,12 @@
                     }}
 
                 </div>
-            </div>
+          
             <div class='row'>
                 <div class='col-lg-8'>
                     {{Former::group()}}
 
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='address1' class='label label-primary'>Street Address</label>
 
                         {{ Former::text("address1")
@@ -76,7 +76,7 @@
                            ->placeholder("Street Address")
                         }}
                     </div>
-                    <div class='col-sm-1'>
+                    <div class='col-md-1'>
                         <label for='address2' class='label label-primary'>Unit</label>
 
                         {{ Former::text("address2")    
@@ -84,7 +84,7 @@
                            ->placeholder("Apt / Unit #")
                         }}
                     </div>
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='city' class='label label-primary'>City</label>
 
                         {{ Former::select("city")
@@ -93,7 +93,7 @@
                            ->setAttribute("onchange","$('#zipcode').val($('#city').val());")
                         }}
                     </div>
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='state' class='label label-primary'>State</label>
 
                         {{ Former::select("state")
@@ -102,7 +102,7 @@
                            ->setAttribute("onchange","$('#state').val($('#city').val());")
                         }}
                     </div>
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='zipcode' class='label label-primary'>Zipcode</label>
 
                         {{ Former::select("zipcode")
@@ -114,11 +114,11 @@
                 </div>
             </div>
             <div class='row'>
-                <div class='col-lg-12'>
+                <div class='col-md-10 well draggable'>
                     {{Former::group()}}
 
 
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='cell' class='label label-primary'>Cell</label>
 
                         {{ Former::text("cell")
@@ -126,7 +126,7 @@
                            ->placeholder("Cell Phone")
                         }}
                     </div>
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='home' class='label label-primary'>Home</label>
 
                         {{ Former::text("home")
@@ -134,7 +134,7 @@
                            ->placeholder("Home Phone")
                         }}
                     </div>
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='work' class='label label-primary'>Work</label>
 
                         {{ Former::text("work")
@@ -145,10 +145,10 @@
                 </div>
             </div>
             <div class='row'>
-                <div class='col-sm-12'>
+                <div class='col-md-6'>
                     {{Former::group()}}
                     <h4>Emergency Contact</h4>
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='contact_full_name' class='label label-primary'>Full Name</label>
 
 
@@ -158,7 +158,7 @@
                         }}
 
                     </div>
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='relationship' class='label label-primary'>Relationship</label>
 
 
@@ -172,7 +172,7 @@
                     {{Former::group()}}
 
 
-                    <div class='col-sm-2'>
+                    <div class='col-md-2'>
                         <label for='contact_phone' class='label label-primary'>Phone</label>
 
 
@@ -183,17 +183,18 @@
                     </div>
 
                 </div>
+                <div>
                 {{
                 Former::button("save", "Save")
                 ->setAttribute("id","save")
                 ->setAttribute('onclick','saveBasicInfo();')
                 
                 }}
-
+                </div>
             </div>
         </div>
     </div>
-
+    </div>
 
 
 

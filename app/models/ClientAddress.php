@@ -6,7 +6,7 @@ class ClientAddress extends \Eloquent {
     protected $table = 'fcs_clients.address_client';
     protected $primaryKey = 'mtk';
     public function client() {
-        return $this->belongsTo('Client', 'mtk', 'mtk');
+        return $this->belongsToMany('Client','address_client', 'mtk', 'mtk');
     }
 
     public function address() {
