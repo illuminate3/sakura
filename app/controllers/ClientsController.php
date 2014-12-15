@@ -182,14 +182,17 @@ class ClientsController extends \BaseController {
 
         // ensure address exists, then populate with data from view
 
-        $address = $client->address;
+        $address = $client->address->first()->get();
         if ($address == null) {
-            $address = new \ClientAddress();
+            $address = new \Address();
         }
+        /*
         $address->address1 = $data['address1'];
         $address->address2 = $data['address2'];
         $address->zip_code_id = $data['zipcode'];
-        $client->address()->save($address);
+        */
+    $client->address()->first()->save(['address1'=>$data['address1'],'address2'=>$data['address2'], 'zip_code_id'=>$data['zipcode']]);
+         
 
         // ensure phone exists, then populate with data from view
 

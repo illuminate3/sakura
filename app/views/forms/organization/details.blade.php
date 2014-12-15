@@ -13,7 +13,7 @@ Former::open()
         <br/>
             <div class="col-md-12">
                 <div class="col-md-8">
-                    <label class='label label-primary pull-left' for='title'>Title:</label>
+                    <label class='label label-primary ' for='title'>Title:</label>
                     {{ Former::text('title')
                         ->label(null)
     ->class('form-control form-inline')
@@ -21,8 +21,8 @@ Former::open()
 
                     }}
                 </div>
-                <div class="col-md-8 pull-left">
-                    <label class='label label-primary pull-left' for='description'>Description</label>
+                <div class="col-md-8 ">
+                    <label class='label label-primary ' for='description'>Description</label>
                     {{ Former::textarea('description')
                         ->label(null)
     ->class('form-control form-inline')
@@ -36,7 +36,7 @@ Former::open()
 
         
             <div class="col-md-6">
-                <label class='label label-primary pull-left' for='address1'>Street Address</label>
+                <label class='label label-primary ' for='address1'>Street Address</label>
                 {{ Former::text('address1')
                     ->label(null)
     ->class('form-control form-inline')
@@ -44,7 +44,7 @@ Former::open()
                 }}
             </div>
             <div class="col-md-4">
-                <label class='label label-primary pull-left' for='address2'>Building/Unit</label>
+                <label class='label label-primary ' for='address2'>Building/Unit</label>
                 {{ Former::text('address2')
                     ->label(null)
     ->class('form-control form-inline')
@@ -53,36 +53,36 @@ Former::open()
             </div>
         
             <div class="col-md-6">
-                <label class='label label-primary pull-left' for='city'>City</label>
+                <label class='label label-primary ' for='city'>City</label>
                 {{ Former::select("city")
                     ->label(null)
     ->fromQuery(\Zipcode::all(),"City","zip_code_id")
-    ->class("form-control form-inline input-group-sm")
+    ->class("form-control form-inline ")
     ->setAttribute("onchange","$('#zipcode').val($('#city').val());")
                 }}
             </div>
             <div class="col-md-4">
-                <label class='label label-primary pull-left' for='state'>State</label>
+                <label class='label label-primary ' for='state'>State</label>
                 {{ Former::select("state")
                     ->label(null)
     ->fromQuery(\Zipcode::all(),"State","zip_code_id")
-    ->class("form-control form-inline input-group-sm")
+    ->class("form-control form-inline ")
     ->setAttribute("onchange","$('#state').val($('#city').val());")
                 }}
             </div>
             <div class="col-md-6">
-                <label class='label label-primary pull-left' for='zipcode'>Zipcode</label>
+                <label class='label label-primary ' for='zipcode'>Zipcode</label>
                 {{ Former::select("zipcode")
                     ->label(null)
 ->fromQuery(\Zipcode::all(), "ZIPCode", "zip_code_id")
-->class("form-control form-inline input-group-sm")
+->class("form-control form-inline ")
 ->setAttribute("onchange","$('#city').val($('#zipcode').val());")
                 }}
             </div>
  
         
             <div class="col-md-6">
-                <label class='label label-primary pull-left' for='local'>Local</label>
+                <label class='label label-primary ' for='local'>Local</label>
                 {{ Former::text('local')
                     ->name('local')
                     ->label(null)
@@ -91,7 +91,7 @@ Former::open()
                 }}
             </div>
             <div class="col-md-6">
-                <label class='label label-primary pull-left' for='tollfree'>Toll Free</label>
+                <label class='label label-primary ' for='tollfree'>Toll Free</label>
                 {{ Former::text('tollfree')
                     ->label(null)
 ->class('form-control form-inline form-control')
@@ -99,7 +99,7 @@ Former::open()
                 }}
             </div>
             <div class="col-md-6">
-                <label class='label label-primary pull-left' for='fax'>Fax</label>
+                <label class='label label-primary ' for='fax'>Fax</label>
                 {{ Former::text('fax')
                     ->label(null)
 ->class('form-control form-inline form-control')

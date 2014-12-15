@@ -37,7 +37,7 @@ class Client extends Eloquent {
     }
 
     public function assignedStaff() {
-        return $this->hasOne('AssingedStaff', 'mtk', 'mtk');
+        return $this->hasOne('AssignedStaff', 'mtk', 'mtk');
     }
 
     public function birthday() {

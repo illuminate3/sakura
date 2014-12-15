@@ -12,5 +12,5 @@ $(function() {
   
   $(function() {
     $( ".resizable" ).resizable();
-    alert('making resizable');
+    //alert('making resizable');
     });

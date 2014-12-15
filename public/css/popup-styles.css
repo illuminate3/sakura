@@ -14,15 +14,16 @@ and affiliates
 .white-popup {
 display: initial;
 position: inherit;
-width: auto;
-
+min-width: 30vw;
+max-width: 90vw;
+width: 30vh;
 left: auto;
 background: white;
-padding: 20px;
+padding: 1vw;
 text-align: initial;
-max-width: 400px;
-margin: 0px auto;
-margin-left: -250px;
+
+margin: 10vh auto;
+margin-left: -15vw;
 }
 
 
