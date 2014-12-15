@@ -117,9 +117,9 @@
         {{ HTML::script('js/magnific-popup.min.js')}}  
         {{ HTML::script('js/extensions/TableTools/js/dataTables.tableTools.js')}}  
         @show
-        <script>
+        
         @section('panel-scripts')
         @show
-        </script>
+       
     </body>
 </html>

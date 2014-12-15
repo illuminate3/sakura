@@ -3,7 +3,7 @@
 
 @parent
 
-
+<script>
 
     /* 
      * Copyright 2014
@@ -43,5 +43,5 @@
     });
 
 
-
+</script>
 @stop

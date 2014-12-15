@@ -1,5 +1,5 @@
 
-
+<script>
 /* 
  * Copyright Jeremy Leach
  * Pegas Corp and Associates
@@ -14,3 +14,4 @@ $(function() {
     $( ".resizable" ).resizable();
     //alert('making resizable');
     });
+</script>

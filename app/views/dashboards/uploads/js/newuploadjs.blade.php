@@ -1,50 +1,8 @@
 
-<span id='busy-icon'></span>
-
-{{ Form::open(
-    array(
-                        'url'=>'/upload/upload',
-                        'files'=>true,
-                        'id' => 'form',
-                        'action' => 'DataimportController@upload',
-                        'enctype' => 'multipart/form-data',
-                        'method' => 'POST',
-    )
-                        ) }}
-{{ Form::label('primaryKey','Primary Key (required)')}}
-{{ Form::text('primaryKey')}}
-</br>
-
-</br>
-{{ Form::label('fieldDelimiter', 'Field Delimiter (Optional)')}}
-{{ Form::text('fieldDelimiter')}}
-</br>
-{{"Enter t for TAB, , for comma, ETC..."}}
-
-
-{{ Form::label('fieldEscape', 'Field Escape (Optional)')}}
-{{ Form::text('fieldEscape')}}
-
-{{ Form::label('table','Table Name (Required)') }}
-{{ Form::text('table',null, null,array('required'=>'required')) }}
-</br>
-{{ Form::label('filename','Load File')}}
-{{ Form::file('filename',null, null,array('required'=>'required')) }}
-</br>
-{{ Form::submit('Upload File') }}
-{{Form::close()}}
-<div id="debug">
-
-
-</div>
-@stop
 @section('scripts')
-
-
 @parent
 <script type="text/javascript">
     $(document).ready(function($) {
-        console.log('im ready');
         $('#form').on('submit', function(e) {
             e.preventDefault();
             document.getElementById('debug').innerHTML = 'uploading data...';
@@ -86,7 +44,7 @@
                 statusCode:
                         {
                             500: function(data) {
-                                document.getElementById('debug').innerHTML = data;
+                                console.log(data);
                             }
                         }
 
@@ -95,7 +53,8 @@
 
             //prevent the form from actually submitting in browser
             return false;
-//$('#dashcontent').load('uploaded');
         });
     });
 </script>
+
+@stop
