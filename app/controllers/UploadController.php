@@ -31,6 +31,16 @@ class UploadController extends \BaseController{
             $filename = $updates[count($updates)-1]->filename;
             return $update->toDateTimeString()." ".$filename;
         }
+        
+        
+    public static function dashboard()
+    {
+        
+        
+        return View::make('dashboards.uploads.dashboard');
+        
+        
+    }
     protected static function getUploads()
     {
         $uploads = array();

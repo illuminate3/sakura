@@ -14,12 +14,12 @@ class DataimportController extends \BaseController {
     }
 
     public function getIndex() {
-        return \View::make('admin.upload.index');
+        return \View::make('panels.upload.index');
     }
 
     public static function postFile() {
 
-        return \View::make('admin.upload.dataimport');
+        return \View::make('panels.upload.dataimport');
     }
 
     public $input;

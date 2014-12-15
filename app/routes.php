@@ -127,6 +127,7 @@ Route::any('geographic/zipcodes/save', 'ZipcodeController@postIndex');
  *  Upload Routes --> need to be remanaged
  * 
  */
+Route::any('upload/dashboard', 'UploadController@dashboard');
 Route::any('upload/index', 'DataimportController@getIndex');
 Route::any('upload/upload', 'DataimportController@postFile');
 Route::any('upload/testing', function() {
