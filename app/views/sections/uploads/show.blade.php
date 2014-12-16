@@ -8,51 +8,41 @@
     <div class='panel panel-default'>
         <div class='panel-heading'> Upload History</div>
         <div id='pane' class='panel-body'>
-            <table id="upload-table" class="display dtable">
+
+            <table border='1'>
                 <thead>
-                    <tr>
-                        <th hidden="hidden"></th>
-                        <th>Filename</th>
-                        <th>Tablename</th>
-                        <th>Field Delimiter</th>
-                        <th>Field Enclosed</th>
-                        <th>Field Escaped</th>
-                        <th>Line Delimiter</th>
-                        <th>Ignore Lines</th>
-                        <th>Created</th>
-                        <th>Updated</th>
-                    </tr>
-                    
+                    @foreach($columns as $column)
+
+                <th>{{$column}}</th>
+
+
+                @endforeach
+
                 </thead>
                 <tbody>
-            @if($uploads!==null)
-            @foreach($uploads as $upload)
-            <tr>
-<td hidden="hidden">{{$upload->id}}</td>
-            <td>{{$upload->filename}}</td>
-            <td>{{$upload->tablename}}</td>
-            <td>{{$upload->fieldDelimiter}}</td>
-            <td>{{$upload->fieldEnclosed}}</td>
-            <td>{{$upload->fieldEscaped}}</td>
-            <td>{{$upload->lineDelimiter}}</td>
-            <td>{{$upload->ignoreLines}}</td>
-            <td>{{$upload->created_at}}</td>
-            <td>{{$upload->updated_at}}</td>
-            </tr>
-            @endforeach
-            @endif
+                    @while($cursor = $query->fetch())
+
+                    <tr>
+                        @foreach($columns as $column)
+
+
+                        <td>{{$cursor[$column]}}</td>
+
+                        @endforeach
+
+                    </tr>
+                    @endwhile
                 </tbody>
             </table>
-            
-            
-            
+
+
         </div>
-        
-        
+
+
     </div>
-    
-    
-    
+
+
+
 </div>
 {{--
 $table->increments('id');

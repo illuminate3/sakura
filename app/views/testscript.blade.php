@@ -1,51 +1,35 @@
-
-    
 <?php
+$columns = Schema::connection('codes')->getColumnListing('product');
+$sql = DB::connection('codes')->table('product')->toSql();
 
-/*
- * Copyright 2014
- * Jeremy Leach
- * pegas corporation
- * and affiliates
- */
-ClientsController::setCurrentClient(5);
+$db = DB::connection('codes')->getPDO();
 
-$client = ClientsController::$current_client;
-$med = $client->medication;
-//$med->start = new \DateTime();
+$query = $db->prepare($sql);
+
+$query->execute();
 ?>
+<table border='1'>
+<thead>
+@foreach($columns as $column)
 
-{{ $client->name->first}}    
-{{ $client->name->middle}}    
-{{ $client->name->last}}
-<br />
-{{ $client->address->address->address1."  "}}
-{{ $client->address->address->address2."<br/>"}}
+<th>{{$column}}</th>
+    
+    
+@endforeach
 
-{{ $client->address->address->zipcode->City."<br/>"}}
-{{ $client->address->address->zipcode->State."  "}}
-{{ $client->address->address->zipcode->ZIPCode."<br/>"}}
-    <br />
-    <h3> Current Medications</h3><br/>
-    @foreach($client->medications as $medication)
-    @if($medication->stopped == '0000-00-00') 
-     {{$medication->stopped}}
-{{ ucwords(strtolower($medication->medication->PROPRIETARYNAME))}} :  
-    {{ ucwords(strtolower($medication->medication->SUBSTANCENAME))}}    <br />
-@endif
+</thead>
+<tbody>
+@while($product = $query->fetch())
+
+<tr>
+    @foreach($columns as $column)
+    
+        
+     <td>{{$product[$column]}}</td>
+        
     @endforeach
     
-        <h3> Former Medications</h3><br/>
-    @foreach($client->medications as $medication)
-
-    @if($medication->stopped !== '0000-00-00') 
-    {{$medication->stopped}}
-{{ ucwords(strtolower($medication->medication->PROPRIETARYNAME))}} :  
-    {{ ucwords(strtolower($medication->medication->SUBSTANCENAME))}}    <br />
-@endif
-    @endforeach
-    
-    <br />
-    
-    <h3>Client Providers </h3>
-    
+</tr>
+@endwhile
+</tbody>
+</table>
