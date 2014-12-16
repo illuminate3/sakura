@@ -1,4 +1,7 @@
 
+@section('panel-scripts')
+
+@parent
 <script>
 /* 
  * Copyright Jeremy Leach
@@ -15,3 +18,5 @@ $(function() {
     //alert('making resizable');
     });
 </script>
+
+@stop

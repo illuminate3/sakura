@@ -7,8 +7,8 @@
     <li role='presentation' class='dashboard-li' id="upload-history-li"><a href='#' id='upload-history'>Upload History</a></li>
     <li role='presentation' class='dashboard-li' id="information-li"><a href='#' id='upload-information'>Information</a></li>
     <li role='presentation' class='dashboard-li' id="special-datasets-li"><a href='#' id='special-datasets'>Special Datasets</a></li>
-    <li role='presentation' class='dashboard-li' id='current-entity-li'><span class="">Upload:</span><span hidden='hidden' id='current-entity'></span>
-        <span id='current-entity-title'></span></li>
+    <li role='presentation' class='dashboard-li' id='current-entity-li'><span class="form-control">Upload:<span hidden="hidden" id='current-entity'></span><span id='current-entity-label'></span></span>
+        </li>
 </ul>
 <span id="busy-icon"></span>
 

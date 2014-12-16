@@ -24,8 +24,7 @@ class ClientsController extends \BaseController {
      * @return View
      */
     public function index() {
-        return View::make('sections.clients.index')
-                        ->with('clients', $clients = \Client::all());
+        return View::make('sections.clients.index', ['clients'=> $clients = \Client::all()]);
     }
 
     /**
@@ -48,11 +47,10 @@ class ClientsController extends \BaseController {
     public function store() {
         $data = \Input::all();
 
-// instantiate mod3l
+
         $client = new \Client;
         return $data;
-        //
-        //populate fields
+        
     }
 
     /**

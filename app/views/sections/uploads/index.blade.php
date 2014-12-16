@@ -8,10 +8,10 @@
     <div class='panel panel-default'>
         <div class='panel-heading'> Upload History</div>
         <div id='pane' class='panel-body'>
-            <table id="upload-table" class="display dtable">
+            <table id="uploads-table" class="display dtable">
                 <thead>
                     <tr>
-                        <th hidden="hidden"></th>
+                        <td hidden="hidden"></td>
                         <th>Filename</th>
                         <th>Tablename</th>
                         <th>Field Delimiter</th>
@@ -28,16 +28,16 @@
             @if($uploads!==null)
             @foreach($uploads as $upload)
             <tr>
-<td hidden="hidden">{{$upload->id}}</td>
-            <td>{{$upload->filename}}</td>
-            <td>{{$upload->tablename}}</td>
-            <td>{{$upload->fieldDelimiter}}</td>
-            <td>{{$upload->fieldEnclosed}}</td>
-            <td>{{$upload->fieldEscaped}}</td>
-            <td>{{$upload->lineDelimiter}}</td>
-            <td>{{$upload->ignoreLines}}</td>
-            <td>{{$upload->created_at}}</td>
-            <td>{{$upload->updated_at}}</td>
+            <td hidden="hidden">{{$upload->id}}</td>
+            <td>{{$upload->filename}}       </td>
+            <td>{{$upload->tablename}}      </td>
+            <td>{{$upload->fieldDelimiter}} </td>
+            <td>{{$upload->fieldEnclosed}}  </td>
+            <td>{{$upload->fieldEscaped}}   </td>
+            <td>{{$upload->lineDelimiter}}  </td>
+            <td>{{$upload->ignoreLines}}    </td>
+            <td>{{$upload->created_at}}     </td>
+            <td>{{$upload->updated_at}}     </td>
             </tr>
             @endforeach
             @endif

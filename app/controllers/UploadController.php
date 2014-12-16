@@ -56,7 +56,7 @@ class UploadController extends \BaseController{
     }
     
     public static function show(){
-        $selection = \Input::get('data');
+        $selection = \Input::get('selected');
         $uploads = \Upload::all();
         $data = array(
         'id'=>$uploads[$selection]->id,
@@ -74,22 +74,14 @@ class UploadController extends \BaseController{
     
     public static function selected(){
         $selection = \Input::get('data');
-        $uploads = \Upload::all();
-        $data = array(
-        'id'=>$uploads[$selection]->id,
-        'filename'=>$uploads[$selection]->filename,
-        'columns'=>$uploads[$selection]->columns,
-        'fieldDelimiter'=>$uploads[$selection]->fieldDelimiter,
-        'fieldEnclosed'=>$uploads[$selection]->columnsfieldEnclosed,
-        'fieldEscaped'=>$uploads[$selection]->fieldEscaped,
-        'lineDelimiter'=>$uploads[$selection]->lineDelimiter,
-        'ignoreLines'=>$uploads[$selection]->ignoreLines,
-        'created_at'=>$uploads[$selection]->created_at->toDateTimeString(),
-        'updated_at'=>$uploads[$selection]->updated_at->toDateTimeString());
-        return Response::json($data);
+        
+        return View::make('sections.uploads.show', ['upload'=>$selection]);
     }
     
-    
+    public static function showAll(){
+        return View::make('sections.uploads.index', ['uploads'=>Upload::all()]);
+        
+    }
     
     
     

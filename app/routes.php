@@ -130,6 +130,9 @@ Route::any('geographic/zipcodes/save', 'ZipcodeController@postIndex');
 Route::any('upload/dashboard', 'UploadController@dashboard');
 Route::any('upload/index', 'DataimportController@getIndex');
 Route::any('upload/upload', 'DataimportController@postFile');
+Route::any('upload/history', 'UploadController@showAll');
+Route::any('upload/selected', 'UploadController@selected');
+
 Route::any('upload/testing', function() {
     return View::make('admin/upload/testing');
 });
