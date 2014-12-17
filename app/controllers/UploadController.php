@@ -65,26 +65,35 @@ class UploadController extends \BaseController {
     }
 
     public static function selected() {
-        $selection = \Input::get('data');
-        
-        $table = Upload::find($selection)->take(1)->get();
-        $table = Upload::where('tablename', '=', $selection)->get();
-                
-
-        $columns = Schema::connection('codes')->getColumnListing($table);
-        $sql = DB::connection('codes')->table($table)->toSql();
+        $selection = \Input::get('selected');
+        $total = \Input::get('total') !==null ? \Input::get('total') : 1;
+        $offset = \Input::get('offset') !== null ? \Input::get('offset') : 0;
+        $table = Upload::where('id','=',$selection)->take(1)->get();
+        //$table = Upload::where('tablename', '=', $selection)->get();
+        $tablename = $table[0]->tablename;        
+        $count = DB::connection('codes')->table($tablename)->count();    
+        $columns = Schema::connection('codes')->getColumnListing($tablename);
+        $sql = DB::connection('codes')->table($tablename)->skip($offset)->take($total)->toSql();
 
         $db = DB::connection('codes')->getPDO();
-
+//return var_dump(Input::all());
         $query = $db->prepare($sql);
 
         $query->execute();
         
-        return View::make('sections.uploads.show', ['columns'=>$columns, 'query'=>$query]);
+        return View::make('sections.uploads.show', ['columns'=>$columns, 'count'=>$count, 'query'=>$query]);
     }
 
     public static function showAll() {
         return View::make('sections.uploads.index', ['uploads' => Upload::all()]);
     }
-
+    
+    public static function newUpload()
+    {
+        
+        return View::make('sections.uploads.create');
+        
+    }
+    
+    
 }

@@ -32,7 +32,7 @@
     
     
     
-    $(document).on('click','tr', function(){
+    $(document).on('click','#uploads-table tr', function(){
        alert($("td:nth-child(2)", this).text());
        $('#current-entity').html($("td:first", this).text());
        $('#current-entity-label').html($("td:nth-child(2)", this).text());

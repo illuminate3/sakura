@@ -6,10 +6,26 @@
     <br/>
     <br/>
     <div class='panel panel-default'>
-        <div class='panel-heading'> Upload History</div>
+        <div class='panel-heading'> Dataset Viewer
+            <div class='navbar-form form-group-sm'>
+                
+                <span>First Row</span>
+                <input type='number' min="0" max='{{$count}}' id='minrow' class='form-control' />                  
+              
+                <span>Row Count</span>
+                <input type='number' min="0" max='{{$count}}' id='maxrow' class='form-control'/>                  
+                
+                
+                <button class='btn btn-info' id='refreshtable'>Pull Data</button>
+                
+                
+            </div>
+        
+        
+        </div>
         <div id='pane' class='panel-body'>
 
-            <table border='1'>
+            <table class='dtable display'>
                 <thead>
                     @foreach($columns as $column)
 
