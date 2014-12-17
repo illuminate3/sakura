@@ -216,20 +216,22 @@ class DataimportController extends \BaseController {
         $upload = new \Upload();
         $file = \Input::file('filename');
         $input = \Input::all();
+        return var_dump($input);
         if ($file !== null) {
             $dataResult.='file loaded';
             $directory = self::folder();
             $tableName = \Input::get('table');
             $upload->tablename = $tableName;
-
+            $dataResult.='file loaded';
             $delimiter = "/\\" . Input::get('fieldDelimiter') . '/';
-
+            
             $upload->fieldDelimiter = $delimiter;
             $filename = $file->getClientOriginalName();
+            return $filename;
             $upload->filename = $filename;
             $dataResult.=$filename;
             $uploadSuccess = $file->move($directory, $filename);
-
+            
             if ($uploadSuccess) {
                 self::createTable($file, $delimiter, $tableName);
                 $topLine = self::topLine($directory . $filename);
@@ -240,7 +242,7 @@ class DataimportController extends \BaseController {
                 } else {
                     $loaddata = self::toLoadData($directory . $filename, $columns, $tableName, "\\t", "\"", '\"', '\r\n', 1);
                 }
-
+                
                 $upload->filename = $filename;
                 $upload->fieldDelimiter = $delimiter;
                 $upload->push();

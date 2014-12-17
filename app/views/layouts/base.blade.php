@@ -6,7 +6,7 @@
             FullCircle Supports
             @show
         </title>
-
+<meta name="csrf-token" content="{{csrf_token() }}">
         {{-- CSS Containment goes here --}}
         @section('styles')
 
@@ -22,8 +22,9 @@
         {{ HTML::style('css/magnific-popup.css') }}
         {{ HTML::style('css/popup-styles.css') }}
         @show
-
+        
     </head>
+    
     <body>
         <nav class="navbar navbar-default navbar-inverse" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -110,12 +111,20 @@
 
 
         @section('scripts')
+   
         {{ HTML::script('js/jquery-2.1.1.min.js') }}
         {{ HTML::script('js/jquery-ui/jquery-ui.min.js') }}
         {{ HTML::script('js/bootstrap.min.js') }}
         {{ HTML::script('js/jquery.dataTables.js')}}  
         {{ HTML::script('js/magnific-popup.min.js')}}  
         {{ HTML::script('js/extensions/TableTools/js/dataTables.tableTools.js')}}  
+        <script>
+             $.ajaxSetup({
+    headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+        </script>
         @show
         
         @section('panel-scripts')
