@@ -1,35 +1,22 @@
+
 <?php
-$columns = Schema::connection('codes')->getColumnListing('product');
-$sql = DB::connection('codes')->table('product')->toSql();
+$table = Upload::find(1)->take(1)->get();//\Input::get('data');
+var_dump($table[0]->tablename);
+//$selection = $table;
+ //       $table = Upload::where('tablename', '=', $selection)->get();
+ //           var_dump($table);    
 
-$db = DB::connection('codes')->getPDO();
+    //    $columns = Schema::connection('codes')->getColumnListing($table);
+     //   var_dump($columns);
+        //$sql = DB::connection('codes')->table($table)->toSql();
 
-$query = $db->prepare($sql);
+//        $db = DB::connection('codes')->getPDO();
 
-$query->execute();
-?>
-<table border='1'>
-<thead>
-@foreach($columns as $column)
+ //       $query = $db->prepare($sql);
 
-<th>{{$column}}</th>
-    
-    
-@endforeach
-
-</thead>
-<tbody>
-@while($product = $query->fetch())
-
-<tr>
-    @foreach($columns as $column)
-    
+        //$query->execute();
         
-     <td>{{$product[$column]}}</td>
+       // echo $query;
+        ?>
         
-    @endforeach
-    
-</tr>
-@endwhile
-</tbody>
-</table>
+        
