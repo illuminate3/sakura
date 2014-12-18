@@ -132,15 +132,8 @@ Route::any('upload/index', 'DataimportController@getIndex');
 Route::any('upload/upload', 'DataimportController@postFile');
 Route::any('upload/history', 'UploadController@showAll');
 Route::any('upload/selected', 'UploadController@selected');
-Route::filter('csrf', function()
+Route::any('upload/store', 'UploadController@store');
 
-{
-   $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
-   if (Session::token() !== $token) {
-      throw new Illuminate\Session\TokenMismatchException;
-   }
-
-});
 Route::group(['before' => 'csrf'], function(){
 Route::any('upload/create', 'UploadController@newUpload');
 });

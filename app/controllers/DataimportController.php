@@ -19,7 +19,7 @@ class DataimportController extends \BaseController {
 
     public static function postFile() {
 
-        return \View::make('panels.upload.dataimport');
+        return \View::make('panels.uploads.dataimport');
     }
 
     public $input;
@@ -216,7 +216,7 @@ class DataimportController extends \BaseController {
         $upload = new \Upload();
         $file = \Input::file('filename');
         $input = \Input::all();
-        return var_dump($input);
+        return var_dump($file);
         if ($file !== null) {
             $dataResult.='file loaded';
             $directory = self::folder();

@@ -76,7 +76,7 @@ class UploadController extends \BaseController {
         $sql = DB::connection('codes')->table($tablename)->skip($offset)->take($total)->toSql();
 
         $db = DB::connection('codes')->getPDO();
-//return var_dump(Input::all());
+        //return var_dump(Input::all());
         $query = $db->prepare($sql);
 
         $query->execute();
@@ -92,6 +92,13 @@ class UploadController extends \BaseController {
     {
         
         return View::make('sections.uploads.create');
+        
+    }
+    
+    public function store(){
+        //$upload = Upload::create(\Input::all());
+        
+        return \Input::all();
         
     }
     

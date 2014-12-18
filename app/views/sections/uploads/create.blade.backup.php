@@ -10,7 +10,12 @@
         
     </div>
     <div class='panel-body'>
-        {{ Form::open(['url' => action('UploadController@store'), 'method' => 'POST', 'files' => true, 'id'=>'file-form']) }}
+        {{ Former::open()
+    ->files(true)
+    ->id('file-form')
+    ->enctype('multipart/form-data')
+    ->method('GET')
+        }}
 
         {{ Former::text('primaryKey')
             ->label('Primary Key (required)')
@@ -45,15 +50,18 @@
         }}
         </br>
 
-        {{ Form::file('filename',array('id'=>'filename', 'label'=>'Load File', 'class'=>'form-control btn btn-default col-md-3') )
-           
+        {{ Former::file('filename') 
+            ->label('Load File')
+            ->class('form-control btn btn-default col-md-3')
+            ->id('filename')
+
         }}
         </br>
-        {{ Former::submit('Upload File')
+        {{ Former::button('Upload File')
             ->class('form-control btn btn-default')
             ->id('upload-file')
         }}
-        {{Form::close()}}
+        {{Former::close()}}
         <div id="debug">
 
         </div>
